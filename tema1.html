@@ -3,62 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <title>Tema 1: El Derecho - Esquemas</title>
     <style>
+        /* Variables base (Modo Claro) */
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            /* Callouts Claros */
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+
+        /* Variables Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                /* Callouts Oscuros */
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f7f6;
-            color: #1e293b;
-            margin: 0;
-            padding: 30px 15px;
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body);
+            color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 800px; margin: 0 auto; background: var(--bg-container); padding: 40px;
+            border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s;
         }
-        .btn-volver {
-            display: inline-block;
-            text-decoration: none;
-            color: #1e3a8a;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        h1 { color: #1e3a8a; border-bottom: 3px solid #1e3a8a; padding-bottom: 10px; }
-        h2 { color: #2563eb; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }
-        h3 { color: #0f172a; margin-top: 20px; }
-        hr { border: 0; height: 1px; background: #e2e8f0; margin: 40px 0; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
         
-        /* Estilos de las Tablas */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #cbd5e1;
-            padding: 12px;
-            text-align: left;
-        }
-        th { background-color: #f1f5f9; font-weight: bold; }
-        tr:nth-child(even) { background-color: #f8fafc; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; }
+        th { background-color: var(--table-header); font-weight: bold; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
 
-        /* Estilos de los Callouts estilo Obsidian */
-        .callout {
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-left: 5px solid;
-            border-radius: 4px;
-        }
-        .callout-abstract { background-color: #eff6ff; border-color: #3b82f6; }
-        .callout-danger { background-color: #fef2f2; border-color: #ef4444; }
-        .callout-warning { background-color: #fffbeb; border-color: #f59e0b; }
-        .callout-info { background-color: #f0fdf4; border-color: #22c55e; }
-        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
     </style>
 </head>
 <body>
