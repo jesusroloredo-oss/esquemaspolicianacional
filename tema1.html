@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <title>Tema 1: El Derecho - Esquemas</title>
-    <style>
+<style>
         /* Variables base (Modo Claro) */
         :root {
             --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
@@ -45,13 +34,17 @@
             border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s;
         }
         .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
-        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
         h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
         h3 { color: var(--title-third); margin-top: 20px; }
         hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
         
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); }
-        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; }
+        /* Ajuste clave para las tablas: permite scroll horizontal en móvil */
+        table { 
+            width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); 
+            display: block; overflow-x: auto; white-space: normal;
+        }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; }
         th { background-color: var(--table-header); font-weight: bold; }
         tr:nth-child(even) { background-color: var(--table-row-even); }
 
@@ -61,8 +54,18 @@
         .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
         .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
         .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        /* REGLAS ESPECÍFICAS PARA MÓVIL (Pantallas de menos de 768px) */
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+            /* Evitamos que las listas se metan mucho hacia la derecha */
+            ul, ol { padding-left: 20px; }
+        }
     </style>
-</head>
 <body>
 
 <div class="container">
