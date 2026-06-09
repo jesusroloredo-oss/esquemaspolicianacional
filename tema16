@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>Tema 16: Derecho Penal - Esquemas</title>
+    <style>
+        /* Variables base (Modo Claro) */
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            /* Callouts Claros */
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+
+        /* Variables Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                /* Callouts Oscuros */
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body);
+            color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px; margin: 0 auto; background: var(--bg-container); padding: 40px;
+            border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s;
+        }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        table { 
+            width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); 
+            display: block; overflow-x: auto; white-space: normal;
+        }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; }
+        th { background-color: var(--table-header); font-weight: bold; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+            ul, ol { padding-left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>⚖️ Tema 16: Derecho Penal General</h1>
+
+    <h2>1. Concepto de Derecho Penal</h2>
+    <ul>
+        <li><strong>Derecho Penal Objetivo (ius poenale):</strong> Conjunto de normas.</li>
+        <li><strong>Derecho Penal Subjetivo (ius puniendi):</strong> Facultad, castigo.</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Principios del Derecho Penal</h2>
+
+    <h3>📜 Principio de Legalidad</h3>
+    <div class="callout callout-info">
+        <div class="callout-title">ℹ️ Regla Básica</div>
+        <p>No puede existir delito sin que haya una ley previa que lo haya establecido.</p>
+    </div>
+
+    <p><strong>Garantías del Principio de Legalidad:</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Garantía</th>
+                <th>Definición</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Criminal / Legal</strong></td>
+                <td>Ninguna conducta es delito si no hay una ley previa que así lo establezca.</td>
+            </tr>
+            <tr>
+                <td><strong>Penal</strong></td>
+                <td>No hay pena sin ley.</td>
+            </tr>
+            <tr>
+                <td><strong>Jurisdiccional / Judicial / Procesal</strong></td>
+                <td>Recaiga sentencia judicial mediante procedimiento legalmente establecido.</td>
+            </tr>
+            <tr>
+                <td><strong>De ejecución / Penitenciaria</strong></td>
+                <td>Ejecutarse pena o medida de seguridad según leyes.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚫 Límite Absoluto</div>
+        <p>Prohibido aplicar la analogía.</p>
+    </div>
+
+    <h3>🎯 Principio de Intervención Mínima</h3>
+    <ul>
+        <li><strong>Carácter subsidiario:</strong> Última ratio.</li>
+        <li><strong>Carácter fragmentario:</strong> Proteger bienes jurídicos fundamentales.</li>
+    </ul>
+
+    <h3>🧠 Principio de Culpabilidad</h3>
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Requisito Indispensable</div>
+        <p>No hay pena sin dolo o imprudencia.</p>
+    </div>
+
+    <h3>⏳ Principio de Irretroactividad</h3>
+    <ul>
+        <li>Irretroactividad de las disposiciones sancionadoras no favorables o restrictivas de derechos individuales.</li>
+        <li>Retroactividad leyes penales que favorezcan al reo.</li>
+    </ul>
+    
+    <div class="callout callout-info">
+        <div class="callout-title">💡 Regla en caso de duda</div>
+        <p>Caso de duda, la ley que favorezca al reo.</p>
+    </div>
+
+    <hr>
+
+    <h2>3. El Delito</h2>
+
+    <h3>🔍 Concepto</h3>
+    <ul>
+        <li><strong>Formal:</strong> Lo descrito en la ley.</li>
+        <li><strong>Material:</strong> Comportamiento que lesiona o pone en peligro bien jurídico.</li>
+    </ul>
+
+    <h3>🧩 Elementos del delito</h3>
+    <ol>
+        <li>Acción u omisión</li>
+        <li>Tipicidad</li>
+        <li>Antijuricidad</li>
+        <li>Culpabilidad</li>
+        <li>Punibilidad</li>
+    </ol>
+
+    <hr>
+
+    <h2>4. Causas de Exclusión</h2>
+
+    <h3>🛡️ Exclusión de la antijuricidad (Causas de justificación)</h3>
+    <ul>
+        <li>Legítima defensa.</li>
+        <li>Estado de necesidad justificante.</li>
+        <li>Cumplimiento de un deber, derecho, oficio o cargo.</li>
+        <li>Consentimiento del ofendido.</li>
+    </ul>
+
+    <h3>👤 Exclusión de la culpabilidad</h3>
+    <ul>
+        <li>Minoría de edad.</li>
+        <li><strong>Anomalía o alteración psíquica:</strong> ⚠️ <em>No si fue provocada por el autor con el propósito de cometer.</em></li>
+        <li>Intoxicación plena.</li>
+        <li>Graves alteraciones en la percepción de la realidad.</li>
+        <li>Estado de necesidad exculpante.</li>
+        <li>Miedo insuperable.</li>
+        <li>Error de prohibición invencible.</li>
+    </ul>
+
+    <hr>
+
+    <h2>5. El Camino del Delito (Iter Criminis)</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">📋 Fases del Iter Criminis</div>
+        <ul>
+            <li><strong>Fase interna:</strong> Es impune. Ideación, deliberación y resolución.</li>
+            <li><strong>Fase externa:</strong> Actos preparatorios punibles y actos de ejecución.</li>
+        </ul>
+    </div>
+
+    <h3>🛠️ Actos preparatorios punibles</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Acto</th>
+                <th>Descripción</th>
+                <th>Consecuencia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Conspiración</strong></td>
+                <td>Dos o más personas se conciertan para la ejecución y resuelven ejecutarlo.</td>
+                <td>Coautores.</td>
+            </tr>
+            <tr>
+                <td><strong>Proposición</strong></td>
+                <td>Invita a otros a participar en él.</td>
+                <td>Si acepta es conspiración.</td>
+            </tr>
+            <tr>
+                <td><strong>Provocación</strong></td>
+                <td>Incitar por medio de imprenta...</td>
+                <td>Si se ejecuta, será inducción. Apología.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>🎬 Actos de ejecución</h3>
+    <ul>
+        <li><strong>Tentativa:</strong> No se produce por causas ajenas a su voluntad. Pena inferior en 1 o 2 grados.
+            <ul>
+                <li><strong>Idónea:</strong> Apta para alcanzar resultado.</li>
+                <li><strong>Inidónea:</strong> No es apta para alcanzar resultado.</li>
+            </ul>
+        </li>
+        <li><strong>Consumación:</strong> Se completa.</li>
+    </ul>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🔥 Figuras Especiales e Impunes</div>
+        <ul>
+            <li><strong>Delito imposible:</strong> Sujeto pasivo no adecuado (matar un cadáver). <strong>Impune.</strong></li>
+            <li><strong>Delito putativo:</strong> Autor piensa que comete pero no abarca todos los elementos. <strong>Impune.</strong></li>
+            <li><strong>Desistimiento voluntario:</strong> Evite voluntariamente consumación del delito. <strong>No pena</strong>, a no ser que se produzca a pesar de desistimiento.</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>6. Autores y Participación</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Figura</th>
+                <th>Definición / Característica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Autor directo / inmediato / material</strong></td>
+                <td>Una sola persona.</td>
+            </tr>
+            <tr>
+                <td><strong>Coautores</strong></td>
+                <td>Más de una persona.</td>
+            </tr>
+            <tr>
+                <td><strong>Autor mediato</strong></td>
+                <td>Utiliza a otra persona como instrumento.</td>
+            </tr>
+            <tr>
+                <td><strong>Inductores</strong></td>
+                <td>Convence a otro para que lo ejecute.</td>
+            </tr>
+            <tr>
+                <td><strong>Cooperadores necesarios</strong></td>
+                <td>Acto sin el cual no se podría haber ejecutado.</td>
+            </tr>
+            <tr>
+                <td><strong>Cómplices</strong></td>
+                <td>No se consideran autores. Actos anteriores o simultáneos, que no condicionan el resultado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>7. Extinción de la Responsabilidad Penal</h2>
+    <ul>
+        <li>Muerte del reo.</li>
+        <li>Remisión de la pena.</li>
+        <li>Indulto o perdón del ofendido.</li>
+        <li>Prescripción del delito.</li>
+        <li>Prescripción de la pena o medida de seguridad.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
