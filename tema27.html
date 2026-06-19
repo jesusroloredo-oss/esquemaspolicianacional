@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Etiquetas para comportamiento WebApp a pantalla completa -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>Tema 27: Derechos Humanos - Esquemas</title>
+    <style>
+        /* Variables base (Modo Claro) */
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            /* Callouts Claros */
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+
+        /* Variables Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                /* Callouts Oscuros */
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body);
+            color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px; margin: 0 auto; background: var(--bg-container); padding: 40px;
+            border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s;
+        }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        table { 
+            width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); 
+            display: block; overflow-x: auto; white-space: normal;
+        }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; }
+        th { background-color: var(--table-header); font-weight: bold; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+            ul, ol { padding-left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🌍 Tema 27: Derechos Humanos</h1>
+
+    <h2>1. Generaciones de Derechos Humanos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Generación</th>
+                <th>Derechos que abarca</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Primera</strong></td>
+                <td>Derechos civiles y políticos.</td>
+            </tr>
+            <tr>
+                <td><strong>Segunda</strong></td>
+                <td>Derechos económicos, sociales y culturales.</td>
+            </tr>
+            <tr>
+                <td><strong>Tercera</strong></td>
+                <td>Especialización de los derechos.</td>
+            </tr>
+            <tr>
+                <td><strong>Cuarta</strong></td>
+                <td>Nuevas tecnologías.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-info">
+        <div class="callout-title">ℹ️ Origen de la Clasificación</div>
+        <p>Las tres primeras generaciones fueron formuladas por <strong>Karel Vasak</strong>, inspirándose en el lema de la Revolución Francesa (Libertad, Igualdad, Fraternidad).</p>
+    </div>
+
+    <hr>
+
+    <h2>2. Textos Fundamentales</h2>
+
+    <h3>📜 Declaración Universal de los Derechos Humanos (DUDH)</h3>
+    <ul>
+        <li><strong>Aprobación:</strong> ONU, 10/12/1948 en París.</li>
+        <li><strong>Estructura:</strong> 30 artículos.</li>
+    </ul>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚫 Dato Clave de Examen</div>
+        <p><strong>NO tiene obligación jurídica</strong> (no es un tratado vinculante).</p>
+    </div>
+
+    <p><strong>Artículos más preguntados:</strong></p>
+    <ul>
+        <li><strong>Art. 1:</strong> Libres e iguales.</li>
+        <li><strong>Art. 2:</strong> Discriminación.</li>
+        <li><strong>Art. 3:</strong> Vida, libertad y seguridad.</li>
+        <li><strong>Art. 4:</strong> Esclavitud.</li>
+        <li><strong>Art. 5:</strong> Torturas.</li>
+    </ul>
+
+    <div class="callout callout-info">
+        <div class="callout-title">💡 Regla Mnemotécnica</div>
+        <p>Para recordar el Artículo 4: <strong>Es-cla-vi-tud</strong> tiene <strong>4 sílabas</strong>.</p>
+    </div>
+
+    <h3>🇪🇺 Convenio Europeo para la Protección de los DH y Lib. Fundamentales (CEDH)</h3>
+    <ul>
+        <li><strong>Aprobación:</strong> Consejo de Europa, 1950 en Roma.</li>
+        <li><strong>Estructura:</strong> 16 protocolos (<strong>15 en vigor</strong>).</li>
+        <li><strong>Derechos clave recogidos:</strong> Respetar los DH, Vida, Tortura y Esclavitud.</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Comités y Mecanismos contra la Tortura</h2>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Cuidado con las Sedes y Sesiones</div>
+        <p>Es muy fácil confundir estos cuatro organismos en el test. Fíjate bien en la información de confidencialidad y número de sesiones.</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Organismo</th>
+                <th>Sede / Ámbito</th>
+                <th>Sesiones Anuales</th>
+                <th>Composición y Notas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>CAT</strong> (Comité contra la Tortura)</td>
+                <td>Ginebra</td>
+                <td><strong>2</strong> sesiones</td>
+                <td>Actuaciones <strong>confidenciales</strong>. 10 expertos (4 años, reelegibles). 3 vicepresidentes.</td>
+            </tr>
+            <tr>
+                <td><strong>SPT</strong> (Subcomité para Prevención)</td>
+                <td>Ginebra</td>
+                <td><strong>3</strong> sesiones <em>(Al menos 1 con el CAT)</em></td>
+                <td>Se puede objetar visita por razones urgentes. 4 vicepresidentes. Mínimo 2 personas, 5 candidatos.</td>
+            </tr>
+            <tr>
+                <td><strong>MNP</strong> (Mecanismo Nacional)</td>
+                <td>Ámbito Nacional</td>
+                <td>Al menos <strong>2</strong> sesiones</td>
+                <td>Información <strong>reservada</strong>. Visitas preventivas, no anunciadas y de oficio. Tiene Consejo Asesor (cooperación técnica/jurídica).</td>
+            </tr>
+            <tr>
+                <td><strong>CPT</strong> (Comité Europeo)</td>
+                <td>Estrasburgo</td>
+                <td><strong>3</strong> sesiones</td>
+                <td>Información <strong>confidencial</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-info">
+        <div class="callout-title">💡 Regla Mnemotécnica (Principios del SPT)</div>
+        <p>Recuerda el acrónimo <strong>CINUO</strong>: <strong>C</strong>onfidencialidad, <strong>I</strong>mparcialidad, <strong>N</strong>o selectividad, <strong>U</strong>niversalidad y <strong>O</strong>bjetividad.</p>
+    </div>
+
+    <hr>
+
+    <h2>4. Otros Organismos de Garantía</h2>
+
+    <h3>🤝 Carta Social Europea (Carta de Turín)</h3>
+    <ul>
+        <li><strong>Comité:</strong> Comité Europeo de Derechos Sociales.</li>
+        <li><strong>Sede de Sesiones:</strong> Estrasburgo.</li>
+        <li><strong>Informe:</strong> Anual.</li>
+    </ul>
+
+    <h3>🌐 Organización de las Naciones Unidas (ONU)</h3>
+    <ul>
+        <li><strong>Composición:</strong> 193 países.</li>
+        <li><strong>Sede central:</strong> Nueva York.</li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Órgano Específico</th>
+                <th>Sede</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Corte Internacional de Justicia</strong></td>
+                <td>La Haya</td>
+            </tr>
+            <tr>
+                <td><strong>Consejo de Derechos Humanos</strong></td>
+                <td>Ginebra</td>
+            </tr>
+            <tr>
+                <td><strong>Alto Comisionado para los DH</strong></td>
+                <td>Ginebra</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>5. Cronología de Pactos y Tratados</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">📋 Resumen Histórico por Organización</div>
+        
+        <p><strong>Naciones Unidas (ONU)</strong></p>
+        <ul>
+            <li><strong>1945:</strong> Carta de las Naciones Unidas <em>(San Francisco)</em>.</li>
+            <li><strong>1948:</strong> DUDH <em>(París)</em>.</li>
+            <li><strong>1966:</strong> PIDCP - Pacto Int. de Derechos Civiles y Políticos <em>(Nueva York)</em>.</li>
+            <li><strong>1966:</strong> PIDESC - Pacto Int. de Derechos Económicos, Sociales y Culturales <em>(Nueva York)</em>.</li>
+        </ul>
+
+        <p><strong>Consejo de Europa</strong></p>
+        <ul>
+            <li><strong>1950:</strong> CEDH - Convenio Europeo de Derechos Humanos <em>(Roma)</em>.</li>
+            <li><strong>1961:</strong> Carta Social Europea <em>(Turín)</em>.</li>
+        </ul>
+
+        <p><strong>Unión Europea</strong></p>
+        <ul>
+            <li><strong>2007:</strong> Carta de los Derechos Fundamentales de la UE <em>(Niza)</em>.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
