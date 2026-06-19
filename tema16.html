@@ -73,6 +73,60 @@
             .callout { padding: 12px 15px; margin: 15px 0; }
             ul, ol { padding-left: 20px; }
         }
+
+        /* =========================================
+           FORMATO HIPERCOMPACTO PARA IMPRESORA 
+           ========================================= */
+        @media print {
+            /* 1. Resetear colores y quitar fondos para ahorrar tinta */
+            body, .container {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+            
+            /* 2. Ocultar elementos que no sirven en papel */
+            .btn-volver { display: none !important; }
+            hr { display: none !important; } /* Ocultamos las líneas separadoras para ahorrar espacio vertical */
+
+            /* 3. Compactar la tipografía y los márgenes generales */
+            body { font-size: 10pt; line-height: 1.25; }
+            h1 { font-size: 16pt; margin: 0 0 10px 0; border-bottom: 2px solid #000; padding-bottom: 3px; page-break-after: avoid; }
+            h2 { font-size: 13pt; margin: 15px 0 5px 0; color: #000 !important; border-bottom: 1px solid #ccc; page-break-after: avoid; }
+            h3 { font-size: 11pt; margin: 10px 0 2px 0; color: #000 !important; page-break-after: avoid; }
+            p, ul, ol { margin: 5px 0; padding-left: 20px; }
+
+            /* 4. Encoger las Tablas al máximo */
+            table {
+                display: table !important; /* Desactiva el scroll horizontal del móvil */
+                width: 100% !important;
+                margin: 10px 0 !important;
+                page-break-inside: auto;
+            }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            th, td {
+                padding: 4px 6px !important;
+                border: 1px solid #666 !important;
+                font-size: 9.5pt;
+                color: #000 !important;
+            }
+            th { background-color: #f0f0f0 !important; }
+
+            /* 5. Transformar los Callouts en recuadros finos de papel */
+            .callout {
+                padding: 6px 10px !important;
+                margin: 10px 0 !important;
+                background: #fff !important;
+                border: 1px solid #999 !important;
+                border-left: 4px solid #333 !important; /* Mantenemos una línea lateral negra gruesa */
+                page-break-inside: avoid; /* Evita que el cuadro se corte entre dos folios */
+            }
+            .callout-title { font-size: 10pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+        }
+        
     </style>
 </head>
 <body>
