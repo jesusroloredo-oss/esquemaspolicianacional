@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>Tema 34: Drogodependencias - Esquemas</title>
+    <style>
+        /* Variables base (Modo Claro) */
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-border: #cbd5e1;
+            
+            /* Colores visuales para la tabla (Tonos Suaves) */
+            --bg-estimulante: #fee2e2; /* Rojo suave */
+            --bg-depresora: #dbeafe;   /* Azul suave */
+            --bg-alucinogena: #f3e8ff; /* Violeta suave */
+            
+            /* Callouts */
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+        }
+
+        /* Variables Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --border-color: #334155;
+                --table-header: #1e293b; --table-border: #334155;
+                
+                /* Colores visuales translúcidos para no dañar la vista en modo oscuro */
+                --bg-estimulante: rgba(239, 68, 68, 0.15);
+                --bg-depresora: rgba(59, 130, 246, 0.15);
+                --bg-alucinogena: rgba(168, 85, 247, 0.15);
+                
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+            }
+        }
+
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 900px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; }
+        th { background-color: var(--table-header); font-weight: bold; text-transform: uppercase; font-size: 0.9em; letter-spacing: 0.5px; }
+        
+        /* Clases para colorear las filas según el efecto */
+        .fila-estimulante { background-color: var(--bg-estimulante) !important; }
+        .fila-depresora { background-color: var(--bg-depresora) !important; }
+        .fila-alucinogena { background-color: var(--bg-alucinogena) !important; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+
+        /* FORMATO HIPERCOMPACTO PARA IMPRESORA */
+        @media print {
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 9pt; line-height: 1.2; }
+            table { display: table !important; width: 100% !important; margin: 10px 0 !important; }
+            th, td { padding: 4px 6px !important; border: 1px solid #666 !important; font-size: 8.5pt; color: #000 !important; }
+            /* Forzar la impresión de los colores de fondo para mantener la regla visual en papel */
+            .fila-estimulante { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-depresora { background-color: #dbeafe !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-alucinogena { background-color: #f3e8ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>💊 Tema 34: Drogodependencias</h1>
+
+    <h2>1. Clasificación General de Sustancias</h2>
+    
+    <div class="callout callout-danger">
+        <div class="callout-title">⚠️ Atención a las Trampas</div>
+        <p>Recuerda la regla de oro: Las <strong>anfetaminas</strong> son estimulantes, mientras que el <strong>alcohol</strong> y los derivados del <strong>opio</strong> (heroína, morfina) son depresores absolutos del SNC, por mucho que en sus fases iniciales parezcan euforizantes.</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Droga</th>
+                <th>Origen</th>
+                <th>Vía de Consumo</th>
+                <th>Efecto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ESTIMULANTES (Rojo) -->
+            <tr class="fila-estimulante">
+                <td>⚡ <strong>Hoja de Coca</strong></td>
+                <td>Natural</td>
+                <td>Oral</td>
+                <td><strong>ESTIMULANTE</strong></td>
+            </tr>
+            <tr class="fila-estimulante">
+                <td>⚡ <strong>Cocaína</strong></td>
+                <td>Semisintético</td>
+                <td>Nasal, oral o intravenosa</td>
+                <td><strong>ESTIMULANTE</strong></td>
+            </tr>
+            <tr class="fila-estimulante">
+                <td>⚡ <strong>Crack</strong></td>
+                <td>Semisintético</td>
+                <td>Pulmonar o intravenosa</td>
+                <td><strong>ESTIMULANTE</strong></td>
+            </tr>
+            <tr class="fila-estimulante">
+                <td>⚡ <strong>Anfetaminas</strong></td>
+                <td>Sintético</td>
+                <td>Oral, pulmonar o intravenosa</td>
+                <td><strong>ESTIMULANTE</strong></td>
+            </tr>
+
+            <!-- DEPRESORAS (Azul) -->
+            <tr class="fila-depresora">
+                <td>💤 <strong>Opio</strong></td>
+                <td>Natural</td>
+                <td>Oral o pulmonar</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Morfina</strong></td>
+                <td>Natural</td>
+                <td>Intravenosa</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Heroína</strong></td>
+                <td>Semisintético</td>
+                <td>Intravenosa, pulmonar o nasal</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Codeína</strong></td>
+                <td>Semisintético</td>
+                <td>Oral o intravenosa</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Metadona</strong></td>
+                <td>Sintético</td>
+                <td>Oral o rectal</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Barbitúricos</strong></td>
+                <td>Sintético</td>
+                <td>Oral, rectal o intravenosa</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>Benzodiazepinas</strong></td>
+                <td>Sintético</td>
+                <td>Oral o intravenosa</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+            <tr class="fila-depresora">
+                <td>💤 <strong>GHB</strong></td>
+                <td>Sintético</td>
+                <td>Oral</td>
+                <td><strong>DEPRESORA</strong></td>
+            </tr>
+
+            <!-- ALUCINÓGENAS (Violeta) -->
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Poppers</strong></td>
+                <td>Sintético</td>
+                <td>Pulmonar</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Burundanga</strong></td>
+                <td>Sintético</td>
+                <td>Oral, pulmonar o intravenosa</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Psilocibina</strong></td>
+                <td>Natural</td>
+                <td>Oral o nasal</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Mescalina</strong></td>
+                <td>Natural</td>
+                <td>Oral o pulmonar</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Estramonio</strong></td>
+                <td>Natural</td>
+                <td>Oral</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Ayahuasca</strong></td>
+                <td>Natural</td>
+                <td>Oral</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>LSD</strong></td>
+                <td>Semisintético</td>
+                <td>Oral</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>Ketamina</strong></td>
+                <td>Sintético</td>
+                <td>Nasal, oral, pulmonar o intramuscular</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>PCP</strong></td>
+                <td>Sintético</td>
+                <td>Oral o pulmonar</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>MDPV</strong></td>
+                <td>Sintético</td>
+                <td>Oral o pulmonar</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+            <tr class="fila-alucinogena">
+                <td>🌀 <strong>M-CPP</strong></td>
+                <td>Sintético</td>
+                <td>Oral</td>
+                <td><strong>ALUCINÓGENA</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
