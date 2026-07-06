@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 21: Procesal Penal - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        ul { padding-left: 20px; }
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+        }
+        @media print {
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 10pt; line-height: 1.25; }
+            h1 { font-size: 16pt; margin: 0 0 10px 0; border-bottom: 2px solid #000; padding-bottom: 3px; page-break-after: avoid; }
+            h2 { font-size: 13pt; margin: 15px 0 5px 0; color: #000 !important; border-bottom: 1px solid #ccc; page-break-after: avoid; }
+            h3 { font-size: 11pt; margin: 10px 0 2px 0; color: #000 !important; page-break-after: avoid; }
+            p, ul, ol { margin: 5px 0; padding-left: 20px; }
+            table { display: table !important; width: 100% !important; margin: 10px 0 !important; page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            th, td { padding: 4px 6px !important; border: 1px solid #666 !important; font-size: 9.5pt; color: #000 !important; }
+            th { background-color: #f0f0f0 !important; }
+            .callout { padding: 6px 10px !important; margin: 10px 0 !important; background: #fff !important; border: 1px solid #999 !important; border-left: 4px solid #333 !important; page-break-inside: avoid; }
+            .callout-title { font-size: 10pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>⚖️ Tema 21: Procesal Penal</h1>
+
+    <h2>1. Principios[cite: 3]</h2>
+    <ul>
+        <li><strong>Unidad jurisdiccional:</strong> jueces y magistrados, de igual modo.[cite: 3] Base de organización y funcionamiento de los tribunales.[cite: 3]</li>
+        <li><strong>Exclusividad:</strong> ejercicio potestad jurisdiccional, jueces y tribunales (CE).[cite: 3]</li>
+        <li><strong>Categorías de jueces:</strong> juez; magistrado; magistrado TS.[cite: 3]</li>
+        <li><strong>Presidente AN:</strong> presidente de sala TS.[cite: 3]</li>
+        <li><strong>Independencia:</strong> característica.[cite: 3] Independientes e inamovibles.[cite: 3]</li>
+        <li><strong>MF:</strong> Poder judicial, Tribunales.[cite: 3]</li>
+        <li><strong>CGPJ:</strong> Personas, jueces y magistrados.[cite: 3]</li>
+        <li><strong>Imparcialidad.</strong>[cite: 3]</li>
+        <li><strong>Responsabilidad:</strong> penal y civilmente.[cite: 3] Incluyendo error judicial.[cite: 3]</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Ámbitos del Orden Jurisdiccional[cite: 3]</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Orden</th>
+                <th>Materia / Ámbito</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Civil</strong></td>
+                <td>Persona (derecho privado).[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Penal</strong></td>
+                <td>Delito (derecho público).[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Contencioso-administrativo</strong></td>
+                <td>Administración Pública.[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Social</strong></td>
+                <td>Laboral (trabajador-empresa).[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Militar</strong></td>
+                <td>Castrense o estado de sitio.[cite: 3]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-info">
+        <div class="callout-title">💡 Regla Mnemotécnica para todos los tribunales</div>
+        <p><strong>PeCoSo</strong>[cite: 3]</p>
+    </div>
+
+    <h3>Estructura de Salas por Tribunal[cite: 3]</h3>
+    <ul>
+        <li><strong>Audiencia Nacional:</strong> Apelación; Penal; Contencioso-Administrativo; Social.[cite: 3]</li>
+        <li><strong>Tribunal Superior de Justicia (TSJ):</strong> Civil y Penal; Contencioso-Administrativo; Social.[cite: 3]</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Límites de jurisdicción. Competencia[cite: 3]</h2>
+    <ul>
+        <li><strong>Funcional:</strong> fases/partes del proceso penal.[cite: 3]</li>
+        <li><strong>Objetiva:</strong> materia/hecho/pena/quien comete.[cite: 3]</li>
+        <li><strong>Territorial:</strong> fuero.[cite: 3]</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Tipos de procedimiento[cite: 3]</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Procedimiento</th>
+                <th>Fase de Instrucción</th>
+                <th>Cuando</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ORDINARIO</strong></td>
+                <td>Sumario</td>
+                <td>PPL +9 años[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>ABREVIADO</strong></td>
+                <td>Diligencias previas</td>
+                <td>PPL hasta 9 años[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>JUICIO RÁPIDO</strong></td>
+                <td>Diligencias urgentes</td>
+                <td>PPL hasta 5/10 años[cite: 3]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⏳ Plazos de la Fase de instrucción[cite: 3]</div>
+        <p><strong>12 meses</strong>, con prórrogas de <strong>6 meses</strong>.[cite: 3]</p>
+    </div>
+
+    <hr>
+
+    <h2>5. Competencia territorial[cite: 3]</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>General</th>
+                <th>V.G y Menores</th>
+                <th>Conexos</th>
+                <th>Habeas Corpus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Lugar de comisión[cite: 3]</td>
+                <td>Residencia[cite: 3]</td>
+                <td>1. Pena mayor[cite: 3]</td>
+                <td>1. Donde se encuentre[cite: 3]</td>
+            </tr>
+            <tr>
+                <td>2. Lugar de pruebas[cite: 3]</td>
+                <td></td>
+                <td>2. Inicie causa[cite: 3]</td>
+                <td>2. Lugar de detención[cite: 3]</td>
+            </tr>
+            <tr>
+                <td>3. Lugar detención[cite: 3]</td>
+                <td></td>
+                <td>3. Audiencia criminal o TS[cite: 3]</td>
+                <td>3. Últimas noticias[cite: 3]</td>
+            </tr>
+            <tr>
+                <td>4. Residencia reo[cite: 3]</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5. Noticias delito[cite: 3]</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>6. Tribunal del Jurado[cite: 3]</h2>
+    <ul>
+        <li><strong>Preside:</strong> magistrado AP / magistrado Penal TS / Civil y Penal TSJ.[cite: 3]</li>
+        <li><strong>Composición:</strong> 9 jurados + 2 suplentes.[cite: 3] Se eligen los 15 últimos días de Septiembre, en años pares.[cite: 3]</li>
+        <li><strong>Votación Culpabilidad:</strong>
+            <ul>
+                <li><strong>5 votos:</strong> no culpable.[cite: 3]</li>
+                <li><strong>7 votos:</strong> culpable.[cite: 3]</li>
+            </ul>
+        </li>
+        <li><strong>Delitos competentes:</strong> Homicidio; asesinato; cohecho; malversación de caudales públicos.[cite: 3]</li>
+    </ul>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚫 Excepciones importantes del Jurado[cite: 3]</div>
+        <p><strong>NO PREVARICACIÓN NI INCENDIOS</strong>[cite: 3]</p>
+    </div>
+
+    <hr>
+
+    <h2>7. Identificación y registro corporal[cite: 3]</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Acción</th>
+                <th>Requisitos / Regla</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Identificación</strong>[cite: 3]</td>
+                <td><strong>PINO</strong>[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Registro corporal externo (permite)</strong>[cite: 3]</td>
+                <td><strong>PINO + Injerencia Mínima</strong>[cite: 3]</td>
+            </tr>
+            <tr>
+                <td><strong>Registro corporal externo (contra voluntad)</strong>[cite: 3]</td>
+                <td><strong>PIN</strong>[cite: 3]</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
