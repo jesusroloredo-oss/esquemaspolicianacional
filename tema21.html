@@ -53,21 +53,55 @@
             h2 { font-size: 1.3rem; }
             .callout { padding: 12px 15px; margin: 15px 0; }
         }
+        /* =========================================
+           NUEVO FORMATO DE IMPRESIÓN EXTREMA Y ANTI-CORTES
+           ========================================= */
         @media print {
+            /* 1. Aprovechar todo el papel */
+            @page { margin: 1cm; }
+            
+            /* 2. Resetear fondos e interfaz */
             body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
             .btn-volver, hr { display: none !important; }
-            body { font-size: 10pt; line-height: 1.25; }
-            h1 { font-size: 16pt; margin: 0 0 10px 0; border-bottom: 2px solid #000; padding-bottom: 3px; page-break-after: avoid; }
-            h2 { font-size: 13pt; margin: 15px 0 5px 0; color: #000 !important; border-bottom: 1px solid #ccc; page-break-after: avoid; }
-            h3 { font-size: 11pt; margin: 10px 0 2px 0; color: #000 !important; page-break-after: avoid; }
-            p, ul, ol { margin: 5px 0; padding-left: 20px; }
-            table { display: table !important; width: 100% !important; margin: 10px 0 !important; page-break-inside: auto; }
-            tr { page-break-inside: avoid; page-break-after: auto; }
-            th, td { padding: 4px 6px !important; border: 1px solid #666 !important; font-size: 9.5pt; color: #000 !important; }
-            th { background-color: #f0f0f0 !important; }
-            .callout { padding: 6px 10px !important; margin: 10px 0 !important; background: #fff !important; border: 1px solid #999 !important; border-left: 4px solid #333 !important; page-break-inside: avoid; }
-            .callout-title { font-size: 10pt; margin-bottom: 2px; color: #000 !important; }
+            
+            /* 3. Compresión máxima de tipografía y espacios */
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+
+            /* 4. Tablas anti-cortes y ultra compactas */
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: middle; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+            /* 5. Recuadros y bloques anti-cortes */
+            .callout, .bloque-arts { 
+                padding: 5px 8px !important; 
+                margin: 5px 0 !important; 
+                background: #fff !important; 
+                border: 1px solid #888 !important; 
+                border-left: 3px solid #333 !important; 
+                break-inside: avoid; 
+                page-break-inside: avoid; 
+            }
+            .callout-title, .bloque-arts h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
             .callout p, .callout ul { margin: 0; }
+            
+            /* Específico para los bloques del Tema 2 */
+            .grid-articulos { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque-arts { flex: 1 1 45% !important; margin: 2px !important; }
+            
+            /* Forzar colores de fondo en impresoras (para el tema de Drogas y Estados de Alarma) */
+            .fila-estimulante { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-depresora { background-color: #dbeafe !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-alucinogena { background-color: #f3e8ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-alarma { background-color: #fef9c3 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-excepcion { background-color: #ffedd5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fila-sitio { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
