@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 17: Delitos contra las personas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 130px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.9em; text-align: center; }
+        td ul { padding-left: 20px; margin: 0; }
+        td li { margin-bottom: 4px; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+        }
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left: 3px solid #333 !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🔪 Tema 17: Delitos contra las Personas y la Libertad</h1>
+
+    <h2>1. Del Homicidio y sus formas (Arts. 138-143)</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>HOMICIDIO<br>(138)</th>
+                <th>ASESINATO<br>(139)</th>
+                <th>ASESINATO AGRAVADO<br>(140)</th>
+                <th>A.P. (Actos Preparatorios)<br>(141)</th>
+                <th>HOMICIDIO IMPRUDENTE<br>(142)</th>
+                <th>INDUCCIÓN SUICIDIO<br>(143)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul>
+                        <li>Menor de 16 o atentado<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Alevosía<!--[cite: 6]--></li>
+                        <li>Precio, recompensa o promesa<!--[cite: 6]--></li>
+                        <li>Ensañamiento<!--[cite: 6]--></li>
+                        <li>Facilitar comisión delito<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Menor de 16<!--[cite: 6]--></li>
+                        <li>Subsiguiente delito libertad sexual<!--[cite: 6]--></li>
+                        <li>Grupo u org criminal<!--[cite: 6]--></li>
+                        <li>+2 personas<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Inferior en 1 o 2 grados<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Grave/Profesional o menos grave<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Inducir o cooperar<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>2. Aborto</h2>
+    <div class="callout callout-warning">
+        <div class="callout-title">⏳ Plazos Legales Clave</div>
+        <ul>
+            <li>Permitido hasta <strong>semana 14</strong> de gestación.<!--[cite: 6]--></li>
+            <li>Se agrava a partir de <strong>22 semana</strong> de gestación.<!--[cite: 6]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>3. Lesiones</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>LESIÓN<br>(147)</th>
+                <th>AGRAVANTE POTESTATIVA<br>(148)</th>
+                <th>AGRAVANTE RESULTADO<br>(149)</th>
+                <th>AGRAVANTE RESULTADO<br>(150)</th>
+                <th>IMPRUDENTE<br>(152)</th>
+                <th>RIÑA TUMULTUARIA<br>(154)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul>
+                        <li>Además asistencia facultativa, tratamiento médico y quirúrgico<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Uso de armas<!--[cite: 6]--></li>
+                        <li>Ensañamiento o alevosía<!--[cite: 6]--></li>
+                        <li>Menor de 14<!--[cite: 6]--></li>
+                        <li>Esposa o mujer<!--[cite: 6]--></li>
+                        <li>Especialmente vulnerable (con convivencia)<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Miembro principal<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Miembro no principal<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <!-- Celda sin datos específicos en tus apuntes -->
+                </td>
+                <td>
+                    <ul>
+                        <li>Riñeren entre sí, acometiéndose y utilizando medios o instrum. de peligro<!--[cite: 6]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-info">
+        <div class="callout-title">📝 Notas Importantes sobre Lesiones</div>
+        <ul>
+            <li><strong>Consentimiento lesiones (155):</strong> válido, libre, espontáneo y expresamente emitido.<!--[cite: 6]--> Pena inferior 1 o 2 grados.<!--[cite: 6]--> <strong>NO válido</strong> menor edad o discapacitados.<!--[cite: 6]--></li>
+            <li><strong>Tráfico de órganos (156):</strong> promovieren, favorecieren, facilitaren, publicitaren o ejecutaren.<!--[cite: 6]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>4. Delitos contra la Libertad</h2>
+    
+    <div class="callout callout-abstract">
+        <div class="callout-title">🔒 Detención Ilegal (163)</div>
+        <p>Particular que encerrare o detuviere.<!--[cite: 6]--></p>
+        <ul>
+            <li><strong>Inferior en grado:</strong> libera dentro de los 3 primeros días.<!--[cite: 6]--></li>
+            <li><strong>Mayor pena:</strong> supera los 15 días.<!--[cite: 6]--></li>
+        </ul>
+    </div>
+
+    <ul>
+        <li><strong>Secuestro (164):</strong> exige condición.<!--[cite: 6]--> Atenúa y agrava igual que la detención ilegal.<!--[cite: 6]--></li>
+        <li><strong>Cometido por autoridad:</strong> mitad superior hasta superior en grado + Inhabilitación absoluta.<!--[cite: 6]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Amenazas</h2>
+    <ul>
+        <li><strong>Amenazas de un mal que constituya delito (graves).</strong><!--[cite: 6]-->
+            <ul>
+                <li><strong>Agrava:</strong> con condición por escrito, TIC...<!--[cite: 6]--></li>
+                <li><strong>Mayor pena:</strong> con condición, si se consigue.<!--[cite: 6]--></li>
+            </ul>
+        </li>
+        <li><strong>Amenazas de un mal que NO constituya delito (menos graves).</strong><!--[cite: 6]--></li>
+    </ul>
+
+</div>
+
+</body>
+</html>
