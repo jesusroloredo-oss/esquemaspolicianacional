@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 5: Órganos de Gobierno - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: center; }
+        td ul { padding-left: 20px; margin: 0; }
+        td li { margin-bottom: 4px; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        
+        .secreto { color: #dc2626; font-weight: bold; }
+        .reservado { color: #d97706; font-weight: bold; }
+        @media (prefers-color-scheme: dark) {
+            .secreto { color: #f87171; }
+            .reservado { color: #fbbf24; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left: 3px solid #333 !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🏛️ Tema 5: Órganos de Gobierno y Delegado</h1>
+
+    <h2>1. Órganos de Gobierno</h2>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">⚠️ Regla Mnemotécnica de Examen</div>
+        <p>Los "jefes" (Ministros) tienen deliberaciones <span class="secreto">SECRETAS</span>. Los "segundos" (Secretarios de Estado y Subsecretarios) tienen deliberaciones <span class="reservado">RESERVADAS</span>.</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CARACTERÍSTICA</th>
+                <th>CONSEJO DE MINISTROS</th>
+                <th>COMISIONES DELEGADAS DE GOBIERNO</th>
+                <th>COMISIÓN GRAL. SECRETARIOS DE ESTADO Y SUBSECRETARIOS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Asistencia / Composición</strong></td>
+                <td>
+                    <ul>
+                        <li>Presidente<!--[cite: 8]--></li>
+                        <li>Vicepresidente<!--[cite: 8]--></li>
+                        <li>Ministros<!--[cite: 8]--></li>
+                        <li><em>Puede asistir:</em> SE y excepcionalmente altos cargos<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><strong>Son 5:</strong><!--[cite: 8]-->
+                            <ul>
+                                <li>Asuntos Económicos<!--[cite: 8]--></li>
+                                <li>Seguridad Nacional<!--[cite: 8]--></li>
+                                <li>Inteligencia<!--[cite: 8]--></li>
+                                <li>Reto Demográfico<!--[cite: 8]--></li>
+                                <li>Agenda 2030<!--[cite: 8]--></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Titulares de SE<!--[cite: 8]--></li>
+                        <li>Subsecretarios<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Preside</strong></td>
+                <td>
+                    <ul>
+                        <li>Presidente del Gobierno<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <!-- Celda sin datos específicos en apuntes -->
+                </td>
+                <td>
+                    <ul>
+                        <li>Vicepresidente<!--[cite: 8]--></li>
+                        <li><em>En su defecto:</em> Ministro de Presidencia<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Secretario</strong></td>
+                <td>
+                    <ul>
+                        <li>Ministro Presidencia, Justicia y Relaciones con las Cortes<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <!-- Celda sin datos específicos en apuntes -->
+                </td>
+                <td>
+                    <ul>
+                        <li>Subsecretario de Presidencia<!--[cite: 8]--></li>
+                        <li><em>O bien:</em> Director del Secretariado de Gobierno<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Deliberaciones</strong></td>
+                <td>
+                    <ul>
+                        <li class="secreto">SECRETAS<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li class="secreto">SECRETAS<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li class="reservado">RESERVADAS<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Otros Datos</strong></td>
+                <td>
+                    <!-- Celda sin datos específicos en apuntes -->
+                </td>
+                <td>
+                    <ul>
+                        <li><strong>Crea:</strong> RD del CM a propuesta del PG<!--[cite: 8]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <!-- Celda sin datos específicos en apuntes -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">👔 Gabinetes</div>
+        <p>Órgano de apoyo político y técnico.<!--[cite: 8]--></p>
+        <ul>
+            <li><strong>Gabinete del Presidente:</strong> rango de SE.<!--[cite: 8]--></li>
+            <li><strong>Gabinete del Vicepresidente:</strong> rango de Subsecretario.<!--[cite: 8]--></li>
+            <li><strong>Gabinete del Secretario de Estado:</strong> rango de SDG.<!--[cite: 8]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Delegado de Gobierno</h2>
+    
+    <div class="callout callout-warning">
+        <div class="callout-title">📌 OJO a las Dependencias</div>
+        <p>Depende orgánicamente del <strong>PG</strong>, funcionalmente del <strong>Ministerio competente</strong>, y está adscrito al <strong>M. de Política Territorial</strong>. ¡Suelen cruzar esto en los test!<!--[cite: 8]--></p>
+    </div>
+
+    <ul>
+        <li><strong>Categoría:</strong> Subsecretario.<!--[cite: 8]--></li>
+        <li><strong>Nombra:</strong> RD del CM a propuesta del PG.<!--[cite: 8]--></li>
+        <li><strong>Suplencia:</strong> Subdelegado que hubiera designado.<!--[cite: 8]--></li>
+        <li><strong>Sede:</strong> Consejo de Gobierno, salvo CM determine otra.<!--[cite: 8]--></li>
+        <li><strong>Estructura de Dependencia:</strong>
+            <ul>
+                <li><strong>Orgánicamente:</strong> PG (Presidente del Gobierno).<!--[cite: 8]--></li>
+                <li><strong>Funcionalmente:</strong> Ministerio competente.<!--[cite: 8]--></li>
+                <li><strong>Adscrito a:</strong> Ministerio de Política Territorial.<!--[cite: 8]--></li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
