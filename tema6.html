@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 6: Empleados Públicos - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 900px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        .grid-empleados { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque-emp { background: var(--table-header); padding: 20px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque-emp h4 { margin: 0 0 10px 0; color: var(--title-main); border-bottom: 2px solid var(--border-color); padding-bottom: 5px; font-size: 1.1em;}
+        .bloque-emp ul { padding-left: 20px; margin: 0; }
+        .bloque-emp li { margin-bottom: 6px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        
+        /* Reglas Mnemotécnicas */
+        .badge-regla { background-color: var(--title-sec); color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.9em; letter-spacing: 0.5px; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .callout { padding: 12px 15px; margin: 15px 0; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            .grid-empleados { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque-emp { flex: 1 1 45% !important; margin: 2px !important; padding: 8px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque-emp h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left: 3px solid #333 !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge-regla { background-color: transparent; color: #000; border: 1px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🏢 Tema 6: Empleados Públicos</h1>
+
+    <h2>1. Clases de Empleados Públicos</h2>
+
+    <div class="grid-empleados">
+        
+        <!-- FUNCIONARIO DE CARRERA -->
+        <div class="bloque-emp">
+            <h4>🥇 Funcionario de Carrera</h4>
+            <ul>
+                <li>Nombramiento legal y relación estatutaria.<!--[cite: 9]--></li>
+                <li>Carácter <strong>permanente</strong>.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+
+        <!-- FUNCIONARIO INTERINO -->
+        <div class="bloque-emp">
+            <h4>⏱️ Funcionario Interino</h4>
+            <ul>
+                <li>Por necesidad y urgencia.<!--[cite: 9]--></li>
+                <li>Carácter <strong>temporal</strong>.<!--[cite: 9]--></li>
+                <li><strong>Principios:</strong> <span class="badge-regla">IMCPC</span><br>
+                    (Igualdad, mérito, capacidad, publicidad y celeridad).<!--[cite: 9]-->
+                </li>
+            </ul>
+        </div>
+
+        <!-- PERSONAL LABORAL -->
+        <div class="bloque-emp">
+            <h4>🛠️ Personal Laboral</h4>
+            <ul>
+                <li>Contrato de trabajo por escrito.<!--[cite: 9]--></li>
+                <li>Servicios retribuidos.<!--[cite: 9]--></li>
+                <li><strong>Aplica:</strong> Régimen Laboral y EBEP cuando así se disponga.<!--[cite: 9]--></li>
+                <li><strong>Principios:</strong> <span class="badge-regla">IMC</span><br>
+                    (Igualdad, Mérito y Capacidad) y <em>Celeridad</em> en caso de temporalidad.<!--[cite: 9]-->
+                </li>
+            </ul>
+        </div>
+
+        <!-- PERSONAL EVENTUAL -->
+        <div class="bloque-emp">
+            <h4>🤝 Personal Eventual</h4>
+            <ul>
+                <li>Confianza o asesoramiento especial.<!--[cite: 9]--></li>
+                <li><strong>Aplica:</strong> Régimen General funcionarios de carrera.<!--[cite: 9]--></li>
+                <li><strong>OJO:</strong> No constituye mérito para la Función Pública.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+
+        <!-- PERSONAL DIRECTIVO -->
+        <div class="bloque-emp">
+            <h4>👔 Personal Directivo Profesional</h4>
+            <ul>
+                <li>Sujeto a evaluación de eficacia y eficiencia, responsabilidad por la gestión y control de resultados.<!--[cite: 9]--></li>
+                <li><strong>NO objeto</strong> de negociación colectiva.<!--[cite: 9]--></li>
+                <li><strong>Principios:</strong> <span class="badge-regla">MeCal</span><br>
+                    (Mérito, capacidad e Idoneidad).<!--[cite: 9]-->
+                </li>
+                <li><strong>Procedimientos:</strong> Publicidad y concurrencia.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- SUPUESTOS INTERINOS (Súper importante para test) -->
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Supuestos y Plazos de Funcionarios Interinos</div>
+        <ul>
+            <li><strong>Plazas vacantes:</strong> máximo 3 años.<!--[cite: 9]--></li>
+            <li><strong>Sustitución:</strong> estrictamente necesario.<!--[cite: 9]--></li>
+            <li><strong>Programas carácter temporal:</strong> no superior a 3 años, ampliable 12 meses.<!--[cite: 9]--></li>
+            <li><strong>Acumulación de tareas:</strong> 9 meses en un periodo de 18 meses.<!--[cite: 9]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Pérdida de la condición de funcionario</h2>
+    
+    <p>La condición de funcionario se pierde por las siguientes causas:<!--[cite: 9]--></p>
+    
+    <ul>
+        <li>Renuncia.<!--[cite: 9]--></li>
+        <li>Pérdida de la nacionalidad.<!--[cite: 9]--></li>
+        <li>Jubilación voluntaria.<!--[cite: 9]--></li>
+        <li>Jubilación por incapacidad.<!--[cite: 9]--></li>
+        <li>Separación del servicio en firme.<!--[cite: 9]--></li>
+        <li>Inhabilitación absoluta o especial para cargo público en firme.<!--[cite: 9]--></li>
+    </ul>
+
+    <div class="callout callout-info">
+        <div class="callout-title">📅 OJO con la Jubilación Forzosa</div>
+        <p>Se declara de oficio al cumplir <strong>65 años</strong>, pudiendo solicitar la prolongación hasta un máximo de <strong>70 años</strong>.<!--[cite: 9]--></p>
+    </div>
+
+</div>
+
+</body>
+</html>
