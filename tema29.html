@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 29: Discriminación y Escalas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 850px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: middle; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: center; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-conceptos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque-con { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque-con h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.05em;}
+        .bloque-con p { margin: 0; font-size: 0.95em; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-conceptos { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque-con { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque-con h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left: 3px solid #333 !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>👥 Tema 29: Actitudes y Discriminación</h1>
+
+    <h2>1. Definiciones Fundamentales</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">⚖️ Discriminación</div>
+        <p>Conducta de falta de igualdad en el tratamiento hacia una persona.<!--[cite: 11]--></p>
+    </div>
+
+    <h3>Tipos de Discriminación</h3>
+    <div class="grid-conceptos">
+        <div class="bloque-con">
+            <h4>🚫 Directa / Negativa</h4>
+            <p>Excluyen directamente.<!--[cite: 11]--></p>
+        </div>
+        <div class="bloque-con">
+            <h4>🌫️ Indirecta</h4>
+            <p>Aparentemente neutrales.<!--[cite: 11]--></p>
+        </div>
+        <div class="bloque-con">
+            <h4>➕ Positiva / Inversa</h4>
+            <p>Permite trato desigual, para evitar discriminación.<!--[cite: 11]--></p>
+        </div>
+        <div class="bloque-con">
+            <h4>↕️ Vertical y Horizontal</h4>
+            <p>Mando o determinados sectores.<!--[cite: 11]--></p>
+        </div>
+        <div class="bloque-con">
+            <h4>🔗 Por Asociación</h4>
+            <p>Por pertenecer a un grupo.<!--[cite: 11]--></p>
+        </div>
+        <div class="bloque-con">
+            <h4>❌ Por Error</h4>
+            <p>(Falsa atribución de características o pertenencia a un grupo).<!--[cite: 11]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3>Conceptos Relacionados</h3>
+    
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Regla Mnemotécnica</div>
+        <p>Estereotipo = Cabeza (Creencia) | Prejuicio = Corazón/Reacción (Actitud) | Discriminación = Acción (Conducta).</p>
+    </div>
+
+    <ul>
+        <li><strong>Estereotipos:</strong> Creencias.<!--[cite: 11]--></li>
+        <li><strong>Prejuicio:</strong> Actitud.<!--[cite: 11]--></li>
+        <li><strong>Xenofobia:</strong> Temor y rechazo a lo extranjero o desconocido.<!--[cite: 11]--></li>
+        <li><strong>Racismo:</strong> Raza.<!--[cite: 11]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Escalas de Medición</h2>
+    
+    <p>Memoriza las palabras clave asociadas a cada autor para acertar la pregunta directa en el test.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>TIPO DE ESCALA</th>
+                <th>AUTOR PRINCIPAL</th>
+                <th>PALABRA CLAVE / CONCEPTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Escala D de Dogmatismo</strong><!--[cite: 11]--></td>
+                <td><strong>Rokeach</strong><!--[cite: 11]--></td>
+                <td>(Dogmatismo)<!--[cite: 11]--></td>
+            </tr>
+            <tr>
+                <td><strong>Aditivas o cálculos sumados</strong><!--[cite: 11]--></td>
+                <td><strong>Likert</strong><!--[cite: 11]--></td>
+                <td>Acuerdo o desacuerdo<!--[cite: 11]--></td>
+            </tr>
+            <tr>
+                <td><strong>Diferenciales o experimentales</strong><!--[cite: 11]--></td>
+                <td><strong>Thurstone</strong><!--[cite: 11]--></td>
+                <td>Graduales independientes<!--[cite: 11]--></td>
+            </tr>
+            <tr>
+                <td><strong>Acumulativas</strong><!--[cite: 11]--></td>
+                <td><strong>Guttman</strong><!--[cite: 11]--></td>
+                <td>Escalograma, jerárquicamente<!--[cite: 11]--></td>
+            </tr>
+            <tr>
+                <td><strong>Diferencial semántica</strong><!--[cite: 11]--></td>
+                <td><strong>Osgood</strong><!--[cite: 11]--></td>
+                <td>Reacciones afectivas<!--[cite: 11]--></td>
+            </tr>
+            <tr>
+                <td><strong>Distancia social</strong><!--[cite: 11]--></td>
+                <td><strong>Bogardus</strong><!--[cite: 11]--></td>
+                <td>Intensidad prejuicios<!--[cite: 11]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
