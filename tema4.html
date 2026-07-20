@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 4: La Unión Europea - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        .bloque p { margin: 0 0 8px 0; font-size: 0.95em; }
+
+        /* Estilos Notificaciones Interpol */
+        .interpol-roja { border-left-color: #ef4444 !important; }
+        .interpol-amarilla { border-left-color: #eab308 !important; }
+        .interpol-azul { border-left-color: #3b82f6 !important; }
+        .interpol-negra { border-left-color: #1f2937 !important; }
+        .interpol-verde { border-left-color: #22c55e !important; }
+        .interpol-naranja { border-left-color: #f97316 !important; }
+        .interpol-morada { border-left-color: #a855f7 !important; }
+        .interpol-especial { border-left-color: #0ea5e9 !important; border-style: dashed !important;}
+        
+        .mnemotecnica-text { font-style: italic; color: var(--text-muted); font-size: 0.9em; display: block; margin-top: 5px; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 7.5pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            
+            /* Colores impresos para Interpol */
+            .interpol-roja { border-left-color: #ef4444 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-amarilla { border-left-color: #eab308 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-azul { border-left-color: #3b82f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-negra { border-left-color: #1f2937 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-verde { border-left-color: #22c55e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-naranja { border-left-color: #f97316 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+            .interpol-morada { border-left-color: #a855f7 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🇪🇺 Tema 4: La Unión Europea y sus Instituciones</h1>
+
+    <h2>1. Evolución de los Tratados</h2>
+    <div class="callout callout-info">
+        <div class="callout-title">🧠 Regla Mnemotécnica</div>
+        <p>El tribunal suele preguntar el año o qué se creó en cada tratado.<!--[cite: 12]--><br>
+        <strong>"PAra ROma MArchó Antonio, Ninca Llegó"</strong><!--[cite: 12]--></p>
+    </div>
+    
+    <ul>
+        <li><strong>París (1951):</strong> Crea la CECA (Comunidad Europea del Carbón y del Acero). El origen de todo.<!--[cite: 12]--></li>
+        <li><strong>ROma (1957):</strong> Crea la CEE (Comunidad Económica Europea) y el EURATOM.<!--[cite: 12]--></li>
+        <li><strong>MAastricht (1992):</strong> Crea oficialmente la Unión Europea (UE) y la ciudadanía europea.<!--[cite: 12]--></li>
+        <li><strong>Amsterdam (1997):</strong> Amplía competencias sociales.<!--[cite: 12]--></li>
+        <li><strong>NIza (2001):</strong> Reforma las instituciones para la llegada de países del Este.<!--[cite: 12]--></li>
+        <li><strong>Lisboa (2007):</strong> El tratado actual. Da personalidad jurídica propia a la UE y crea la figura del Alto Representante.<!--[cite: 12]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>2. LA TRAMPA MORTAL: Los Tres Consejos</h2>
+    <div class="callout callout-danger">
+        <div class="callout-title">🚨 Alerta Roja</div>
+        <p>El 90% de los opositores falla aquí.<!--[cite: 12]--> Memoriza qué es cada cosa, porque te pondrán los tres para confundirte.<!--[cite: 12]--></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ÓRGANO<!--[cite: 12]--></th>
+                <th>¿Quiénes van?<!--[cite: 12]--></th>
+                <th>¿Qué hacen?<!--[cite: 12]--></th>
+                <th>Mnemotécnica / Truco<!--[cite: 12]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Consejo EUROPEO</strong><!--[cite: 12]--></td>
+                <td>Jefes de Estado o Gobierno (Presidentes)<!--[cite: 12]--></td>
+                <td>Fija el rumbo político y las prioridades. <strong>NO legisla</strong>.<!--[cite: 12]--></td>
+                <td>El Europeo es el Equipo directivo. (Los jefazos).<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td><strong>Consejo de la UE</strong> (o simplemente "Consejo")<!--[cite: 12]--></td>
+                <td>Ministros de cada país (según el tema)<!--[cite: 12]--></td>
+                <td><strong>Legisla</strong> (aprueba leyes) junto con el Parlamento Europeo.<!--[cite: 12]--></td>
+                <td>Unión = Unión de Ministros. (Los trabajadores).<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td style="color: #ef4444; font-weight: bold;">Consejo de Europa<!--[cite: 12]--></td>
+                <td>46 países de toda Europa<!--[cite: 12]--></td>
+                <td>Defensa de los Derechos Humanos.<!--[cite: 12]--></td>
+                <td><strong>¡NO ES DE LA UE!</strong> Trampa clásica: no tiene nada que ver con la Unión Europea.<!--[cite: 12]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. El Triángulo Institucional (El Poder)</h2>
+    <p>Para entender la UE, tienes que verla como una fábrica de leyes con tres protagonistas:<!--[cite: 12]--></p>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>⚙️ Comisión Europea</h4>
+            <p><strong>El Motor / El Gobierno</strong></p>
+            <ul>
+                <li><strong>Sede:</strong> Bruselas.<!--[cite: 12]--></li>
+                <li><strong>Composición:</strong> 27 Comisarios (uno por Estado).<!--[cite: 12]--></li>
+                <li><strong>Regla clave:</strong> Defienden los intereses de la UE, no de sus países.<!--[cite: 12]--></li>
+                <li><strong>Poder:</strong> Monopolio de la iniciativa legislativa (solo ellos proponen) y ejecutan el presupuesto.<!--[cite: 12]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🗣️ Parlamento Europeo</h4>
+            <p><strong>La Voz de los Ciudadanos</strong></p>
+            <ul>
+                <li><strong>Sede:</strong> Estrasburgo (plenos) y Bruselas (comisiones).<!--[cite: 12]--></li>
+                <li><strong>Composición:</strong> Sufragio directo. Máximo 750 + 1 Presidente (751 total).<!--[cite: 12]--></li>
+                <li><strong>Poder:</strong> Colegisla (vota las leyes propuestas) y aprueba el presupuesto.<!--[cite: 12]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🇪🇺 Consejo de la UE</h4>
+            <p><strong>La Voz de los Estados</strong></p>
+            <ul>
+                <li>Ya lo vimos arriba.<!--[cite: 12]--> Vota las leyes junto al Parlamento.<!--[cite: 12]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">📜 Regla del proceso legislativo</div>
+        <p>"La Comisión <strong>PROPONE</strong>, y el Parlamento y el Consejo <strong>DISPONEN</strong> (votan y aprueban)".<!--[cite: 12]--></p>
+    </div>
+
+    <hr>
+
+    <h2>4. Presidencias y Mandatos (Cifras)</h2>
+    <ul>
+        <li><strong>Consejo Europeo (Presidentes):</strong> Se elige por <strong>2,5 años</strong> (renovable una vez).<!--[cite: 12]--></li>
+        <li><strong>Consejo de la UE (Ministros):</strong> Presidencia rotatoria cada <strong>6 meses</strong> por Estados.<!--[cite: 12]--></li>
+        <li><strong>Comisión Europea:</strong> Mandato de <strong>5 años</strong>.<!--[cite: 12]--></li>
+        <li><strong>Parlamento Europeo:</strong> Diputados elegidos cada <strong>5 años</strong>. (El Presidente del PE se elige para <strong>2,5 años</strong>).<!--[cite: 12]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Otras Instituciones Clave</h2>
+    <ul>
+        <li><strong>Tribunal de Justicia de la UE (TJUE):</strong> Sede en Luxemburgo.<!--[cite: 12]--> Garantiza que la legislación se aplique igual en todos los países.<!--[cite: 12]--> <em>(OJO: NO confundir con el TEDH de Estrasburgo que pertenece al Consejo de Europa).</em><!--[cite: 12]--></li>
+        <li><strong>Banco Central Europeo (BCE):</strong> Sede en Fráncfort.<!--[cite: 12]--> Gestiona el euro y mantiene estabilidad de precios.<!--[cite: 12]--></li>
+        <li><strong>Tribunal de Cuentas:</strong> Vigila el dinero (recaudación y uso de fondos).<!--[cite: 12]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>6. El Derecho Derivado (Normas Europeas)</h2>
+    <div class="callout callout-warning">
+        <div class="callout-title">🚚 Técnica de Asociación Visual</div>
+        <ul>
+            <li><strong>El Reglamento es un Tren de Alta Velocidad:</strong> Entra directo, no se para en la frontera y obliga a todos por igual.<!--[cite: 12]--></li>
+            <li><strong>La Directiva es un Camión de IKEA:</strong> Te trae el objetivo, pero te obliga a ti a montarlo en casa aprobando una Ley Nacional (Transposición).<!--[cite: 12]--></li>
+        </ul>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Norma<!--[cite: 12]--></th>
+                <th>¿Es obligatoria?<!--[cite: 12]--></th>
+                <th>Característica clave para el examen<!--[cite: 12]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Reglamento</strong><!--[cite: 12]--></td>
+                <td>SÍ (En todos sus elementos)<!--[cite: 12]--></td>
+                <td><strong>Aplicación directa.</strong> Entra en vigor en todos los países a la vez, sin ley de adaptación. Obliga a todos.<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td><strong>Directiva</strong><!--[cite: 12]--></td>
+                <td>SÍ (En cuanto al objetivo)<!--[cite: 12]--></td>
+                <td><strong>Requiere Transposición.</strong> Fija un resultado obligatorio pero deja a cada país elegir la forma/medios.<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td><strong>Decisión</strong><!--[cite: 12]--></td>
+                <td>SÍ (En todos sus elementos)<!--[cite: 12]--></td>
+                <td>Solo para sus <strong>destinatarios específicos</strong> (ej. multa a una empresa). No es general.<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td><strong>Recomendación</strong><!--[cite: 12]--></td>
+                <td>NO<!--[cite: 12]--></td>
+                <td>Sugiere línea de conducta.<!--[cite: 12]--></td>
+            </tr>
+            <tr>
+                <td><strong>Dictamen</strong><!--[cite: 12]--></td>
+                <td>NO<!--[cite: 12]--></td>
+                <td>Expresa opinión o valoración.<!--[cite: 12]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>7. El Alto Representante de la Unión</h2>
+    <p>Figura con "doble gorra" (trabaja para dos instituciones).<!--[cite: 12]--></p>
+    <ul>
+        <li><strong>Nombramiento:</strong> Por el Consejo Europeo por mayoría cualificada, con aprobación del Pte. de la Comisión.<!--[cite: 12]--></li>
+        <li><strong>Sus dos sombreros:</strong>
+            <ol>
+                <li>Vicepresidente de la Comisión Europea (exteriores).<!--[cite: 12]--></li>
+                <li>Presidente del Consejo de Asuntos Exteriores (del Consejo de la UE).<!--[cite: 12]--></li>
+            </ol>
+        </li>
+        <li><strong>Servicio de apoyo:</strong> Dirige el SEAE (Servicio Europeo de Acción Exterior).<!--[cite: 12]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>8. Agencias Policiales y Fronterizas</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🛂 FRONTEX</h4>
+            <ul>
+                <li><strong>Sede:</strong> Varsovia (Polonia).<!--[cite: 12]--></li>
+                <li><strong>Función:</strong> Gestión de fronteras exteriores y apoyo contra delincuencia transfronteriza (trata, inmigración).<!--[cite: 12]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🕵️‍♂️ EUROPOL</h4>
+            <ul>
+                <li><strong>Sede:</strong> La Haya (Países Bajos).<!--[cite: 12]--></li>
+                <li><strong>Función:</strong> Lucha contra terrorismo y crimen organizado grave.<!--[cite: 12]--> (No detienen, analizan/coordinan).<!--[cite: 12]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🎓 CEPOL</h4>
+            <ul>
+                <li><strong>Sede:</strong> Budapest (Hungría).<!--[cite: 12]--></li>
+                <li><strong>Función:</strong> Formación de funcionarios de policía y fuerzas de seguridad en la UE.<!--[cite: 12]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">⚠️ TRAMPA DE EXAMEN: EUROPOL vs INTERPOL</div>
+        <p><strong>INTERPOL NO pertenece a la Unión Europea.</strong><!--[cite: 12]--> Es una organización mundial con sede en Lyon (Francia).<!--[cite: 12]--> Trabaja mediante Notificaciones internacionales. En España, su enlace es la OCN.<!--[cite: 12]--></p>
+    </div>
+
+    <hr>
+
+    <h2>9. Notificaciones de INTERPOL (Código de Colores)</h2>
+
+    <!-- Bloque 1: Las más preguntadas -->
+    <h3>1. El Bloque Principal</h3>
+    
+    <div class="callout callout-abstract interpol-roja">
+        <div class="callout-title">🔴 Notificación ROJA (Búsqueda y Captura)</div>
+        <p>Localizar y detener a personas buscadas con miras a su extradición o entrega.<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Alerta máxima (Sangre). Es la más grave. El sujeto va a la cárcel sí o sí.<!--[cite: 12]--></span>
+    </div>
+
+    <div class="callout callout-abstract interpol-amarilla">
+        <div class="callout-title">🟡 Notificación AMARILLA (Desaparecidos)</div>
+        <p>Localizar a personas desaparecidas (especialmente menores) o descubrir identidad de amnésicos/dementes.<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Precaución / Lazo amarillo / Chubasquero amarillo de niño.<!--[cite: 12]--></span>
+    </div>
+
+    <div class="callout callout-abstract interpol-azul">
+        <div class="callout-title">🔵 Notificación AZUL (Información)</div>
+        <p>Recopilar información sobre identidad, paradero o actividades. <strong>NO hay orden de detención.</strong><!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Lupa azul / Libreta de policía (investigando el expediente).<!--[cite: 12]--></span>
+    </div>
+
+    <div class="callout callout-abstract interpol-negra">
+        <div class="callout-title">⚫ Notificación NEGRA (Cadáveres)</div>
+        <p>Conseguir información sobre cadáveres sin identificar.<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Luto. El color de la muerte.<!--[cite: 12]--></span>
+    </div>
+
+    <!-- Bloque 2: Inteligencia y Alertas -->
+    <h3>2. El Bloque de Inteligencia y Alertas</h3>
+
+    <div class="callout callout-abstract interpol-verde">
+        <div class="callout-title">🟢 Notificación VERDE (Reincidentes itinerantes)</div>
+        <p>Alertar sobre personas con peligro para la seguridad pública porque es probable que reincidan en otros países.<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Semáforo verde / Frontera abierta (el delincuente se mueve libremente).<!--[cite: 12]--></span>
+    </div>
+
+    <div class="callout callout-abstract interpol-naranja">
+        <div class="callout-title">🟠 Notificación NARANJA (Amenaza inminente)</div>
+        <p>Alertar sobre acontecimiento, persona u objeto que suponga un peligro grave e inminente (ej. bombas).<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Explosión en curso. Fuego naranja.<!--[cite: 12]--></span>
+    </div>
+
+    <div class="callout callout-abstract interpol-morada">
+        <div class="callout-title">🟣 Notificación MORADA (Modus Operandi)</div>
+        <p>Información sobre modus operandi, objetos y métodos de ocultación.<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: El misterio del mago ("el truco").<!--[cite: 12]--></span>
+    </div>
+
+    <!-- Bloque 3: Notificación Especial -->
+    <h3>3. La Notificación Especial</h3>
+
+    <div class="callout callout-abstract interpol-especial">
+        <div class="callout-title">🌐 Notificación Especial INTERPOL - ONU (CSNU)</div>
+        <p>Informar que una persona o entidad está sujeta a las sanciones de la ONU (congelación activos, embargo armas).<!--[cite: 12]--></p>
+        <span class="mnemotecnica-text">Truco mental: Única con "sello" ONU, para terroristas y financiadores.<!--[cite: 12]--></span>
+    </div>
+
+</div>
+
+</body>
+</html>
