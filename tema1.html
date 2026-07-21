@@ -1,4 +1,13 @@
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 1: Derecho - Esquemas</title>
+    <style>
         /* Variables base (Modo Claro) */
         :root {
             --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
@@ -55,6 +64,39 @@
         .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
         .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
 
+        /* =========================================
+           BOTONES DE NAVEGACIÓN INFERIOR
+           ========================================= */
+        .nav-temas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+        .btn-nav {
+            background-color: var(--table-header);
+            color: var(--title-main);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 2px solid var(--table-border);
+            transition: all 0.3s ease;
+        }
+        .btn-nav:hover {
+            border-color: var(--title-main);
+            background-color: var(--table-row-even);
+            transform: translateY(-2px);
+        }
+        /* Clase para ocultar un botón si es el primer o último tema, 
+           manteniendo el otro alineado a la derecha */
+        .btn-nav.invisible {
+            visibility: hidden;
+        }
+
         /* REGLAS ESPECÍFICAS PARA MÓVIL (Pantallas de menos de 768px) */
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
@@ -80,8 +122,7 @@
             }
             
             /* 2. Ocultar elementos que no sirven en papel */
-            .btn-volver { display: none !important; }
-            hr { display: none !important; } /* Ocultamos las líneas separadoras para ahorrar espacio vertical */
+            .btn-volver, hr, .nav-temas { display: none !important; }
 
             /* 3. Compactar la tipografía y los márgenes generales */
             body { font-size: 10pt; line-height: 1.25; }
@@ -120,198 +161,206 @@
         }
         
     </style>
+</head>
 <body>
 
 <div class="container">
     <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
     
-    <h1>⚖️ Tema 1: Derecho</h1>
+    <h1>⚖️ Tema 1: Derecho[cite: 15]</h1>
 
-    <h2>1. Emancipación</h2>
+    <h2>1. Emancipación[cite: 15]</h2>
 
     <div class="callout callout-abstract">
-        <div class="callout-title">📋 Requisitos Básicos</div>
+        <div class="callout-title">📋 Requisitos Básicos[cite: 15]</div>
         <ul>
-            <li><strong>Edad:</strong> Entre 16 y 18 años.</li>
-            <li><strong>Requiere:</strong> Consentimiento del menor e inscripción en el Registro Civil.</li>
+            <li><strong>Edad:</strong> Entre 16 y 18 años.[cite: 15]</li>
+            <li><strong>Requiere:</strong> Consentimiento del menor e inscripción en el Registro Civil.[cite: 15]</li>
         </ul>
     </div>
 
     <div class="callout callout-danger">
-        <div class="callout-title">🚫 Limitaciones</div>
-        <p>Gravar o enajenar bienes inmuebles.</p>
+        <div class="callout-title">🚫 Limitaciones[cite: 15]</div>
+        <p>Gravar o enajenar bienes inmuebles.[cite: 15]</p>
     </div>
 
-    <h3>🗂️ Tipos de Emancipación</h3>
+    <h3>🗂️ Tipos de Emancipación[cite: 15]</h3>
     <table>
         <thead>
             <tr>
-                <th>Tipo</th>
-                <th>Edad / Momento</th>
-                <th>Características</th>
+                <th>Tipo[cite: 15]</th>
+                <th>Edad / Momento[cite: 15]</th>
+                <th>Características[cite: 15]</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Mayoría de edad</strong></td>
-                <td>Completo día de nacimiento</td>
+                <td><strong>Mayoría de edad</strong>[cite: 15]</td>
+                <td>Completo día de nacimiento[cite: 15]</td>
                 <td></td>
             </tr>
             <tr>
-                <td><strong>Concesión patria potestad</strong></td>
-                <td>16 años</td>
-                <td><strong>No revocable</strong>. Escritura pública/comparecencia en Registro Civil.</td>
+                <td><strong>Concesión patria potestad</strong>[cite: 15]</td>
+                <td>16 años[cite: 15]</td>
+                <td><strong>No revocable</strong>.[cite: 15] Escritura pública/comparecencia en Registro Civil.[cite: 15]</td>
             </tr>
             <tr>
-                <td><strong>Concesión judicial</strong></td>
-                <td>16 años</td>
-                <td><strong>No revocable</strong>. Solicitud del menor, previa audiencia con progenitores.</td>
+                <td><strong>Concesión judicial</strong>[cite: 15]</td>
+                <td>16 años[cite: 15]</td>
+                <td><strong>No revocable</strong>.[cite: 15] Solicitud del menor, previa audiencia con progenitores.[cite: 15]</td>
             </tr>
             <tr>
-                <td><strong>Vida independiente o de hecho</strong></td>
-                <td>16 años</td>
-                <td>⚠️ <span style="color:#ef4444; font-weight:bold;">REVOCABLE</span>. Consentimiento de los progenitores.</td>
+                <td><strong>Vida independiente o de hecho</strong>[cite: 15]</td>
+                <td>16 años[cite: 15]</td>
+                <td>⚠️ <span style="color:#ef4444; font-weight:bold;">REVOCABLE</span>.[cite: 15] Consentimiento de los progenitores.[cite: 15]</td>
             </tr>
         </tbody>
     </table>
 
     <hr>
 
-    <h2>2. Nacionalidad</h2>
+    <h2>2. Nacionalidad[cite: 15]</h2>
 
-    <h3>🟢 Adquisición</h3>
-    <p><strong>Originaria o automática</strong></p>
+    <h3>🟢 Adquisición[cite: 15]</h3>
+    <p><strong>Originaria o automática</strong>[cite: 15]</p>
     <ul>
-        <li><strong>Ius Sanguinis</strong></li>
-        <li><strong>Ius Soli:</strong>
+        <li><strong>Ius Sanguinis</strong>[cite: 15]</li>
+        <li><strong>Ius Soli:</strong>[cite: 15]
             <ul>
-                <li>Padres extranjeros, 1 nacido en España.</li>
-                <li>Padres extranjeros, sin nacionalidad.</li>
-                <li>Filiación no determinada.</li>
+                <li>Padres extranjeros, 1 nacido en España.[cite: 15]</li>
+                <li>Padres extranjeros, sin nacionalidad.[cite: 15]</li>
+                <li>Filiación no determinada.[cite: 15]</li>
             </ul>
         </li>
-        <li><strong>Adopción:</strong> &lt; 18 años.</li>
-        <li><strong>Posesión de Estado:</strong> 10 años aunque se anule título que la originó.</li>
+        <li><strong>Adopción:</strong> &lt; 18 años.[cite: 15]</li>
+        <li><strong>Posesión de Estado:</strong> 10 años aunque se anule título que la originó.[cite: 15]</li>
     </ul>
 
-    <p><strong>Derivativa</strong></p>
+    <p><strong>Derivativa</strong>[cite: 15]</p>
     <div class="callout callout-warning">
-        <div class="callout-title">⏳ Plazos y Condiciones (Derivativa)</div>
+        <div class="callout-title">⏳ Plazos y Condiciones (Derivativa)[cite: 15]</div>
         <ul>
-            <li><strong>Opción:</strong> 20 años de edad o 2 años desde emancipación.</li>
-            <li><strong>Carta de naturaleza:</strong> Gobierno por RD; MI circunstancias excepcionales; <strong>180 días</strong> siguientes a notificación.</li>
-            <li><strong>Residencia:</strong> Ministerio de Justicia; <strong>10, 5, 2, 1 años</strong>.</li>
+            <li><strong>Opción:</strong> 20 años de edad o 2 años desde emancipación.[cite: 15]</li>
+            <li><strong>Carta de naturaleza:</strong> Gobierno por RD; MI circunstancias excepcionales; <strong>180 días</strong> siguientes a notificación.[cite: 15]</li>
+            <li><strong>Residencia:</strong> Ministerio de Justicia; <strong>10, 5, 2, 1 años</strong>.[cite: 15]</li>
         </ul>
     </div>
 
-    <h3>🔴 Pérdida y Sanción</h3>
+    <h3>🔴 Pérdida y Sanción[cite: 15]</h3>
     <div class="callout callout-info">
-        <div class="callout-title">🛡️ Regla de Oro</div>
-        <p>Ningún español de origen podrá ser privado de su nacionalidad.</p>
+        <div class="callout-title">🛡️ Regla de Oro[cite: 15]</div>
+        <p>Ningún español de origen podrá ser privado de su nacionalidad.[cite: 15]</p>
     </div>
 
-    <p><strong>Pérdida:</strong></p>
+    <p><strong>Pérdida:</strong>[cite: 15]</p>
     <ul>
-        <li>Adquiera otra nacionalidad y uso exclusivo durante <strong>3 años</strong>.</li>
-        <li>Renuncien de forma expresa, si tienen otra.</li>
-        <li>Nacido en extranjero, <strong>3 años</strong> mayoría de edad o emancipación.</li>
+        <li>Adquiera otra nacionalidad y uso exclusivo durante <strong>3 años</strong>.[cite: 15]</li>
+        <li>Renuncien de forma expresa, si tienen otra.[cite: 15]</li>
+        <li>Nacido en extranjero, <strong>3 años</strong> mayoría de edad o emancipación.[cite: 15]</li>
     </ul>
 
-    <p><strong>Sanción / Nulidad:</strong></p>
+    <p><strong>Sanción / Nulidad:</strong>[cite: 15]</p>
     <ul>
-        <li><strong>Sanción:</strong> Uso exclusivo por 3 años, renuncia. Servicio de armas o político, prohibición expresa Gobierno.</li>
-        <li><strong>Nulidad de adquisición:</strong> MF oficio o denuncia, <strong>15 años</strong>.</li>
+        <li><strong>Sanción:</strong> Uso exclusivo por 3 años, renuncia.[cite: 15] Servicio de armas o político, prohibición expresa Gobierno.[cite: 15]</li>
+        <li><strong>Nulidad de adquisición:</strong> MF oficio o denuncia, <strong>15 años</strong>.[cite: 15]</li>
     </ul>
 
-    <h3>🔵 Recuperación</h3>
+    <h3>🔵 Recuperación[cite: 15]</h3>
     <ul>
-        <li>Residencia legal.</li>
-        <li>Declarar en el Registro Civil voluntad e inscribirse.</li>
+        <li>Residencia legal.[cite: 15]</li>
+        <li>Declarar en el Registro Civil voluntad e inscribirse.[cite: 15]</li>
     </ul>
 
     <hr>
 
-    <h2>3. 🏡 Vecindad Civil</h2>
+    <h2>3. 🏡 Vecindad Civil[cite: 15]</h2>
 
-    <h3>🧬 Filiación, Nacimiento y Opción</h3>
+    <h3>🧬 Filiación, Nacimiento y Opción[cite: 15]</h3>
     <div class="callout callout-warning">
-        <div class="callout-title">⚠️ Criterio de Filiación (Plazo)</div>
-        <p>Atribuible durante los <strong>6 meses</strong> posteriores al nacimiento.</p>
+        <div class="callout-title">⚠️ Criterio de Filiación (Plazo)[cite: 15]</div>
+        <p>Atribuible durante los <strong>6 meses</strong> posteriores al nacimiento.[cite: 15]</p>
         <ul>
-            <li>Determinada antes.</li>
-            <li>Lugar de nacimiento.</li>
-            <li>Derecho común.</li>
+            <li>Determinada antes.[cite: 15]</li>
+            <li>Lugar de nacimiento.[cite: 15]</li>
+            <li>Derecho común.[cite: 15]</li>
         </ul>
     </div>
 
     <div class="callout callout-warning">
-        <div class="callout-title">⏳ Adquisición por Opción</div>
-        <p>Se puede ejercer desde los <strong>14 años</strong> y hasta que transcurra <strong>un año</strong> desde la emancipación. Permite optar por:</p>
+        <div class="callout-title">⏳ Adquisición por Opción[cite: 15]</div>
+        <p>Se puede ejercer desde los <strong>14 años</strong> y hasta que transcurra <strong>un año</strong> desde la emancipación.[cite: 15] Permite optar por:</p>
         <ul>
-            <li>Lugar de nacimiento.</li>
-            <li>Última de sus padres.</li>
+            <li>Lugar de nacimiento.[cite: 15]</li>
+            <li>Última de sus padres.[cite: 15]</li>
         </ul>
     </div>
 
     <div class="callout callout-info">
-        <div class="callout-title">ℹ️ Matrimonio</div>
-        <p>Puede optar por la vecindad civil del otro. El matrimonio en sí no la altera.</p>
+        <div class="callout-title">ℹ️ Matrimonio[cite: 15]</div>
+        <p>Puede optar por la vecindad civil del otro.[cite: 15] El matrimonio en sí no la altera.[cite: 15]</p>
     </div>
 
-    <h3>📍 Residencia, Nacionalidad, Pérdida y Recuperación</h3>
+    <h3>📍 Residencia, Nacionalidad, Pérdida y Recuperación[cite: 15]</h3>
     <table>
         <thead>
             <tr>
-                <th>Modo de Efecto</th>
-                <th>Requisitos y Plazos</th>
+                <th>Modo de Efecto[cite: 15]</th>
+                <th>Requisitos y Plazos[cite: 15]</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Residencia</strong></td>
-                <td>⏱️ Continuada por <strong>2 años</strong>, manifestando voluntad.<br>⏱️ Durante <strong>10 años</strong> sin declaración contraria.</td>
+                <td><strong>Residencia</strong>[cite: 15]</td>
+                <td>⏱️ Continuada por <strong>2 años</strong>, manifestando voluntad.<br>⏱️ Durante <strong>10 años</strong> sin declaración contraria.[cite: 15]</td>
             </tr>
             <tr>
-                <td><strong>Adquisición de nacionalidad</strong></td>
-                <td>Se determinará según: Lugar de residencia, Nacimiento, Última vecindad o Cónyuge.</td>
+                <td><strong>Adquisición de nacionalidad</strong>[cite: 15]</td>
+                <td>Se determinará según: Lugar de residencia, Nacimiento, Última vecindad o Cónyuge.[cite: 15]</td>
             </tr>
             <tr>
-                <td><strong>Recuperación de nacionalidad</strong></td>
-                <td>Conlleva la recuperación de la última vecindad civil que poseía.</td>
+                <td><strong>Recuperación de nacionalidad</strong>[cite: 15]</td>
+                <td>Conlleva la recuperación de la última vecindad civil que poseía.[cite: 15]</td>
             </tr>
             <tr>
-                <td><strong>Pérdida</strong></td>
-                <td>La vecindad civil se pierde al perder la nacionalidad.</td>
+                <td><strong>Pérdida</strong>[cite: 15]</td>
+                <td>La vecindad civil se pierde al perder la nacionalidad.[cite: 15]</td>
             </tr>
         </tbody>
     </table>
 
     <hr>
 
-    <h2>4. 🗺️ Domicilio</h2>
+    <h2>4. 🗺️ Domicilio[cite: 15]</h2>
     <ul>
-        <li><strong>Real, voluntario o general:</strong> Viene determinado por la residencia habitual.</li>
-        <li><strong>Legal o necesario:</strong> Es el fijado directamente por la ley.</li>
-        <li><strong>Electivo o convencional:</strong> El establecido por un acto o negocio jurídico.</li>
+        <li><strong>Real, voluntario o general:</strong> Viene determinado por la residencia habitual.[cite: 15]</li>
+        <li><strong>Legal o necesario:</strong> Es el fijado directamente por la ley.[cite: 15]</li>
+        <li><strong>Electivo o convencional:</strong> El establecido por un acto o negocio jurídico.[cite: 15]</li>
     </ul>
 
     <hr>
 
-    <h2>5. 🏢 Personas Jurídicas (Determinación de Domicilio)</h2>
-    <p>El domicilio de las personas jurídicas se determina según su naturaleza:</p>
+    <h2>5. 🏢 Personas Jurídicas (Determinación de Domicilio)[cite: 15]</h2>
+    <p>El domicilio de las personas jurídicas se determina según su naturaleza:[cite: 15]</p>
     <ul>
-        <li><strong>Asociación:</strong> Lo que determinen sus estatutos.</li>
-        <li><strong>Fundación:</strong> Lo que determine su acta de fundación.</li>
-        <li><strong>Corporación:</strong> Lo que determine la ley que la crea o regula.</li>
+        <li><strong>Asociación:</strong> Lo que determinen sus estatutos.[cite: 15]</li>
+        <li><strong>Fundación:</strong> Lo que determine su acta de fundación.[cite: 15]</li>
+        <li><strong>Corporación:</strong> Lo que determine la ley que la crea o regula.[cite: 15]</li>
     </ul>
 
     <div class="callout callout-danger">
-        <div class="callout-title">🔥 Reglas en Defecto (Orden de examen)</div>
+        <div class="callout-title">🔥 Reglas en Defecto (Orden de examen)[cite: 15]</div>
         <ol>
-            <li><strong>En defecto de los anteriores:</strong> El lugar de su <strong>representación legal</strong>.</li>
-            <li><strong>Y en defecto del anterior:</strong> El lugar donde ejerza las <strong>principales funciones</strong>.</li>
+            <li><strong>En defecto de los anteriores:</strong> El lugar de su <strong>representación legal</strong>.[cite: 15]</li>
+            <li><strong>Y en defecto del anterior:</strong> El lugar donde ejerza las <strong>principales funciones</strong>.[cite: 15]</li>
         </ol>
     </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="#" class="btn-nav invisible">← Tema Anterior</a>
+        <a href="tema2.html" class="btn-nav">Tema Siguiente (T2) →</a>
+    </div>
+
 </div>
 
 </body>
