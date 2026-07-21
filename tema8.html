@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 8: DGP - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr { display: none !important; }
+            body { font-size: 8pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 7.5pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🏢 Tema 8: Dirección General de la Policía (DGP)</h1>
+
+    <h2>1. Dependencias Orgánicas Importantes</h2>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Regla de Oro para el Test</div>
+        <p>No intentes memorizar todo de golpe. Apréndete los "jefes" directos de cada bloque. En los test suelen cruzar las Subdirecciones con las Divisiones.<!--[cite: 13]--></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>UNIDAD / DIVISIÓN<!--[cite: 13]--></th>
+                <th>DEPENDE DE...<!--[cite: 13]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>DAO</strong> (Dirección Adjunta Operativa)<!--[cite: 13]--></td>
+                <td>DGP<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>División de Cooperación Internacional</strong><!--[cite: 13]--></td>
+                <td>DGP<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>SDG Logística e Innovación</strong><!--[cite: 13]--></td>
+                <td>DGP<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>SDG Recursos Humanos y Formación</strong><!--[cite: 13]--></td>
+                <td>DGP<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Oficina de Despacho y Oficina de Comunicaciones<!--[cite: 13]--></td>
+                <td>DGP<!--[cite: 13]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🛡️ Dependen de la DAO</h4>
+            <ul>
+                <li>Centro Nacional de Comunicaciones (CNC) 👉 a través de UPEC.<!--[cite: 13]--></li>
+                <li>División de Operaciones y Transformación Digital.<!--[cite: 13]--></li>
+                <li>Todas las Comisarías Generales (Seguridad Ciudadana, Policía Judicial, Extranjería y Fronteras, Policía Científica, Información).<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>📱 Div. Operaciones y Transf. Digital</h4>
+            <ul>
+                <li>Jefatura de Sistemas Especiales.<!--[cite: 13]--></li>
+                <li>Comisarías Especiales.<!--[cite: 13]--></li>
+                <li>Unidad Aérea Policía.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🌍 Div. Cooperación Internacional</h4>
+            <ul>
+                <li>Centro de Comunicaciones Int. (CENCI) 👉 vía Secretaría General.<!--[cite: 13]--></li>
+                <li>INTERPOL, EUROPOL y SIRENE.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>📦 SDG Logística e Innovación</h4>
+            <ul>
+                <li><strong>División Económica y Técnica:</strong> (Integra la Unidad Económica y la Unidad Técnica).<!--[cite: 13]--></li>
+                <li><strong>División de Documentación.</strong><!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>👥 SDG Recursos Humanos y Form.</h4>
+            <ul>
+                <li><strong>División de Personal:</strong> (Integra la Unidad de Gestión de Personal Policial).<!--[cite: 13]--></li>
+                <li><strong>División de Formación y Perf.:</strong> (Integra ENP, CAEP, CAE y Unidad Procesos Selectivos).<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🚔 Dentro de la Policía Judicial</h4>
+            <ul>
+                <li>Unidad Adscrita FGE 👉 depende de UDYCO.<!--[cite: 13]--></li>
+                <li>Unidad Adscrita a la Fiscalía Especial contra Corrupción y CO 👉 depende de UDEF.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-info">
+        <div class="callout-title">🏛️ Unidades Especiales Clave</div>
+        <ul>
+            <li><strong>Comisarías Especiales (D. Op. y Transf. Dig.):</strong> Casa Real; PG / CD / DP / Tribunal Cuentas; Senado; TC; CGPJ / TS / AN.<!--[cite: 13]--></li>
+            <li><strong>Jefatura de Unidades Especiales (C.G. Seg. Ciudadana):</strong> Caballería; Caninos; Subsuelo y Protección Ambiental; Brigada Móvil-Policía transporte; y UPR.<!--[cite: 13]--></li>
+            <li><em>Nota: Todas las Comisarías Generales tienen una UCCOT y Gabinete.</em><!--[cite: 13]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Funciones Importantes y Sus Unidades</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>FUNCIÓN / ÁREA<!--[cite: 13]--></th>
+                <th>UNIDAD COMPETENTE<!--[cite: 13]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Observatorio Tecnológico<!--[cite: 13]--></td>
+                <td>Área de Desarrollo Tecnológico (UCAT)<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Protección Personalidades Extranjeras<!--[cite: 13]--></td>
+                <td>BC Protecciones Especiales<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Falsificación de Moneda<!--[cite: 13]--></td>
+                <td>B. Investigación del Banco de España (UDEF)<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Fraudes BEC<!--[cite: 13]--></td>
+                <td>B. Central de Seguridad Informática (UCC)<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Lofoscopia (SAID)<!--[cite: 13]--></td>
+                <td>U.C. de Identificación<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Falsificación documental<!--[cite: 13]--></td>
+                <td>U.C. de Criminalística<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Inspección ocular<!--[cite: 13]--></td>
+                <td>U.C. de Investigación de la Escena del Delito<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Ingeniería Informática forense<!--[cite: 13]--></td>
+                <td>U.C. de Tecnología y Relaciones Internacionales<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>RCE y Registro Menas<!--[cite: 13]--></td>
+                <td>Secretaría General, UCCOT, C.G. Extranjería y Fronteras<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>FRONTEX<!--[cite: 13]--></td>
+                <td>CNIF<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td>Oficina Traducción e Interpretación<!--[cite: 13]--></td>
+                <td>Servicio Asuntos Generales, Gabinete Técnico, DGP<!--[cite: 13]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. Organización Territorial</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>📍 Jefaturas y Comisarías</h4>
+            <ul>
+                <li><strong>Jefatura Superior Policía (JSP):</strong> <span class="badge">20</span> (1 por CCAA, Andalucía Oriental, Ceuta y Melilla).<!--[cite: 13]--></li>
+                <li><strong>Comisarías Provinciales:</strong> En capital de provincia.<!--[cite: 13]--></li>
+                <li><strong>Comisarías Zonales:</strong> Según circunstancias e incidencia de delincuencia.<!--[cite: 13]--></li>
+                <li><strong>Comisarías Locales:</strong> <span class="badge">126</span><!--[cite: 13]--></li>
+                <li><strong>Comisarías de Distrito:</strong> Unidades básicas en grandes urbes.<!--[cite: 13]--></li>
+                <li><strong>Comisarías Conjuntas:</strong> Cooperación policial y aduanera.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🌍 Centros y Fronteras</h4>
+            <ul>
+                <li><strong>Centros Cooperación Policial y Aduanera:</strong> <span class="badge">5</span> con Portugal y <span class="badge">4</span> con Francia.<!--[cite: 13]--></li>
+                <li><strong>Centros Cooperación Policial:</strong> <span class="badge">2</span> con Marruecos.<!--[cite: 13]--></li>
+                <li><strong>Puestos Fronterizos:</strong> <span class="badge">77</span><!--[cite: 13]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. Estructura y Funciones del Personal</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ESCALA<!--[cite: 13]--></th>
+                <th>FUNCIÓN<!--[cite: 13]--></th>
+                <th>GRUPO<!--[cite: 13]--></th>
+                <th>CATEGORÍAS Y TIEMPOS<!--[cite: 13]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Básica</strong><!--[cite: 13]--></td>
+                <td>Ejecución<!--[cite: 13]--></td>
+                <td>C1<!--[cite: 13]--></td>
+                <td>
+                    <ul>
+                        <li>Policía<!--[cite: 13]--></li>
+                        <li>Oficial (2 años)<!--[cite: 13]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Subinspección</strong><!--[cite: 13]--></td>
+                <td>Supervisión<!--[cite: 13]--></td>
+                <td>A2<!--[cite: 13]--></td>
+                <td>
+                    <ul>
+                        <li>Subinspector (3 años)<!--[cite: 13]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Ejecutiva</strong><!--[cite: 13]--></td>
+                <td>Mando<!--[cite: 13]--></td>
+                <td>A1<!--[cite: 13]--></td>
+                <td>
+                    <ul>
+                        <li>Inspector (3 años)<!--[cite: 13]--></li>
+                        <li>Inspector Jefe (7/5 años)<!--[cite: 13]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Superior</strong><!--[cite: 13]--></td>
+                <td>Dirección<!--[cite: 13]--></td>
+                <td>A1<!--[cite: 13]--></td>
+                <td>
+                    <ul>
+                        <li>Comisario (6 años)<!--[cite: 13]--></li>
+                        <li>Comisario Principal (7 años)<!--[cite: 13]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">🔬 Facultativos y Técnicos</div>
+        <p>Tienen la equivalencia en la <strong>Ejecutiva (A1)</strong> y <strong>Subinspección (A2)</strong> respectivamente.<!--[cite: 13]--></p>
+    </div>
+
+</div>
+
+</body>
+</html>
