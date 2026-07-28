@@ -68,6 +68,37 @@
         
         .mnemotecnica-text { font-style: italic; color: var(--text-muted); font-size: 0.9em; display: block; margin-top: 5px; }
 
+        /* =========================================
+           BOTONES DE NAVEGACIÓN INFERIOR
+           ========================================= */
+        .nav-temas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+        .btn-nav {
+            background-color: var(--table-header);
+            color: var(--title-main);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 2px solid var(--table-border);
+            transition: all 0.3s ease;
+        }
+        .btn-nav:hover {
+            border-color: var(--title-main);
+            background-color: var(--table-row-even);
+            transform: translateY(-2px);
+        }
+        .btn-nav.invisible {
+            visibility: hidden;
+        }
+
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
             .container { padding: 20px 15px; border-radius: 8px; }
@@ -79,7 +110,7 @@
         @media print {
             @page { margin: 1cm; }
             body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
-            .btn-volver, hr { display: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
             body { font-size: 8pt; line-height: 1.15; }
             h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
             h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
@@ -120,18 +151,30 @@
 
     <h2>1. Evolución de los Tratados</h2>
     <div class="callout callout-info">
-        <div class="callout-title">🧠 Regla Mnemotécnica</div>
-        <p>El tribunal suele preguntar el año o qué se creó en cada tratado.<!--[cite: 12]--><br>
-        <strong>"PAra ROma MArchó Antonio, Ninca Llegó"</strong><!--[cite: 12]--></p>
+        <div class="callout-title">🧠 Regla Mnemotécnica (Actualizada)</div>
+        <p>El tribunal suele preguntar el año o qué se creó en cada tratado.<!--[cite: 16]--><br>
+        <strong>"PAra ROma Bajó Antonio, MArchando A Niza Luego"</strong><!--[cite: 16]--></p>
+        <ul style="font-size: 0.9em;">
+            <li><strong>PA</strong>ra = París</li>
+            <li><strong>RO</strong>ma = Roma</li>
+            <li><strong>B</strong>ajó = Bruselas</li>
+            <li><strong>A</strong>ntonio = Acta Única</li>
+            <li><strong>MA</strong>rchando = Maastricht</li>
+            <li><strong>A</strong> = Amsterdam</li>
+            <li><strong>NI</strong>za = Niza</li>
+            <li><strong>L</strong>uego = Lisboa</li>
+        </ul>
     </div>
     
     <ul>
-        <li><strong>París (1951):</strong> Crea la CECA (Comunidad Europea del Carbón y del Acero). El origen de todo.<!--[cite: 12]--></li>
-        <li><strong>ROma (1957):</strong> Crea la CEE (Comunidad Económica Europea) y el EURATOM.<!--[cite: 12]--></li>
-        <li><strong>MAastricht (1992):</strong> Crea oficialmente la Unión Europea (UE) y la ciudadanía europea.<!--[cite: 12]--></li>
-        <li><strong>Amsterdam (1997):</strong> Amplía competencias sociales.<!--[cite: 12]--></li>
-        <li><strong>NIza (2001):</strong> Reforma las instituciones para la llegada de países del Este.<!--[cite: 12]--></li>
-        <li><strong>Lisboa (2007):</strong> El tratado actual. Da personalidad jurídica propia a la UE y crea la figura del Alto Representante.<!--[cite: 12]--></li>
+        <li><strong>París (1951):</strong> Crea la CECA (Comunidad Europea del Carbón y del Acero). El origen de todo.<!--[cite: 16]--></li>
+        <li><strong>ROma (1957):</strong> Crea la CEE (Comunidad Económica Europea) y el EURATOM.<!--[cite: 16]--></li>
+        <li><strong>Bruselas / Fusión (1965):</strong> Unifica CECA, CEE y EURATOM.<!--[cite: 16]--></li>
+        <li><strong>Acta Única Europea (1986):</strong> Crea el mercado interior y facilita la entrada de nuevos miembros.<!--[cite: 16]--></li>
+        <li><strong>MAastricht (1992):</strong> Crea oficialmente la Unión Europea (UE) y la ciudadanía europea.<!--[cite: 16]--></li>
+        <li><strong>Amsterdam (1997):</strong> Amplía competencias sociales.<!--[cite: 16]--></li>
+        <li><strong>NIza (2001):</strong> Reforma las instituciones para la llegada de países del Este.<!--[cite: 16]--></li>
+        <li><strong>Lisboa (2007):</strong> El tratado actual. Da personalidad jurídica propia a la UE y crea la figura del Alto Representante.<!--[cite: 16]--></li>
     </ul>
 
     <hr>
@@ -139,36 +182,36 @@
     <h2>2. LA TRAMPA MORTAL: Los Tres Consejos</h2>
     <div class="callout callout-danger">
         <div class="callout-title">🚨 Alerta Roja</div>
-        <p>El 90% de los opositores falla aquí.<!--[cite: 12]--> Memoriza qué es cada cosa, porque te pondrán los tres para confundirte.<!--[cite: 12]--></p>
+        <p>El 90% de los opositores falla aquí.<!--[cite: 16]--> Memoriza qué es cada cosa, porque te pondrán los tres para confundirte.<!--[cite: 16]--></p>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>ÓRGANO<!--[cite: 12]--></th>
-                <th>¿Quiénes van?<!--[cite: 12]--></th>
-                <th>¿Qué hacen?<!--[cite: 12]--></th>
-                <th>Mnemotécnica / Truco<!--[cite: 12]--></th>
+                <th>ÓRGANO<!--[cite: 16]--></th>
+                <th>¿Quiénes van?<!--[cite: 16]--></th>
+                <th>¿Qué hacen?<!--[cite: 16]--></th>
+                <th>Mnemotécnica / Truco<!--[cite: 16]--></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Consejo EUROPEO</strong><!--[cite: 12]--></td>
-                <td>Jefes de Estado o Gobierno (Presidentes)<!--[cite: 12]--></td>
-                <td>Fija el rumbo político y las prioridades. <strong>NO legisla</strong>.<!--[cite: 12]--></td>
-                <td>El Europeo es el Equipo directivo. (Los jefazos).<!--[cite: 12]--></td>
+                <td><strong>Consejo EUROPEO</strong><!--[cite: 16]--></td>
+                <td>Jefes de Estado o Gobierno (Presidentes)<!--[cite: 16]--></td>
+                <td>Fija el rumbo político y las prioridades. <strong>NO legisla</strong>.<!--[cite: 16]--></td>
+                <td>El Europeo es el Equipo directivo. (Los jefazos).<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td><strong>Consejo de la UE</strong> (o simplemente "Consejo")<!--[cite: 12]--></td>
-                <td>Ministros de cada país (según el tema)<!--[cite: 12]--></td>
-                <td><strong>Legisla</strong> (aprueba leyes) junto con el Parlamento Europeo.<!--[cite: 12]--></td>
-                <td>Unión = Unión de Ministros. (Los trabajadores).<!--[cite: 12]--></td>
+                <td><strong>Consejo de la UE</strong> (o simplemente "Consejo")<!--[cite: 16]--></td>
+                <td>Ministros de cada país (según el tema)<!--[cite: 16]--></td>
+                <td><strong>Legisla</strong> (aprueba leyes) junto con el Parlamento Europeo.<!--[cite: 16]--></td>
+                <td>Unión = Unión de Ministros. (Los trabajadores).<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td style="color: #ef4444; font-weight: bold;">Consejo de Europa<!--[cite: 12]--></td>
-                <td>46 países de toda Europa<!--[cite: 12]--></td>
-                <td>Defensa de los Derechos Humanos.<!--[cite: 12]--></td>
-                <td><strong>¡NO ES DE LA UE!</strong> Trampa clásica: no tiene nada que ver con la Unión Europea.<!--[cite: 12]--></td>
+                <td style="color: #ef4444; font-weight: bold;">Consejo de Europa<!--[cite: 16]--></td>
+                <td>46 países de toda Europa<!--[cite: 16]--></td>
+                <td>Defensa de los Derechos Humanos.<!--[cite: 16]--></td>
+                <td><strong>¡NO ES DE LA UE!</strong> Trampa clásica: no tiene nada que ver con la Unión Europea.<!--[cite: 16]--></td>
             </tr>
         </tbody>
     </table>
@@ -176,59 +219,59 @@
     <hr>
 
     <h2>3. El Triángulo Institucional (El Poder)</h2>
-    <p>Para entender la UE, tienes que verla como una fábrica de leyes con tres protagonistas:<!--[cite: 12]--></p>
+    <p>Para entender la UE, tienes que verla como una fábrica de leyes con tres protagonistas:<!--[cite: 16]--></p>
     
     <div class="grid-blocks">
         <div class="bloque">
             <h4>⚙️ Comisión Europea</h4>
             <p><strong>El Motor / El Gobierno</strong></p>
             <ul>
-                <li><strong>Sede:</strong> Bruselas.<!--[cite: 12]--></li>
-                <li><strong>Composición:</strong> 27 Comisarios (uno por Estado).<!--[cite: 12]--></li>
-                <li><strong>Regla clave:</strong> Defienden los intereses de la UE, no de sus países.<!--[cite: 12]--></li>
-                <li><strong>Poder:</strong> Monopolio de la iniciativa legislativa (solo ellos proponen) y ejecutan el presupuesto.<!--[cite: 12]--></li>
+                <li><strong>Sede:</strong> Bruselas.<!--[cite: 16]--></li>
+                <li><strong>Composición:</strong> 27 Comisarios (uno por Estado).<!--[cite: 16]--></li>
+                <li><strong>Regla clave:</strong> Defienden los intereses de la UE, no de sus países.<!--[cite: 16]--></li>
+                <li><strong>Poder:</strong> Monopolio de la iniciativa legislativa (solo ellos proponen) y ejecutan el presupuesto.<!--[cite: 16]--></li>
             </ul>
         </div>
         <div class="bloque">
             <h4>🗣️ Parlamento Europeo</h4>
             <p><strong>La Voz de los Ciudadanos</strong></p>
             <ul>
-                <li><strong>Sede:</strong> Estrasburgo (plenos) y Bruselas (comisiones).<!--[cite: 12]--></li>
-                <li><strong>Composición:</strong> Sufragio directo. Máximo 750 + 1 Presidente (751 total).<!--[cite: 12]--></li>
-                <li><strong>Poder:</strong> Colegisla (vota las leyes propuestas) y aprueba el presupuesto.<!--[cite: 12]--></li>
+                <li><strong>Sede:</strong> Estrasburgo (plenos) y Bruselas (comisiones).<!--[cite: 16]--></li>
+                <li><strong>Composición:</strong> Sufragio directo. Máximo 750 + 1 Presidente (751 total).<!--[cite: 16]--></li>
+                <li><strong>Poder:</strong> Colegisla (vota las leyes propuestas) y aprueba el presupuesto.<!--[cite: 16]--></li>
             </ul>
         </div>
         <div class="bloque">
             <h4>🇪🇺 Consejo de la UE</h4>
             <p><strong>La Voz de los Estados</strong></p>
             <ul>
-                <li>Ya lo vimos arriba.<!--[cite: 12]--> Vota las leyes junto al Parlamento.<!--[cite: 12]--></li>
+                <li>Ya lo vimos arriba.<!--[cite: 16]--> Vota las leyes junto al Parlamento.<!--[cite: 16]--></li>
             </ul>
         </div>
     </div>
 
     <div class="callout callout-abstract">
         <div class="callout-title">📜 Regla del proceso legislativo</div>
-        <p>"La Comisión <strong>PROPONE</strong>, y el Parlamento y el Consejo <strong>DISPONEN</strong> (votan y aprueban)".<!--[cite: 12]--></p>
+        <p>"La Comisión <strong>PROPONE</strong>, y el Parlamento y el Consejo <strong>DISPONEN</strong> (votan y aprueban)".<!--[cite: 16]--></p>
     </div>
 
     <hr>
 
     <h2>4. Presidencias y Mandatos (Cifras)</h2>
     <ul>
-        <li><strong>Consejo Europeo (Presidentes):</strong> Se elige por <strong>2,5 años</strong> (renovable una vez).<!--[cite: 12]--></li>
-        <li><strong>Consejo de la UE (Ministros):</strong> Presidencia rotatoria cada <strong>6 meses</strong> por Estados.<!--[cite: 12]--></li>
-        <li><strong>Comisión Europea:</strong> Mandato de <strong>5 años</strong>.<!--[cite: 12]--></li>
-        <li><strong>Parlamento Europeo:</strong> Diputados elegidos cada <strong>5 años</strong>. (El Presidente del PE se elige para <strong>2,5 años</strong>).<!--[cite: 12]--></li>
+        <li><strong>Consejo Europeo (Presidentes):</strong> Se elige por <strong>2,5 años</strong> (renovable una vez).<!--[cite: 16]--></li>
+        <li><strong>Consejo de la UE (Ministros):</strong> Presidencia rotatoria cada <strong>6 meses</strong> por Estados.<!--[cite: 16]--></li>
+        <li><strong>Comisión Europea:</strong> Mandato de <strong>5 años</strong>.<!--[cite: 16]--></li>
+        <li><strong>Parlamento Europeo:</strong> Diputados elegidos cada <strong>5 años</strong>. (El Presidente del PE se elige para <strong>2,5 años</strong>).<!--[cite: 16]--></li>
     </ul>
 
     <hr>
 
     <h2>5. Otras Instituciones Clave</h2>
     <ul>
-        <li><strong>Tribunal de Justicia de la UE (TJUE):</strong> Sede en Luxemburgo.<!--[cite: 12]--> Garantiza que la legislación se aplique igual en todos los países.<!--[cite: 12]--> <em>(OJO: NO confundir con el TEDH de Estrasburgo que pertenece al Consejo de Europa).</em><!--[cite: 12]--></li>
-        <li><strong>Banco Central Europeo (BCE):</strong> Sede en Fráncfort.<!--[cite: 12]--> Gestiona el euro y mantiene estabilidad de precios.<!--[cite: 12]--></li>
-        <li><strong>Tribunal de Cuentas:</strong> Vigila el dinero (recaudación y uso de fondos).<!--[cite: 12]--></li>
+        <li><strong>Tribunal de Justicia de la UE (TJUE):</strong> Sede en Luxemburgo.<!--[cite: 16]--> Garantiza que la legislación se aplique igual en todos los países.<!--[cite: 16]--> <em>(OJO: NO confundir con el TEDH de Estrasburgo que pertenece al Consejo de Europa).</em><!--[cite: 16]--></li>
+        <li><strong>Banco Central Europeo (BCE):</strong> Sede en Fráncfort.<!--[cite: 16]--> Gestiona el euro y mantiene estabilidad de precios.<!--[cite: 16]--></li>
+        <li><strong>Tribunal de Cuentas:</strong> Vigila el dinero (recaudación y uso de fondos).<!--[cite: 16]--></li>
     </ul>
 
     <hr>
@@ -237,44 +280,44 @@
     <div class="callout callout-warning">
         <div class="callout-title">🚚 Técnica de Asociación Visual</div>
         <ul>
-            <li><strong>El Reglamento es un Tren de Alta Velocidad:</strong> Entra directo, no se para en la frontera y obliga a todos por igual.<!--[cite: 12]--></li>
-            <li><strong>La Directiva es un Camión de IKEA:</strong> Te trae el objetivo, pero te obliga a ti a montarlo en casa aprobando una Ley Nacional (Transposición).<!--[cite: 12]--></li>
+            <li><strong>El Reglamento es un Tren de Alta Velocidad:</strong> Entra directo, no se para en la frontera y obliga a todos por igual.<!--[cite: 16]--></li>
+            <li><strong>La Directiva es un Camión de IKEA:</strong> Te trae el objetivo, pero te obliga a ti a montarlo en casa aprobando una Ley Nacional (Transposición).<!--[cite: 16]--></li>
         </ul>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Tipo de Norma<!--[cite: 12]--></th>
-                <th>¿Es obligatoria?<!--[cite: 12]--></th>
-                <th>Característica clave para el examen<!--[cite: 12]--></th>
+                <th>Tipo de Norma<!--[cite: 16]--></th>
+                <th>¿Es obligatoria?<!--[cite: 16]--></th>
+                <th>Característica clave para el examen<!--[cite: 16]--></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Reglamento</strong><!--[cite: 12]--></td>
-                <td>SÍ (En todos sus elementos)<!--[cite: 12]--></td>
-                <td><strong>Aplicación directa.</strong> Entra en vigor en todos los países a la vez, sin ley de adaptación. Obliga a todos.<!--[cite: 12]--></td>
+                <td><strong>Reglamento</strong><!--[cite: 16]--></td>
+                <td>SÍ (En todos sus elementos)<!--[cite: 16]--></td>
+                <td><strong>Aplicación directa.</strong> Entra en vigor en todos los países a la vez, sin ley de adaptación. Obliga a todos.<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td><strong>Directiva</strong><!--[cite: 12]--></td>
-                <td>SÍ (En cuanto al objetivo)<!--[cite: 12]--></td>
-                <td><strong>Requiere Transposición.</strong> Fija un resultado obligatorio pero deja a cada país elegir la forma/medios.<!--[cite: 12]--></td>
+                <td><strong>Directiva</strong><!--[cite: 16]--></td>
+                <td>SÍ (En cuanto al objetivo)<!--[cite: 16]--></td>
+                <td><strong>Requiere Transposición.</strong> Fija un resultado obligatorio pero deja a cada país elegir la forma/medios.<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td><strong>Decisión</strong><!--[cite: 12]--></td>
-                <td>SÍ (En todos sus elementos)<!--[cite: 12]--></td>
-                <td>Solo para sus <strong>destinatarios específicos</strong> (ej. multa a una empresa). No es general.<!--[cite: 12]--></td>
+                <td><strong>Decisión</strong><!--[cite: 16]--></td>
+                <td>SÍ (En todos sus elementos)<!--[cite: 16]--></td>
+                <td>Solo para sus <strong>destinatarios específicos</strong> (ej. multa a una empresa). No es general.<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td><strong>Recomendación</strong><!--[cite: 12]--></td>
-                <td>NO<!--[cite: 12]--></td>
-                <td>Sugiere línea de conducta.<!--[cite: 12]--></td>
+                <td><strong>Recomendación</strong><!--[cite: 16]--></td>
+                <td>NO<!--[cite: 16]--></td>
+                <td>Sugiere línea de conducta.<!--[cite: 16]--></td>
             </tr>
             <tr>
-                <td><strong>Dictamen</strong><!--[cite: 12]--></td>
-                <td>NO<!--[cite: 12]--></td>
-                <td>Expresa opinión o valoración.<!--[cite: 12]--></td>
+                <td><strong>Dictamen</strong><!--[cite: 16]--></td>
+                <td>NO<!--[cite: 16]--></td>
+                <td>Expresa opinión o valoración.<!--[cite: 16]--></td>
             </tr>
         </tbody>
     </table>
@@ -282,16 +325,16 @@
     <hr>
 
     <h2>7. El Alto Representante de la Unión</h2>
-    <p>Figura con "doble gorra" (trabaja para dos instituciones).<!--[cite: 12]--></p>
+    <p>Figura con "doble gorra" (trabaja para dos instituciones).<!--[cite: 16]--></p>
     <ul>
-        <li><strong>Nombramiento:</strong> Por el Consejo Europeo por mayoría cualificada, con aprobación del Pte. de la Comisión.<!--[cite: 12]--></li>
+        <li><strong>Nombramiento:</strong> Por el Consejo Europeo por mayoría cualificada, con aprobación del Pte. de la Comisión.<!--[cite: 16]--></li>
         <li><strong>Sus dos sombreros:</strong>
             <ol>
-                <li>Vicepresidente de la Comisión Europea (exteriores).<!--[cite: 12]--></li>
-                <li>Presidente del Consejo de Asuntos Exteriores (del Consejo de la UE).<!--[cite: 12]--></li>
+                <li>Vicepresidente de la Comisión Europea (exteriores).<!--[cite: 16]--></li>
+                <li>Presidente del Consejo de Asuntos Exteriores (del Consejo de la UE).<!--[cite: 16]--></li>
             </ol>
         </li>
-        <li><strong>Servicio de apoyo:</strong> Dirige el SEAE (Servicio Europeo de Acción Exterior).<!--[cite: 12]--></li>
+        <li><strong>Servicio de apoyo:</strong> Dirige el SEAE (Servicio Europeo de Acción Exterior).<!--[cite: 16]--></li>
     </ul>
 
     <hr>
@@ -302,29 +345,29 @@
         <div class="bloque">
             <h4>🛂 FRONTEX</h4>
             <ul>
-                <li><strong>Sede:</strong> Varsovia (Polonia).<!--[cite: 12]--></li>
-                <li><strong>Función:</strong> Gestión de fronteras exteriores y apoyo contra delincuencia transfronteriza (trata, inmigración).<!--[cite: 12]--></li>
+                <li><strong>Sede:</strong> Varsovia (Polonia).<!--[cite: 16]--></li>
+                <li><strong>Función:</strong> Gestión de fronteras exteriores y apoyo contra delincuencia transfronteriza (trata, inmigración).<!--[cite: 16]--></li>
             </ul>
         </div>
         <div class="bloque">
             <h4>🕵️‍♂️ EUROPOL</h4>
             <ul>
-                <li><strong>Sede:</strong> La Haya (Países Bajos).<!--[cite: 12]--></li>
-                <li><strong>Función:</strong> Lucha contra terrorismo y crimen organizado grave.<!--[cite: 12]--> (No detienen, analizan/coordinan).<!--[cite: 12]--></li>
+                <li><strong>Sede:</strong> La Haya (Países Bajos).<!--[cite: 16]--></li>
+                <li><strong>Función:</strong> Lucha contra terrorismo y crimen organizado grave.<!--[cite: 16]--> (No detienen, analizan/coordinan).<!--[cite: 16]--></li>
             </ul>
         </div>
         <div class="bloque">
             <h4>🎓 CEPOL</h4>
             <ul>
-                <li><strong>Sede:</strong> Budapest (Hungría).<!--[cite: 12]--></li>
-                <li><strong>Función:</strong> Formación de funcionarios de policía y fuerzas de seguridad en la UE.<!--[cite: 12]--></li>
+                <li><strong>Sede:</strong> Budapest (Hungría).<!--[cite: 16]--></li>
+                <li><strong>Función:</strong> Formación de funcionarios de policía y fuerzas de seguridad en la UE.<!--[cite: 16]--></li>
             </ul>
         </div>
     </div>
 
     <div class="callout callout-danger">
         <div class="callout-title">⚠️ TRAMPA DE EXAMEN: EUROPOL vs INTERPOL</div>
-        <p><strong>INTERPOL NO pertenece a la Unión Europea.</strong><!--[cite: 12]--> Es una organización mundial con sede en Lyon (Francia).<!--[cite: 12]--> Trabaja mediante Notificaciones internacionales. En España, su enlace es la OCN.<!--[cite: 12]--></p>
+        <p><strong>INTERPOL NO pertenece a la Unión Europea.</strong><!--[cite: 16]--> Es una organización mundial con sede en Lyon (Francia).<!--[cite: 16]--> Trabaja mediante Notificaciones internacionales. En España, su enlace es la OCN.<!--[cite: 16]--></p>
     </div>
 
     <hr>
@@ -336,26 +379,26 @@
     
     <div class="callout callout-abstract interpol-roja">
         <div class="callout-title">🔴 Notificación ROJA (Búsqueda y Captura)</div>
-        <p>Localizar y detener a personas buscadas con miras a su extradición o entrega.<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Alerta máxima (Sangre). Es la más grave. El sujeto va a la cárcel sí o sí.<!--[cite: 12]--></span>
+        <p>Localizar y detener a personas buscadas con miras a su extradición o entrega.<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Alerta máxima (Sangre). Es la más grave. El sujeto va a la cárcel sí o sí.<!--[cite: 16]--></span>
     </div>
 
     <div class="callout callout-abstract interpol-amarilla">
         <div class="callout-title">🟡 Notificación AMARILLA (Desaparecidos)</div>
-        <p>Localizar a personas desaparecidas (especialmente menores) o descubrir identidad de amnésicos/dementes.<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Precaución / Lazo amarillo / Chubasquero amarillo de niño.<!--[cite: 12]--></span>
+        <p>Localizar a personas desaparecidas (especialmente menores) o descubrir identidad de amnésicos/dementes.<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Precaución / Lazo amarillo / Chubasquero amarillo de niño.<!--[cite: 16]--></span>
     </div>
 
     <div class="callout callout-abstract interpol-azul">
         <div class="callout-title">🔵 Notificación AZUL (Información)</div>
-        <p>Recopilar información sobre identidad, paradero o actividades. <strong>NO hay orden de detención.</strong><!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Lupa azul / Libreta de policía (investigando el expediente).<!--[cite: 12]--></span>
+        <p>Recopilar información sobre identidad, paradero o actividades. <strong>NO hay orden de detención.</strong><!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Lupa azul / Libreta de policía (investigando el expediente).<!--[cite: 16]--></span>
     </div>
 
     <div class="callout callout-abstract interpol-negra">
         <div class="callout-title">⚫ Notificación NEGRA (Cadáveres)</div>
-        <p>Conseguir información sobre cadáveres sin identificar.<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Luto. El color de la muerte.<!--[cite: 12]--></span>
+        <p>Conseguir información sobre cadáveres sin identificar.<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Luto. El color de la muerte.<!--[cite: 16]--></span>
     </div>
 
     <!-- Bloque 2: Inteligencia y Alertas -->
@@ -363,20 +406,20 @@
 
     <div class="callout callout-abstract interpol-verde">
         <div class="callout-title">🟢 Notificación VERDE (Reincidentes itinerantes)</div>
-        <p>Alertar sobre personas con peligro para la seguridad pública porque es probable que reincidan en otros países.<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Semáforo verde / Frontera abierta (el delincuente se mueve libremente).<!--[cite: 12]--></span>
+        <p>Alertar sobre personas con peligro para la seguridad pública porque es probable que reincidan en otros países.<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Semáforo verde / Frontera abierta (el delincuente se mueve libremente).<!--[cite: 16]--></span>
     </div>
 
     <div class="callout callout-abstract interpol-naranja">
         <div class="callout-title">🟠 Notificación NARANJA (Amenaza inminente)</div>
-        <p>Alertar sobre acontecimiento, persona u objeto que suponga un peligro grave e inminente (ej. bombas).<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Explosión en curso. Fuego naranja.<!--[cite: 12]--></span>
+        <p>Alertar sobre acontecimiento, persona u objeto que suponga un peligro grave e inminente (ej. bombas).<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Explosión en curso. Fuego naranja.<!--[cite: 16]--></span>
     </div>
 
     <div class="callout callout-abstract interpol-morada">
         <div class="callout-title">🟣 Notificación MORADA (Modus Operandi)</div>
-        <p>Información sobre modus operandi, objetos y métodos de ocultación.<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: El misterio del mago ("el truco").<!--[cite: 12]--></span>
+        <p>Información sobre modus operandi, objetos y métodos de ocultación.<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: El misterio del mago ("el truco").<!--[cite: 16]--></span>
     </div>
 
     <!-- Bloque 3: Notificación Especial -->
@@ -384,8 +427,14 @@
 
     <div class="callout callout-abstract interpol-especial">
         <div class="callout-title">🌐 Notificación Especial INTERPOL - ONU (CSNU)</div>
-        <p>Informar que una persona o entidad está sujeta a las sanciones de la ONU (congelación activos, embargo armas).<!--[cite: 12]--></p>
-        <span class="mnemotecnica-text">Truco mental: Única con "sello" ONU, para terroristas y financiadores.<!--[cite: 12]--></span>
+        <p>Informar que una persona o entidad está sujeta a las sanciones de la ONU (congelación activos, embargo armas).<!--[cite: 16]--></p>
+        <span class="mnemotecnica-text">Truco mental: Única con "sello" ONU, para terroristas y financiadores.<!--[cite: 16]--></span>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema3.html" class="btn-nav">← Tema Anterior (T3)</a>
+        <a href="tema5.html" class="btn-nav">Tema Siguiente (T5) →</a>
     </div>
 
 </div>
