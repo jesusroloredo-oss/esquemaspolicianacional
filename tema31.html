@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 31: Inmigración - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: middle; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-sec); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 7.5pt; color: #000 !important; vertical-align: middle; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🌍 Tema 31: Inmigración</h1>
+
+    <h2>1. Definiciones Institucionales de Inmigración</h2>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🌐 Org. Internacional para las Migraciones (OIM)</h4>
+            <p>Término genérico, coacciones o amenaza.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🇺🇳 ONU</h4>
+            <p>Cambio de residencia, política administrativa.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🏛️ UNESCO</h4>
+            <p>Delimitación geográfica, tiempo.<!--[cite: 17]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>2. Autores y Conceptos (Súper importante)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>AUTOR<!--[cite: 17]--></th>
+                <th>OBRA / CONCEPTO CLAVE<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Jackson</strong><!--[cite: 17]--></td>
+                <td><em>Migrations</em> (ETS, NO económica).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Ravenstein</strong><!--[cite: 17]--></td>
+                <td>Push-Pull (crea y desarrolla).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Joaquín Arango</strong><!--[cite: 17]--></td>
+                <td>Leyes de Ravenstein cien años después.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Zipf</strong><!--[cite: 17]--></td>
+                <td>Distancia inversa o modelo gravitatorio.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>G. Malgesini y C. Gimenez</strong><!--[cite: 17]--></td>
+                <td>Desplazamientos masivos, factor tiempo.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Daniel Corgeau</strong><!--[cite: 17]--></td>
+                <td>Espacio Vital.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Mª Cristina Bravo</strong><!--[cite: 17]--></td>
+                <td>Migraciones contemporáneas, reorganización.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Zelinsky</strong><!--[cite: 17]--></td>
+                <td>Modelo evolutivo (4 fases: inicial, transición demográfica, conclusión transición, postindustrial).<!--[cite: 17]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. Tipos de Migración</h2>
+    <ul>
+        <li><strong>Diarias / Pendulares / Oscilatorias / Alternantes / Lanzadera:</strong> Trabajo-domicilio.<!--[cite: 17]--></li>
+        <li><strong>Estacionales / Golondrina:</strong> Temporada.<!--[cite: 17]--></li>
+        <li><strong>Cíclicas:</strong> Sustitutos.<!--[cite: 17]--></li>
+        <li><strong>Definitiva:</strong> Va a trabajar y se queda.<!--[cite: 17]--></li>
+        <li><strong>Permanentes:</strong> Constantemente cambiando de destino. Nómadas.<!--[cite: 17]--></li>
+        <li><strong>Esparcimiento:</strong> Recreo o descanso.<!--[cite: 17]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Fórmulas y Conceptos Demográficos</h2>
+    
+    <div class="callout callout-warning">
+        <div class="callout-title">🧮 Fórmulas de Tasas (Base 1000)</div>
+        <ul>
+            <li><strong>Tasa Emigración:</strong> (Emigrantes / Total población) x 1000 habitantes.<!--[cite: 17]--></li>
+            <li><strong>Tasa Inmigración:</strong> (Inmigrantes / Total población) x 1000 habitantes.<!--[cite: 17]--></li>
+            <li><strong>Tasa Migración Neta:</strong> Diferencia entre tasa de inmigración y emigración (Saldo positivo = más inmigrantes; Negativo = más emigrantes).<!--[cite: 17]--></li>
+        </ul>
+    </div>
+
+    <ul>
+        <li><strong>Saldo migratorio, espacial o migración neta:</strong> Diferencia entre <em>número</em> de inmigrantes y emigrantes.<!--[cite: 17]--></li>
+        <li><strong>Flujo Migratorio Anual:</strong> Migraciones, año, territorio.<!--[cite: 17]--></li>
+        <li><strong>Densidad de población:</strong> Nº habitantes y extensión.<!--[cite: 17]--></li>
+    </ul>
+
+    <h3>Conceptos Clave</h3>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>💻 Brecha Digital</h4>
+            <p><strong>Inmigrante Digital:</strong> Nacen antes del auge (Gen X).<!--[cite: 17]--><br>
+            <strong>Nativo Digital:</strong> Nacen y crecen con tecnología (Gen Y/Millennials y Gen Z/Centennials).<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🌍 Términos Internacionales</h4>
+            <p><strong>Trabajador Invitado (Gasterbeiter):</strong> Necesidad mano de obra (modelo alemán).<!--[cite: 17]--><br>
+            <strong>Brain-Drain:</strong> Fuga de cerebros.<!--[cite: 17]--><br>
+            <strong>Cadena migratoria:</strong> Conjunto de relaciones sociales.<!--[cite: 17]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>5. Integración Social (Modelos)</h2>
+    <p><strong>Cohesión social:</strong> Sentido de pertenencia a un proyecto o situación común.<!--[cite: 17]--></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>MODELO<!--[cite: 17]--></th>
+                <th>AUTOR<!--[cite: 17]--></th>
+                <th>QUÉ OCURRE CON LA CULTURA<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>➖ Asimilación</strong><!--[cite: 17]--></td>
+                <td>Park y Thomas<!--[cite: 17]--></td>
+                <td>El inmigrante pierde su identidad.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>➕ Inserción</strong><!--[cite: 17]--></td>
+                <td></td>
+                <td>El inmigrante no abandona ningún elemento de su identidad.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>🥣 Melting Pot</strong> (Crisol)<!--[cite: 17]--></td>
+                <td>Zangwill<!--[cite: 17]--></td>
+                <td>Asimilan la del lugar y mantienen la propia, creando una nueva cultura mixta.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>🤝 Integración / Interculturalidad</strong><!--[cite: 17]--></td>
+                <td></td>
+                <td>No pierden y compaginan su cultura.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>🥗 Salad Bowl</strong><!--[cite: 17]--></td>
+                <td></td>
+                <td>Superposición.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>🏘️ Multiculturalismo</strong> (Pluralismo)<!--[cite: 17]--></td>
+                <td>Lamo de Espinosa<!--[cite: 17]--></td>
+                <td>Culturas variadas pero no se relacionan entre sí (Convivencia).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>⚖️ Acomodación</strong><!--[cite: 17]--></td>
+                <td>Zapata-Barrero<!--[cite: 17]--></td>
+                <td>Confianza.<!--[cite: 17]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>6. Teorías Migratorias</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>TEORÍA<!--[cite: 17]--></th>
+                <th>PALABRA CLAVE / CONCEPTO PRINCIPAL<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Neoclásica</strong><!--[cite: 17]--></td>
+                <td>Salarios.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Push-Pull</strong><!--[cite: 17]--></td>
+                <td>Fuerzas positivas, atracción (pull) y negativas, repulsión (push).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Funcionalista</strong><!--[cite: 17]--></td>
+                <td>Ciclo de vida, mejoras.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Neomarxista</strong><!--[cite: 17]--></td>
+                <td>Capitalismo.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Malthusiana</strong><!--[cite: 17]--></td>
+                <td>Población vs recursos (alimentos).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Macroeconómica</strong><!--[cite: 17]--></td>
+                <td>General.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Microeconómica</strong><!--[cite: 17]--></td>
+                <td>Específica.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Nueva Economía</strong><!--[cite: 17]--></td>
+                <td>Beneficio país de origen (venir a trabajar y mandar ingresos).<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Institucional</strong><!--[cite: 17]--></td>
+                <td>Instituciones.<!--[cite: 17]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema29.html" class="btn-nav">← Tema Anterior (T29)</a>
+        <a href="tema34.html" class="btn-nav">Tema Siguiente (T34) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
