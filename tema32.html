@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 32: Geografía Humana - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+            
+            /* Colores Pirámides */
+            --pyr-m: #3b82f6; --pyr-f: #ec4899;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        /* PIRÁMIDES VISUALES */
+        .pyramids-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
+        .pyramid-card { background: var(--table-header); border: 1px solid var(--table-border); border-radius: 8px; padding: 20px; width: 260px; text-align: center; }
+        .pyramid-card h4 { margin: 0 0 5px 0; color: var(--title-main); font-size: 1.1em; }
+        .pyramid-card p { font-size: 0.85em; color: var(--text-muted); margin: 0 0 15px 0; min-height: 40px; }
+        .pyramid-draw { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .p-row { display: flex; justify-content: center; width: 100%; gap: 2px; }
+        .p-bar-m { background-color: var(--pyr-m); height: 8px; border-radius: 2px 0 0 2px; }
+        .p-bar-f { background-color: var(--pyr-f); height: 8px; border-radius: 0 2px 2px 0; }
+        
+        .badge { background-color: var(--title-sec); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .pyramids-container { flex-direction: column; align-items: center; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 7.5pt; color: #000 !important; vertical-align: middle; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            
+            .pyramids-container { display: flex !important; flex-direction: row !important; }
+            .pyramid-card { flex: 1; margin: 2px !important; padding: 10px !important; break-inside: avoid; }
+            .p-bar-m { background-color: #555 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .p-bar-f { background-color: #999 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🌍 Tema 32: Concepto de Geografía Humana</h1>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">📌 Definición</div>
+        <p>La geografía humana es la disciplina que se encarga del estudio de las sociedades humanas.<!--[cite: 17]--></p>
+    </div>
+
+    <h2>1. Modelos de Crecimiento Urbano</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>AUTOR<!--[cite: 17]--></th>
+                <th>MODELO<!--[cite: 17]--></th>
+                <th>CARACTERÍSTICA<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Burgess</strong><!--[cite: 17]--></td>
+                <td>Concéntrico<!--[cite: 17]--></td>
+                <td>Zona central y en círculos concéntricos.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Hurd</strong><!--[cite: 17]--></td>
+                <td>Estrella o radial<!--[cite: 17]--></td>
+                <td>Calles desde el centro.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Harris y Ullman</strong><!--[cite: 17]--></td>
+                <td>Multinuclear<!--[cite: 17]--></td>
+                <td>Asentamientos primarios se solapan.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Homer Hoyt</strong><!--[cite: 17]--></td>
+                <td>Sectorial<!--[cite: 17]--></td>
+                <td>Sectores fijos van creciendo.<!--[cite: 17]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>2. Tipos de Ciudad</h2>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🏘️ Ciudad Bidón (Pierre George)</h4>
+            <p>Urbana masificada donde residen inmigrantes (<em>bidonville</em>).<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🛏️ Dormitorio</h4>
+            <p>Residencia para trabajadores de la ciudad.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🌳 Jardín (Howard)</h4>
+            <p>Amplios espacios verdes.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>📏 Lineal</h4>
+            <p>Se desarrolla linealmente.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🔗 Región</h4>
+            <p>Asociaciones comercial y cultural.<!--[cite: 17]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🛰️ Satélite</h4>
+            <p>Separada de la gran ciudad por un cinturón verde.<!--[cite: 17]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>3. Definiciones de Demografía</h2>
+    <p>La demografía es la ciencia que estudia las poblaciones humanas, su dimensión, estructura, evolución y características.<!--[cite: 17]--></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>TASA / CONCEPTO<!--[cite: 17]--></th>
+                <th>FÓRMULA / DEFINICIÓN<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Bruta Natalidad</strong><!--[cite: 17]--></td>
+                <td>Nº nacidos año, respecto población total, x1.000 habitantes.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Bruta Mortalidad</strong><!--[cite: 17]--></td>
+                <td>Nº muertes año, respecto población total, x1.000 habitantes.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Mortalidad Infantil</strong><!--[cite: 17]--></td>
+                <td>Nº defunciones menores de 1 año, respecto población total, x1.000 habitantes.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Crecimiento Natural (Vegetativo)</strong><!--[cite: 17]--></td>
+                <td>Nacimientos menos defunciones.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>T. Bruta de Crecimiento Natural</strong><!--[cite: 17]--></td>
+                <td>Diferencia entre tasa natalidad y mortalidad.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Fecundidad</strong><!--[cite: 17]--></td>
+                <td>Nº nacidos año, respecto población femenina en edad de procrear (15-49 años), x1.000 habitantes.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Bruta Reproducción</strong><!--[cite: 17]--></td>
+                <td>Nº medio de hijas por mujer en vida fértil.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Sex-ratio</strong><!--[cite: 17]--></td>
+                <td>Relación cantidad de hombres y mujeres.<!--[cite: 17]--></td>
+            </tr>
+            <tr>
+                <td><strong>Morbilidad</strong><!--[cite: 17]--></td>
+                <td>Proporción de personas que sufren enfermedad.<!--[cite: 17]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>4. Pirámides de Población</h2>
+    <p>Guarda estas formas visuales en tu mente. Azul = Hombres, Rosa = Mujeres.<!--[cite: 17]--></p>
+
+    <div class="pyramids-container">
+        
+        <!-- PROGRESIVA -->
+        <div class="pyramid-card">
+            <h4>⛩️ Progresiva (Pagoda)</h4>
+            <p>Expansiva / Clásica. Alta natalidad y mortalidad. Países subdesarrollados.<!--[cite: 17]--></p>
+            <div class="pyramid-draw">
+                <div class="p-row"><div class="p-bar-m" style="width: 5%;"></div><div class="p-bar-f" style="width: 5%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 15%;"></div><div class="p-bar-f" style="width: 15%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 25%;"></div><div class="p-bar-f" style="width: 25%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 40%;"></div><div class="p-bar-f" style="width: 40%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 60%;"></div><div class="p-bar-f" style="width: 60%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 80%;"></div><div class="p-bar-f" style="width: 80%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 100%;"></div><div class="p-bar-f" style="width: 100%;"></div></div>
+            </div>
+            <p style="margin-top:10px; font-weight:bold;">Base ancha y punta estrecha.<!--[cite: 17]--></p>
+        </div>
+
+        <!-- ESTABLE -->
+        <div class="pyramid-card">
+            <h4>🔔 Estable (Campana)</h4>
+            <p>Estacionaria / Estancada. Alta natalidad y mortalidad en descenso. Países en vías de desarrollo.<!--[cite: 17]--></p>
+            <div class="pyramid-draw">
+                <div class="p-row"><div class="p-bar-m" style="width: 10%;"></div><div class="p-bar-f" style="width: 10%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 30%;"></div><div class="p-bar-f" style="width: 30%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 50%;"></div><div class="p-bar-f" style="width: 50%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 70%;"></div><div class="p-bar-f" style="width: 70%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 85%;"></div><div class="p-bar-f" style="width: 85%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 90%;"></div><div class="p-bar-f" style="width: 90%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 95%;"></div><div class="p-bar-f" style="width: 95%;"></div></div>
+            </div>
+            <p style="margin-top:10px; font-weight:bold;">Base y centro anchos, punta estrecha.<!--[cite: 17]--></p>
+        </div>
+
+        <!-- REGRESIVA -->
+        <div class="pyramid-card">
+            <h4>🏺 Regresiva (Urna / Bulbo)</h4>
+            <p>Envejecida / Hucha. Baja natalidad y mortalidad. Países desarrollados.<!--[cite: 17]--></p>
+            <div class="pyramid-draw">
+                <div class="p-row"><div class="p-bar-m" style="width: 20%;"></div><div class="p-bar-f" style="width: 20%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 40%;"></div><div class="p-bar-f" style="width: 40%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 70%;"></div><div class="p-bar-f" style="width: 70%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 90%;"></div><div class="p-bar-f" style="width: 90%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 100%;"></div><div class="p-bar-f" style="width: 100%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 85%;"></div><div class="p-bar-f" style="width: 85%;"></div></div>
+                <div class="p-row"><div class="p-bar-m" style="width: 60%;"></div><div class="p-bar-f" style="width: 60%;"></div></div>
+            </div>
+            <p style="margin-top:10px; font-weight:bold;">Base y punta estrecha, ensanchamiento en medio.<!--[cite: 17]--></p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2>5. Clases de Masas</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>1. Según integrantes</h4>
+            <ul>
+                <li><strong>Homogéneas:</strong> Similares.<!--[cite: 17]--></li>
+                <li><strong>Heterogéneas:</strong> Toda índole.<!--[cite: 17]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>2. Según grado participación</h4>
+            <ul>
+                <li><strong>Pasivas:</strong> Contemplativas o curiosas.<!--[cite: 17]--></li>
+                <li><strong>Activas:</strong> Realizan algo.<!--[cite: 17]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>3. Según ordenación</h4>
+            <ul>
+                <li><strong>Desordenadas (Multitud):</strong> Foco atención común fortuito, no identidad social común.<!--[cite: 17]--></li>
+                <li><strong>Ordenadas (Muchedumbre):</strong> Convocada, mismo centro atención y objetivo común previsto.<!--[cite: 17]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>4. Según proximidad física/interés</h4>
+            <ul>
+                <li><strong>Difusas:</strong> Sin proximidad física.<!--[cite: 17]--></li>
+                <li><strong>Disgregadas:</strong> Coinciden accidentalmente.<!--[cite: 17]--></li>
+                <li><strong>Congregadas:</strong> Unión premeditada, interés común.<!--[cite: 17]--></li>
+                <li><strong>Público:</strong> Pasivo.<!--[cite: 17]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Clasificaciones por Autor</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>KIMBALL YOUNG (Buscadores)<!--[cite: 17]--></th>
+                <th>MUNNÉ<!--[cite: 17]--></th>
+                <th>ROGER BROWN<!--[cite: 17]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul>
+                        <li>De información (instruirse).<!--[cite: 17]--></li>
+                        <li>De recreación (entretenimiento).<!--[cite: 17]--></li>
+                        <li>De conversión (persuadirse).<!--[cite: 17]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Público ordinario (meros espectadores).<!--[cite: 17]--></li>
+                        <li>Auditorio (actitud receptiva).<!--[cite: 17]--></li>
+                        <li>Turbas (activas y violentas).<!--[cite: 17]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Agresivas.<!--[cite: 17]--></li>
+                        <li>Evasivas.<!--[cite: 17]--></li>
+                        <li>Adquisitivas.<!--[cite: 17]--></li>
+                        <li>Expresivas, gozosas u orgiásticas.<!--[cite: 17]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>6. Autores Importantes</h2>
+    
+    <div class="callout callout-warning">
+        <div class="callout-title">🇩🇪 Truco Mnemotécnico para Tönnies</div>
+        <p>No hace falta saber alemán, fíjate en las letras clave (mayúsculas) para acertar en el test:</p>
+        <ul>
+            <li>Ge<strong>S</strong>ell<strong>S</strong>chaft = <strong>S</strong>ociedad (urbana), relaciones <strong>S</strong>ecundarias.</li>
+            <li>Ge<strong>M</strong>ein<strong>M</strong>schaft = Co<strong>M</strong>unidad (rural), relaciones pri<strong>M</strong>arias.</li>
+        </ul>
+    </div>
+
+    <ul>
+        <li><strong>Allport:</strong> No diferencia individuos solos a cuando están en muchedumbre.<!--[cite: 17]--></li>
+        <li><strong>Lebon:</strong> <em>Psicología de masas</em>. Imitación y sentimiento de anonimato.<!--[cite: 17]--></li>
+        <li><strong>Ortega y Gasset:</strong> <em>La rebelión de masas</em>. Sociedad-masa y hombre-masa.<!--[cite: 17]--></li>
+        <li><strong>Blumer:</strong> Teoría del contagio. Reacción circular.<!--[cite: 17]--></li>
+        <li><strong>Tönnies:</strong> Relaciones grupo primario sustituidas por secundario.<!--[cite: 17]-->
+            <ul>
+                <li><em>Gesellschaft:</em> Relaciones impersonales, consecución de fines sociales (urbana).<!--[cite: 17]--></li>
+                <li><em>Gemeninschaft:</em> Proximidad física y relaciones personales (rural).<!--[cite: 17]--></li>
+            </ul>
+        </li>
+        <li><strong>Max Sorre:</strong> Ecúmene (terrestres pobladas) y anecúmene (despobladas).<!--[cite: 17]--></li>
+    </ul>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema31.html" class="btn-nav">← Tema Anterior (T31)</a>
+        <a href="tema34.html" class="btn-nav">Tema Siguiente (T34) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
