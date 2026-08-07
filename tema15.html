@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 15: Medidas para PIC - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🚨 Tema 15: Medidas para PIC (Infraestructuras Críticas)</h1>
+
+    <h2>1. Definiciones Clave</h2>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">⚠️ DIFERENCIA VITAL PARA EL TEST: Estratégica vs Crítica</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>⚙️ INFRAESTRUCTURA ESTRATÉGICA<!--[cite: 13]--></th>
+                    <th>💥 INFRAESTRUCTURA CRÍTICA<!--[cite: 13]--></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Instalaciones, redes, sistemas y equipos (físicos y tecnológicos) sobre los que <strong>descansa el funcionamiento</strong> de los servicios esenciales.<!--[cite: 13]--></td>
+                    <td>Son infraestructuras <em>estratégicas</em> cuyo funcionamiento es <strong>indispensable</strong> y su perturbación causaría un <strong>grave impacto</strong> sobre los servicios esenciales.<!--[cite: 13]--></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🏢 Servicios y Sectores</h4>
+            <ul>
+                <li><strong>Servicio esencial:</strong> Servicio necesario para el mantenimiento de las funciones sociales básicas o funcionamiento de Instituciones y Adm. Pública.<!--[cite: 13]--></li>
+                <li><strong>Sector estratégico:</strong> Áreas diferenciadas, proporciona un servicio esencial. <strong>Hay 12 en España.</strong><!--[cite: 13]--></li>
+                <li><strong>Subsector estratégico:</strong> Ámbitos en los que se divide un sector estratégico.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🛡️ Conceptos PIC</h4>
+            <ul>
+                <li><strong>PIC:</strong> Actividad para asegurar la <em>funcionalidad, continuidad e integridad</em> de las infraestructuras críticas.<!--[cite: 13]--></li>
+                <li><strong>Infraestructura Crítica Europea:</strong> Afecta al menos a <strong>2 EEMM</strong>.<!--[cite: 13]--></li>
+                <li><strong>Interdependencias:</strong> Efecto de perturbación que una instalación o servicio produce en otra.<!--[cite: 13]--></li>
+                <li><strong>Operadores críticos:</strong> Entidades u organismos responsables.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">📏 Criterios Horizontales de Criticidad</div>
+        <p>Son los parámetros que determinan la criticidad, gravedad y consecuencias de una perturbación o destrucción de una IC.<!--[cite: 13]--></p>
+        <ul style="font-weight: bold;">
+            <li>👥 Nº personas afectadas<!--[cite: 13]--></li>
+            <li>💰 Impacto económico<!--[cite: 13]--></li>
+            <li>🌳 Impacto medioambiental<!--[cite: 13]--></li>
+            <li>📢 Impacto público y social<!--[cite: 13]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Catálogo Nacional de Infraestructuras Estratégicas (CNIE)</h2>
+    <ul>
+        <li><strong>Naturaleza:</strong> Información completa, actualizada y contrastada.<!--[cite: 13]--></li>
+        <li><strong>Finalidad:</strong> Prevenir y reaccionar ante amenazas.<!--[cite: 13]--></li>
+        <li><strong>Contenido:</strong> 🔴 <strong>SECRETO</strong>.<!--[cite: 13]--></li>
+        <li><strong>Clasificación:</strong> Por el <strong>MI</strong> (Ministerio del Interior) a través del <strong>SES</strong>.<!--[cite: 13]--></li>
+        <li><strong>Custodia, gestión y mantenimiento:</strong> <strong>MI</strong> a través del <strong>SES</strong>.<!--[cite: 13]--></li>
+        <li><strong>Actualización:</strong> CNPIC (<strong>anual</strong>).<!--[cite: 13]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Planes de Infraestructuras Críticas</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>PLAN<!--[cite: 13]--></th>
+                <th>ELABORA<!--[cite: 13]--></th>
+                <th>APRUEBA<!--[cite: 13]--></th>
+                <th>REGISTRA<!--[cite: 13]--></th>
+                <th>REVISIÓN<!--[cite: 13]--></th>
+                <th>CARÁCTER<!--[cite: 13]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Plan Nacional PIC</strong><!--[cite: 13]--></td>
+                <td>MI a través SES<!--[cite: 13]--></td>
+                <td>SES<!--[cite: 13]--></td>
+                <td>CNPIC<!--[cite: 13]--></td>
+                <td><strong>5 años</strong><!--[cite: 13]--></td>
+                <td>Difusión limitada y anexo 1 confidencial<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>PES</strong> (Sectorial)<!--[cite: 13]--></td>
+                <td>Grupo Trabajo<!--[cite: 13]--></td>
+                <td>Comisión<!--[cite: 13]--></td>
+                <td>CNPIC<!--[cite: 13]--></td>
+                <td><strong>2 años</strong><!--[cite: 13]--></td>
+                <td>Confidencial<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>PSO</strong> (Seguridad Op.)<!--[cite: 13]--></td>
+                <td>Operador Crítico<!--[cite: 13]--></td>
+                <td>SES o delegue<!--[cite: 13]--></td>
+                <td>CNPIC<!--[cite: 13]--></td>
+                <td><strong>2 años</strong><!--[cite: 13]--></td>
+                <td>Difusión limitada<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>PPE</strong> (Protec. Específica)<!--[cite: 13]--></td>
+                <td>Operador Crítico<!--[cite: 13]--></td>
+                <td>SES <em>(a propuesta CNPIC)</em><!--[cite: 13]--></td>
+                <td>CNPIC<!--[cite: 13]--></td>
+                <td><strong>2 años</strong><!--[cite: 13]--></td>
+                <td>Difusión limitada<!--[cite: 13]--></td>
+            </tr>
+            <tr>
+                <td><strong>PAO</strong> (Apoyo Operativo)<!--[cite: 13]--></td>
+                <td>Cuerpo policial (estatal o auto)<!--[cite: 13]--></td>
+                <td>SES a través CNPIC<!--[cite: 13]--></td>
+                <td>CNPIC<!--[cite: 13]--></td>
+                <td><strong>2 años</strong><!--[cite: 13]--></td>
+                <td>Confidencial<!--[cite: 13]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>4. Agentes del Sistema</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🏢 Administración y Órganos</h4>
+            <ul>
+                <li><strong>SES:</strong> Aprueba planes (excepto el PES).<!--[cite: 13]--></li>
+                <li><strong>CNPIC:</strong> Órgano ministerial encargado de dar impulso y coordinar actividades SES en materia de IC.<!--[cite: 13]--></li>
+                <li><strong>Ministerio y organismos:</strong> 1 por cada sector estratégico al menos.<!--[cite: 13]--></li>
+                <li><strong>Delegación Gobierno:</strong> Implantación PPE y PAO.<!--[cite: 13]--></li>
+                <li><strong>CCAA y ciudades aut.:</strong> Propone al SES a través del CNIP zona crítica.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>👥 Comisiones y Operadores</h4>
+            <ul>
+                <li><strong>Comisión Nacional para PIC:</strong> Órgano colegiado adscrito al SES; aprueba PES; designa operadores críticos; Presidente (SES); Secretario (Director CNPIC).<!--[cite: 13]--></li>
+                <li><strong>Grupo de Trabajo Interdepartamental:</strong> Elaborar PES; proponer a comisión operadores críticos; Preside (Director CNPIC).<!--[cite: 13]--></li>
+                <li><strong>Operadores Críticos:</strong> Elaborar PSO y PPE; designar Responsable de Seguridad y Enlace; designar Delegado de Seguridad.<!--[cite: 13]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>5. Ciberseguridad</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">💻 Objetivos Fundamentales</div>
+        <p>Disponibilidad, integridad y confidencialidad <strong>(CID)</strong>.<!--[cite: 13]--></p>
+    </div>
+
+    <ul>
+        <li><strong>INCIBE:</strong> Adscrito a SE Telecomunicaciones e Infraestructuras Digitales en M. Transformación Digital y Función Pública.<!--[cite: 13]-->
+            <ul>
+                <li><strong>INCIBE-CERT</strong> (León).<!--[cite: 13]--></li>
+                <li><strong>Oficina Seguridad Internauta (OSI).</strong><!--[cite: 13]--></li>
+            </ul>
+        </li>
+        <li><strong>OCC (Oficina Coordinación Ciberseguridad):</strong> Depende orgánica y funcionalmente de D.G. Coordinación y Estudios.<!--[cite: 13]--></li>
+        <li><strong>CETSE:</strong> Centro Tecnológico de Seguridad (El Pardo, Madrid).<!--[cite: 13]--></li>
+        <li><strong>ENISA:</strong> Agencia Europea para Ciberseguridad (Atenas, Grecia).<!--[cite: 13]--></li>
+        <li><strong>ALERTPIC:</strong> Aplicación de comunicación entre operadores críticos y CNPIC.<!--[cite: 13]--></li>
+        <li><strong>CSIRT (CERT):</strong> Equipos de respuesta a incidentes.<!--[cite: 13]--></li>
+    </ul>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema14.html" class="btn-nav">← Tema Anterior (T14)</a>
+        <a href="tema16.html" class="btn-nav">Tema Siguiente (T16) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
