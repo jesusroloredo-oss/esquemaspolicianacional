@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 13: Seguridad Privada - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🔐 Tema 13: Seguridad Privada</h1>
+
+    <h2>1. Definiciones Clave</h2>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>📋 Conceptos Generales</h4>
+            <ul>
+                <li><strong>Actividades:</strong> ámbitos.<!--[cite: 19]--></li>
+                <li><strong>Servicios:</strong> acciones.<!--[cite: 19]--></li>
+                <li><strong>Funciones:</strong> facultades.<!--[cite: 19]--></li>
+                <li><strong>Medidas:</strong> disposiciones.<!--[cite: 19]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>👥 Sujetos de SP</h4>
+            <ul>
+                <li><strong>Prestadores servicio SP:</strong> empresas, despachos detectives y personal habilitado.<!--[cite: 19]--></li>
+                <li><strong>Personal SP:</strong> personas físicas con habilitación.<!--[cite: 19]--></li>
+                <li><strong>Personal acreditado:</strong> profesores centros formación, ingenieros y técnicos.<!--[cite: 19]--></li>
+                <li><strong>Usuario:</strong> los que contratan.<!--[cite: 19]--></li>
+                <li><strong>Despacho detectives:</strong> oficinas, uno o más detectives.<!--[cite: 19]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>⚙️ Elementos y Productos</h4>
+            <ul>
+                <li><strong>Homologado:</strong> especificaciones técnicas.<!--[cite: 19]--></li>
+                <li><strong>Acreditado, certificado, verificado:</strong> reconocido por entidad independiente.<!--[cite: 19]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">🎯 Fines de la Seguridad Privada</div>
+        <ul>
+            <li>Satisfacer las necesidades legítimas de seguridad o información.<!--[cite: 19]--></li>
+            <li>Contribuir a garantizar la seguridad pública.<!--[cite: 19]--></li>
+            <li>Complementar el monopolio de seguridad correspondiente al Estado.<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Actividades de Seguridad Privada</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>✅ ACTIVIDADES DE S.P.<!--[cite: 19]--></th>
+                <th>🔄 COMPATIBLES<!--[cite: 19]--></th>
+                <th>❌ EXCLUIDAS<!--[cite: 19]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vigilancia y protección bienes<!--[cite: 19]--></td>
+                <td>Fabricación, comercialización<!--[cite: 19]--></td>
+                <td>Autoprotección<!--[cite: 19]--></td>
+            </tr>
+            <tr>
+                <td>Acompañar, defender y protección personas<!--[cite: 19]--></td>
+                <td>Conexión centrales<!--[cite: 19]--></td>
+                <td>Obtención por uno mismo de información<!--[cite: 19]--></td>
+            </tr>
+            <tr>
+                <td>Depósito y custodia<!--[cite: 19]--></td>
+                <td>Planificación, consulta y asesoría<!--[cite: 19]--></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Transporte y distribución objetos<!--[cite: 19]--></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Instalación y mantenimiento aparatos, equipos<!--[cite: 19]--></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Explotación centrales<!--[cite: 19]--></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Investigación perseguible a instancia de parte<!--[cite: 19]--></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. Principios de Actuación</h2>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚨 Principio Supremo y Oportunidad</div>
+        <p>La SP en España es <strong>complementaria, auxiliar y subordinada</strong> a las FCS.<!--[cite: 19]--> Tienen la obligación absoluta de colaborar e informar.<!--[cite: 19]--><br>
+        <strong>¡OJO AL TEST!</strong> El principio de <strong>NO Oportunidad</strong>: La oportunidad es exclusiva de las FCS.<!--[cite: 19]--></p>
+    </div>
+
+    <ul>
+        <li>Legalidad.<!--[cite: 19]--></li>
+        <li>Integridad.<!--[cite: 19]--></li>
+        <li>Dignidad en el ejercicio de sus funciones.<!--[cite: 19]--></li>
+        <li>Corrección en el trato a ciudadanos.<!--[cite: 19]--></li>
+        <li>Congruencia.<!--[cite: 19]--></li>
+        <li>Proporcionalidad.<!--[cite: 19]--></li>
+        <li>Reserva profesional.<!--[cite: 19]--></li>
+        <li>Colaboración FCS.<!--[cite: 19]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Habilitación en Seguridad Privada</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🪪 Requisitos Generales</h4>
+            <ul>
+                <li><strong>Tarjeta de Identidad Profesional (TIP).</strong><!--[cite: 19]--></li>
+                <li>Corresponde a la <strong>D.G.P.</strong>, <em>salvo</em> guardas rurales y sus especialidades que corresponden a la <strong>D.G. de la Guardia Civil</strong>.<!--[cite: 19]--></li>
+                <li><strong>No sancionado:</strong> 2 o 4 años anteriores por infracciones graves o muy graves respectivamente en materia de SP.<!--[cite: 19]--></li>
+                <li><strong>No separado:</strong> de FCS o FA, en los 2 años anteriores.<!--[cite: 19]--></li>
+                <li><strong>FP activo:</strong> NO puede, <em>salvo</em> director de seguridad del centro al que pertenezcan.<!--[cite: 19]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🎓 Titulaciones Exigidas</h4>
+            <ul>
+                <li><strong>Vigilantes (seguridad/explosivos), escoltas, guardas rurales:</strong> certificación acreditada.<!--[cite: 19]--></li>
+                <li><strong>Jefes y directores:</strong> título universitario oficial de grado en ámbito de seguridad, o título de curso de dirección de seguridad reconocido por el MI.<!--[cite: 19]--></li>
+                <li><strong>Detectives privados:</strong> título universitario oficial de grado en ámbito de investigación privada, o título de curso de dirección de seguridad reconocido por el MI.<!--[cite: 19]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>5. Jefes VS Directores de Seguridad</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>👮 JEFES DE SEGURIDAD<!--[cite: 19]--></th>
+                <th>👔 DIRECTORES DE SEGURIDAD<!--[cite: 19]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul>
+                        <li>Su figura es <strong>obligatoria</strong>.<!--[cite: 19]--></li>
+                        <li>Dirigen a los vigilantes y organizan los servicios.<!--[cite: 19]--></li>
+                        <li>Trabajan para la <strong>empresa</strong> de seguridad.<!--[cite: 19]--></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Dirigen el departamento de seguridad.<!--[cite: 19]--></li>
+                        <li>Trabajan para el <strong>cliente</strong>.<!--[cite: 19]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>6. Infracciones y Prescripciones</h2>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⏳ Regla Mnemotécnica (Prescripciones)</div>
+        <p>El tribunal siempre pregunta cuándo "caduca" una infracción. ¡Usa este truco!<!--[cite: 19]--><br>
+        <strong>"Un, dos, tres... Seguridad Privada es"</strong><!--[cite: 19]--></p>
+        <p>Tanto para las <em>Infracciones</em> como para las <em>Sanciones</em>, los plazos son <strong>idénticos</strong>:<!--[cite: 19]--></p>
+        <ul>
+            <li>Faltas <strong>LEVES</strong>: Prescriben al <strong>1 año</strong>.<!--[cite: 19]--></li>
+            <li>Faltas <strong>GRAVES</strong>: Prescriben a los <strong>2 años</strong>.<!--[cite: 19]--></li>
+            <li>Faltas <strong>MUY GRAVES</strong>: Prescriben a los <strong>3 años</strong>.<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <h3>Ejemplos de Infracciones Clave (Casos Prácticos)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>GRAVEDAD<!--[cite: 19]--></th>
+                <th>EJEMPLOS TÍPICOS DE EXAMEN<!--[cite: 19]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>MUY GRAVES</strong><!--[cite: 19]--></td>
+                <td>
+                    <ul>
+                        <li>Prestar servicios sin habilitación (intrusismo).<!--[cite: 19]--></li>
+                        <li>Negarse a auxiliar a las FCS cuando se lo pidan expresamente.<!--[cite: 19]--></li>
+                        <li>Usar armas sin autorización.<!--[cite: 19]--></li>
+                        <li>Investigar delitos públicos (detectives).<!--[cite: 19]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>GRAVES</strong><!--[cite: 19]--></td>
+                <td>
+                    <ul>
+                        <li>Retener la documentación personal de un ciudadano.<!--[cite: 19]--></li>
+                        <li>Abusar de sus atribuciones.<!--[cite: 19]--></li>
+                        <li>Falta de respeto a los ciudadanos.<!--[cite: 19]--></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>LEVES</strong><!--[cite: 19]--></td>
+                <td>
+                    <ul>
+                        <li>Mal uso del uniforme.<!--[cite: 19]--></li>
+                        <li>No llevar la placa identificativa visible.<!--[cite: 19]--></li>
+                        <li>Descortesía con el público.<!--[cite: 19]--></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema12.html" class="btn-nav">← Tema Anterior (T12)</a>
+        <a href="tema14.html" class="btn-nav">Tema Siguiente (T14) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
