@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 39: Redes Informáticas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+            
+            /* Colores específicos para capas OSI */
+            --layer-1: #94a3b8; --layer-2: #38bdf8; --layer-3: #f472b6;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .badge-layer { background-color: #333; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-left: 5px; }
+        .bg-l1 { background-color: var(--layer-1); color: #000; }
+        .bg-l2 { background-color: var(--layer-2); color: #000; }
+        .bg-l3 { background-color: var(--layer-3); color: #000; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        /* MNEMOTECNIAS VERTICALES */
+        .mnemo-stack { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+        .mnemo-row { display: flex; align-items: center; background: var(--table-header); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 12px; font-weight: bold;}
+        .mnemo-letter { font-size: 1.4em; color: var(--title-sec); margin-right: 15px; width: 30px; text-align: center; border-right: 2px solid var(--border-color); padding-right: 10px;}
+        .mnemo-desc { font-weight: normal; font-size: 0.9em; margin-left: 10px; color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge, .badge-layer { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+            .mnemo-row { break-inside: avoid; border: 1px solid #555 !important; margin-bottom: 2px; padding: 4px !important;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🌐 Tema 39: Redes Informáticas</h1>
+
+    <h2>1. Clasificación por Alcance Geográfico</h2>
+    
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Pregunta casi obligatoria</div>
+        <p>Te pondrán un escenario (ej. el bluetooth de tu móvil o las oficinas de un banco) y tendrás que elegir el tipo.<!--[cite: 20]--></p>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>📱 PAN (Personal Area Network)</h4>
+            <p>Red de área personal. Distancias muy cortas (pocos metros).<!--[cite: 20]--><br>
+            <em>Ejemplo clásico:</em> conexión Bluetooth entre el móvil y unos auriculares.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🏢 LAN (Local Area Network)</h4>
+            <p>Red de área local. Abarca un edificio, una casa o una oficina.<!--[cite: 20]--><br>
+            Suelen usar tecnología Ethernet o Wi-Fi.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🎓 CAN (Campus Area Network)</h4>
+            <p>Área geográfica limitada, como campus universitario o base militar.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🏙️ MAN (Metropolitan Area Network)</h4>
+            <p>Red de área metropolitana. Interconecta varias LAN dentro de una misma ciudad o municipio.<!--[cite: 20]--><br>
+            <em>Ejemplo:</em> red de bibliotecas municipales.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🌍 WAN (Wide Area Network)</h4>
+            <p>Red de área amplia. Cubre regiones, países o continentes.<!--[cite: 20]--><br>
+            <em>Ejemplo supremo:</em> Internet.<!--[cite: 20]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>2. Topologías de Red (La forma física)</h2>
+    <p>El tribunal busca que identifiques el <strong>punto débil</strong> de cada estructura física.<!--[cite: 20]--></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>TOPOLOGÍA<!--[cite: 20]--></th>
+                <th>CARACTERÍSTICA PRINCIPAL<!--[cite: 20]--></th>
+                <th>¿QUÉ PASA SI FALLA? (Punto Débil)<!--[cite: 20]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>➖ Bus</strong><!--[cite: 20]--></td>
+                <td>Todos los equipos se conectan a un único cable central (troncal o backbone).<!--[cite: 20]--></td>
+                <td>Si el cable central se rompe, toda la red cae.<!--[cite: 20]--></td>
+            </tr>
+            <tr>
+                <td><strong>⭐ Estrella</strong><!--[cite: 20]--></td>
+                <td>Todos los equipos se conectan a un nodo central (normalmente un Switch).<!--[cite: 20]--></td>
+                <td>Si un equipo falla, no pasa nada. Si el Switch central cae, la red entera cae. (Es la más usada hoy en día).<!--[cite: 20]--></td>
+            </tr>
+            <tr>
+                <td><strong>⭕ Anillo</strong><!--[cite: 20]--></td>
+                <td>Cada equipo está conectado al siguiente formando un círculo cerrado.<!--[cite: 20]--></td>
+                <td>Si un cable o equipo falla, la red se interrumpe (salvo que sea un anillo doble).<!--[cite: 20]--></td>
+            </tr>
+            <tr>
+                <td><strong>🕸️ Malla</strong><!--[cite: 20]--></td>
+                <td>Todos los equipos están conectados directamente con todos los demás.<!--[cite: 20]--></td>
+                <td>Es la más segura y tolerante a fallos. Si un cable se rompe, la información busca otra ruta.<!--[cite: 20]--></td>
+            </tr>
+            <tr>
+                <td><strong>🌲 Árbol</strong><!--[cite: 20]--></td>
+                <td>Parte de un dispositivo central y se va ramificando.<!--[cite: 20]--></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. Dispositivos de Interconexión</h2>
+    
+    <div class="callout callout-danger">
+        <div class="callout-title">🚨 ¡Trampa de Examen! (Las Capas)</div>
+        <p>Asegúrate de memorizar en qué "capa" del modelo OSI trabaja cada aparato.<!--[cite: 20]--></p>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🔌 Hub (Concentrador) <span class="badge-layer bg-l1">Capa 1</span></h4>
+            <p>Dispositivo "tonto". Recibe un paquete de datos y lo envía de golpe a todos los equipos conectados (broadcast).<!--[cite: 20]--></p>
+            <ul>
+                <li>Genera mucho tráfico y hoy está obsoleto.<!--[cite: 20]--></li>
+                <li>Trabaja en la <strong>Capa 1 (Física)</strong>.<!--[cite: 20]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🔀 Switch (Conmutador) <span class="badge-layer bg-l2">Capa 2</span></h4>
+            <p>Dispositivo "inteligente". Aprende qué equipo está en cada puerto leyendo la Dirección MAC.<!--[cite: 20]--></p>
+            <ul>
+                <li>Envía los datos solo al destinatario correcto.<!--[cite: 20]--></li>
+                <li>Trabaja en la <strong>Capa 2 (Enlace de datos)</strong>.<!--[cite: 20]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>📡 Router (Enrutador) <span class="badge-layer bg-l3">Capa 3</span></h4>
+            <p>Su función no es unir ordenadores, sino unir diferentes redes entre sí (ej. tu red de casa con Internet).<!--[cite: 20]--></p>
+            <ul>
+                <li>Utiliza Direcciones IP para buscar el mejor camino.<!--[cite: 20]--></li>
+                <li>Trabaja en la <strong>Capa 3 (Red)</strong>.<!--[cite: 20]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. Direccionamiento: IP vs MAC</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">🔑 La regla de oro de las direcciones</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>DIRECCIÓN MAC<!--[cite: 20]--></th>
+                    <th>DIRECCIÓN IP<!--[cite: 20]--></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Matrícula <strong>física</strong> de la tarjeta de red.<!--[cite: 20]--></td>
+                    <td>Dirección <strong>lógica</strong>.<!--[cite: 20]--></td>
+                </tr>
+                <tr>
+                    <td>Es fija, viene de fábrica y no cambia.<!--[cite: 20]--></td>
+                    <td>Es asignada y sí puede cambiar (ej. al cambiar de Wi-Fi).<!--[cite: 20]--></td>
+                </tr>
+                <tr>
+                    <td>Mide <strong>48 bits</strong> (formato hexadecimal).<!--[cite: 20]--></td>
+                    <td>IPv4 (<strong>32 bits</strong>) o IPv6 (<strong>128 bits</strong>).<!--[cite: 20]--></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Versiones de IP</h3>
+    <ul>
+        <li><strong>IPv4:</strong> Versión clásica. Está formada por <strong>32 bits</strong>, divididos en 4 bloques de números separados por puntos (ej. 192.168.1.33). Cada bloque va del 0 al 255.<!--[cite: 20]--></li>
+        <li><strong>IPv6:</strong> Nueva versión (creada porque se agotaron las IPv4). Formada por <strong>128 bits</strong>, escrita en formato hexadecimal y separada por dos puntos (ej. 2001:0db8:85a3:0000...).<!--[cite: 20]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Protocolos Clave (El Lenguaje de la Red)</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>📖 DNS</h4>
+            <p><strong>El "traductor".</strong> Traduce nombres fáciles de recordar (www.policia.es) a direcciones IP numéricas que entienden las máquinas.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>📦 DHCP</h4>
+            <p><strong>El "repartidor".</strong> Asigna de forma automática direcciones IP temporales a los equipos que se conectan a una red.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>✅ TCP</h4>
+            <p><strong>Transporte fiable.</strong> Asegura que el paquete llegue a su destino y en orden (ej. descargar un archivo).<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>⏩ UDP</h4>
+            <p><strong>Transporte rápido (no fiable).</strong> No comprueba si llegan todos los paquetes (ej. llamadas de voz o streaming de vídeo; si pierdes un fotograma, sigue emitiendo).<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>📁 FTP</h4>
+            <p>Transferencia de archivos.<!--[cite: 20]--></p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="callout callout-info">
+        <div class="callout-title">🧠 Mnemotécnica: Capas del Modelo OSI (1 al 7)</div>
+        <p>Recuerda la frase: <strong>FERT SPA</strong><!--[cite: 20]--></p>
+        <div class="mnemo-stack">
+            <div class="mnemo-row"><span class="mnemo-letter">F</span> 1. Física <span class="mnemo-desc">(Cables, ondas, bits puros)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">E</span> 2. Enlace de datos <span class="mnemo-desc">(Dirección MAC, Switch)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">R</span> 3. Red <span class="mnemo-desc">(Dirección IP, Router)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">T</span> 4. Transporte <span class="mnemo-desc">(Protocolos TCP y UDP)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">S</span> 5. Sesión <span class="mnemo-desc">(Mantiene la conexión abierta)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">P</span> 6. Presentación <span class="mnemo-desc">(Traduce y cifra los datos, ej. JPEG, SSL)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">A</span> 7. Aplicación <span class="mnemo-desc">(Lo que ve el usuario: HTTP, DNS, FTP)</span><!--[cite: 20]--></div>
+        </div>
+    </div>
+
+    <div class="callout callout-info">
+        <div class="callout-title">🧠 Mnemotécnica: Capas TCP-IP</div>
+        <p>Recuerda la frase: <strong>A TIA</strong><!--[cite: 20]--></p>
+        <div class="mnemo-stack">
+            <div class="mnemo-row"><span class="mnemo-letter">A</span> Capa Aplicación <span class="mnemo-desc">(Protocolos alto nivel)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">T</span> Capa Transporte <span class="mnemo-desc">(Errores fiabilidad datos. Fragmentar)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">I</span> Capa Internet <span class="mnemo-desc">(Envía paquetes)</span><!--[cite: 20]--></div>
+            <div class="mnemo-row"><span class="mnemo-letter">A</span> Capa Acceso de Red <span class="mnemo-desc">(Enlace Físico)</span><!--[cite: 20]--></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>6. Servidores</h2>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🖥️ Servidor DNS</h4>
+            <p>Aceptar consultas, responder con resultados. Traduce IP a nombres de dominio.<!--[cite: 20]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🎭 Servidor Proxy</h4>
+            <p>Programa o dispositivo intermedio. Oculta la IP del cliente.<!--[cite: 20]--></p>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema34.html" class="btn-nav">← Tema Anterior (T34)</a>
+        <a href="tema40.html" class="btn-nav">Tema Siguiente (T40) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
