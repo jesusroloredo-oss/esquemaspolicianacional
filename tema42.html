@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 42: Origen de las armas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #ea580c; --title-sec: #d97706; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #fff7ed; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #fffbeb; --callout-abstract-border: #d97706;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #fb923c; --title-sec: #f97316; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(249, 115, 22, 0.1); --callout-abstract-border: #fb923c;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 7.5pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🔫 Tema 42: Origen de las armas</h1>
+
+    <h2>1. Definiciones Fundamentales</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Características del Arma</h4>
+            <ul>
+                <li><strong>Arma antigua:</strong> anterior 1 de enero 1890.<!--[cite: 21]--></li>
+                <li><strong>Arma artística:</strong> ornamentación o particularidad.<!--[cite: 21]--></li>
+                <li><strong>Arma basculante:</strong> sin depósito de municiones, cartucho en recámara.<!--[cite: 21]--></li>
+                <li><strong>Arma fuego corta:</strong> cañón no excede 30 cm o longitud total 60 cm.<!--[cite: 21]--></li>
+                <li><strong>Arma Flobert:</strong> percusión anular, no sobrepasa 100 J.<!--[cite: 21]--></li>
+                <li><strong>Arma puesta a tiro o tomada en diente:</strong> lista para disparar, falta terminar.<!--[cite: 21]--></li>
+                <li><strong>Arma de guerra:</strong> calibre igual o superior a 20 mm (Nota legal general, el temario indica calibre igual o superior a 22 mm).<!--[cite: 21]--></li>
+            </ul>
+        </div>
+        
+        <div class="bloque">
+            <h4>Otros Conceptos</h4>
+            <ul>
+                <li><strong>Desmilitarización:</strong> transformar en civil o desbaratar arma de guerra.<!--[cite: 21]--></li>
+                <li><strong>Imitación / réplica:</strong> NO se transforma en arma.<!--[cite: 21]--></li>
+                <li><strong>Reproducción:</strong> igual que original.<!--[cite: 21]--></li>
+            </ul>
+            <hr>
+            <h4>Depósitos y Envases</h4>
+            <ul>
+                <li><strong>Depósito armas de guerra:</strong> fabricación, comercialización o tenencia de <strong>una sola</strong>.<!--[cite: 21]--></li>
+                <li><strong>Depósito armas reglamentadas:</strong> fabricación, comercialización o tenencia de <strong>cinco o más</strong>.<!--[cite: 21]--></li>
+                <li><strong>Envases comercio interior:</strong> no más de 25 armas.<!--[cite: 21]--></li>
+                <li><strong>Envases comercio exterior:</strong> cualquier número con garantía de seguridad.<!--[cite: 21]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">💥 Vainas y Sistemas de Percusión</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>SISTEMA<!--[cite: 21]--></th>
+                    <th>CARACTERÍSTICAS<!--[cite: 21]--></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Berdam / Europeo</strong><!--[cite: 21]--></td>
+                    <td>NO tiene yunque que pertenezca a la vaina, y tiene <strong>2 oídos</strong>.<!--[cite: 21]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Boxer</strong><!--[cite: 21]--></td>
+                    <td>Yunque metálico sobre carga, tiene <strong>1 oído</strong>.<!--[cite: 21]--></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <h2>2. Categorías de Armas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CATEGORÍA<!--[cite: 21]--></th>
+                <th>TIPO DE ARMAS INCLUIDAS<!--[cite: 21]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1ª Categoría</strong><!--[cite: 21]--></td>
+                <td>Armas de fuego cortas (pistolas y revólveres).<!--[cite: 21]--></td>
+            </tr>
+            <tr>
+                <td><strong>2ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Armas de fuego largas para vigilancia y guardería.<br><!--[cite: 21]-->
+                    2. Armas de fuego largas rayadas.<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>3ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Armas de fuego largas rayadas para tiro deportivo.<br><!--[cite: 21]-->
+                    2. Escopetas y armas de fuego largas de ánima lisa.<br><!--[cite: 21]-->
+                    3. Armas de aire/gas comprimido &lt; 24,2 J.<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>4ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Carabinas y pistolas de tiro semiautomático y de repetición (Doble acción).<br><!--[cite: 21]-->
+                    2. Carabinas y pistolas de ánima lisa o rayada (Acción simple).<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>5ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Armas blancas.<br><!--[cite: 21]-->
+                    2. Cuchillos o machetes usados por unidades militares.<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>6ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Antiguas o históricas, en museos.<br><!--[cite: 21]-->
+                    2. Anteriores a 1 de enero de 1890.<br><!--[cite: 21]-->
+                    3. Resto de armas históricas o de valor artístico.<br><!--[cite: 21]-->
+                    4. Armas de avancarga.<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>7ª Categoría</strong><!--[cite: 21]--></td>
+                <td>
+                    1. Armas de inyección anestésica.<br><!--[cite: 21]-->
+                    2. Ballestas.<br><!--[cite: 21]-->
+                    3. Lanza cabos.<br><!--[cite: 21]-->
+                    4. Armas Flobert.<br><!--[cite: 21]-->
+                    5. Fusiles para pesca submarina.<br><!--[cite: 21]-->
+                    6. Armas de alarma y señales, lanza-bengalas.<!--[cite: 21]-->
+                </td>
+            </tr>
+            <tr>
+                <td><strong>8ª Categoría</strong><!--[cite: 21]--></td>
+                <td>Armas acústicas y de salvas.<!--[cite: 21]--></td>
+            </tr>
+            <tr>
+                <td><strong>9ª Categoría</strong><!--[cite: 21]--></td>
+                <td>Armas inutilizadas.<!--[cite: 21]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>3. Licencias y Documentación</h2>
+    <p>La licencia es el documento que autoriza el uso y tenencia de armas de <strong>1ª, 2ª, 3ª y 7ª.2 y 7ª.3</strong> categoría.<!--[cite: 21]--></p>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>📋 Tipos de Licencia</h4>
+            <ul>
+                <li><strong>Licencia A:</strong> FA, Cuerpos Seguridad y Vigilancia Aduanera.<!--[cite: 21]--></li>
+                <li><strong>Licencia B:</strong> Particulares (riesgo, necesidad).<!--[cite: 21]--></li>
+                <li><strong>Licencia C:</strong> Seguridad Privada.<!--[cite: 21]--></li>
+                <li><strong>Licencia D:</strong> Caza mayor, arma larga rayada.<!--[cite: 21]--></li>
+                <li><strong>Licencia E:</strong> Caza menor, deportivo, ballestas, lanza cabos.<!--[cite: 21]--></li>
+                <li><strong>Licencia F:</strong> Federaciones deportivas.<!--[cite: 21]--></li>
+                <li><strong>Licencia AE:</strong> Autorización especial. 6ª categoría (históricas o antiguas) y 7ª.4 (Flobert).<!--[cite: 21]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>📑 Documentación Adicional</h4>
+            <ul>
+                <li><strong>Guía de pertenencia:</strong> Expedida por Intervención de Armas y Explosivos.<!--[cite: 21]--></li>
+                <li><strong>Revista de armas:</strong> Comprueba que coincide numeración. Se pasa en el mes de <strong>Abril</strong>, excepto Seguridad Privada (Licencia C) que es en <strong>Mayo</strong>.<!--[cite: 21]--></li>
+                <li><strong>Tarjeta de armas:</strong> Para llevar y usar armas de categoría 4.<!--[cite: 21]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. Componentes Esenciales y Balística</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">🧩 Componentes Esenciales</div>
+        <ul>
+            <li><strong>Arma Corta:</strong> Armazón, Cañón, Tambor, Corredera y Cerrojo. <br><em>(Mnemotécnica: <strong>ACTCC</strong>)</em><!--[cite: 21]--></li>
+            <li><strong>Arma Larga:</strong> Caja/cajón, cañón, cerrojo o báscula y cierre o bloqueo de cierre.<!--[cite: 21]--></li>
+        </ul>
+    </div>
+
+    <h3>Fases de la Balística</h3>
+    <ul>
+        <li><strong>Balística interior:</strong> Ocurre en el interior del arma.<!--[cite: 21]--></li>
+        <li><strong>Balística exterior:</strong> Desde la boca de fuego hasta incidir en el blanco.<!--[cite: 21]--></li>
+        <li><strong>Balística de efectos:</strong> Desde el impacto hasta que se detiene.<!--[cite: 21]--></li>
+    </ul>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">📏 Distancia de Disparo y Efectos</div>
+        <ul>
+            <li><strong>Bocajarro:</strong> Tocando el cuerpo. Efectos: <strong>Hoffman</strong> o golpe de mina.<!--[cite: 21]--></li>
+            <li><strong>Quemarropa:</strong> Quemaduras y tatuaje.<!--[cite: 21]--></li>
+            <li><strong>Corta distancia (0 - 1,5 metros):</strong> Tatuaje y Halo de Fisch.<!--[cite: 21]--></li>
+            <li><strong>Media distancia (1,5 - 100 metros):</strong> Halo de Fisch.<!--[cite: 21]--></li>
+            <li><strong>Larga distancia (+100 metros):</strong> Halo de Fisch.<!--[cite: 21]--></li>
+        </ul>
+    </div>
+
+    <div class="callout callout-info">
+        <div class="callout-title">🖥️ Sistema IBIS (Sistema Integrado de Identificación Balística)</div>
+        <ul>
+            <li><strong>Bulletrax:</strong> Para proyectiles.<!--[cite: 21]--></li>
+            <li><strong>Brasstrax:</strong> Para vainas.<!--[cite: 21]--></li>
+        </ul>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema41.html" class="btn-nav">← Tema Anterior (T41)</a>
+        <a href="tema43.html" class="btn-nav">Tema Siguiente (T43) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
