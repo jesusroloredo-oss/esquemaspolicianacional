@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Temas 24 y 25: PRL - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .keyword { color: var(--title-sec); font-weight: bold; font-style: italic; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge, .keyword { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🦺 Temas 24 y 25: Prevención de Riesgos Laborales (General y CNP)</h1>
+
+    <h2>1. Definiciones Clave (Art. 4 LPRL)</h2>
+    <p>El tribunal juega a intercambiar las palabras "Riesgo", "Prevención" y "Daño". Busca la palabra clave en el enunciado.<!--[cite: 16]--></p>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🛡️ Prevención</h4>
+            <p>Conjunto de actividades o medidas (...) con el fin de evitar o disminuir los riesgos.<!--[cite: 16]--></p>
+            <p>Clave: <span class="keyword">Medidas previas</span><!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>⚠️ Riesgo Laboral</h4>
+            <p>La posibilidad de que un trabajador sufra un determinado daño derivado del trabajo.<!--[cite: 16]--></p>
+            <p>Clave: <span class="keyword">Posibilidad</span><!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>🤕 Daños derivados del trabajo</h4>
+            <p>Las enfermedades, patologías o lesiones sufridas con motivo u ocasión del trabajo.<!--[cite: 16]--></p>
+            <p>Clave: <span class="keyword">Ya ha ocurrido</span><!--[cite: 16]--></p>
+        </div>
+    </div>
+    
+    <ul>
+        <li><strong>Riesgo grave e inminente:</strong> Aquel que resulte probable racionalmente que se materialice en un futuro inmediato y pueda suponer un daño grave para la salud.<!--[cite: 16]--></li>
+    </ul>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚨 La Trampa del EPI (Equipo de Protección Individual)</div>
+        <p>Un chaleco antibalas, un casco de UIP o unos guantes anticorte <strong>sí son EPIs</strong>.<!--[cite: 16]--> PERO, la ley dice expresamente que <strong>NO se consideran EPIs</strong> las ropas de trabajo corrientes ni los uniformes que no estén específicamente destinados a proteger la salud (ej. el polo azul de manga corta o la gorra de plato no son EPIs, son uniformidad).<!--[cite: 16]--></p>
+    </div>
+
+    <hr>
+
+    <h2>2. Principios de la Acción Preventiva (Art. 15 LPRL)</h2>
+    <p>El empresario (o la Administración) debe aplicar las medidas siguiendo un orden lógico.<!--[cite: 16]--></p>
+
+    <ul>
+        <li>Evitar los riesgos. (Lo primero es intentar que no exista el riesgo).<!--[cite: 16]--></li>
+        <li>Evaluar los riesgos que no se puedan evitar.<!--[cite: 16]--></li>
+        <li>Combatir los riesgos en su origen.<!--[cite: 16]--></li>
+        <li>Adaptar el trabajo a la persona. (Especialmente en los puestos y elección de equipos).<!--[cite: 16]--></li>
+        <li>Evolución técnica. (Tener en cuenta los avances tecnológicos).<!--[cite: 16]--></li>
+        <li>Sustituir lo peligroso por lo que entrañe poco o ningún peligro.<!--[cite: 16]--></li>
+        <li>Planificar la prevención.<!--[cite: 16]--></li>
+        <li>Instrucciones debidas a los trabajadores.<!--[cite: 16]--></li>
+    </ul>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ REGLA DE ORO (¡Pregunta de examen!)</div>
+        <p><strong>Protección Colectiva antes que la Individual.</strong><!--[cite: 16]--> Siempre va primero lo que protege a todos (ej. una red anticaídas) que lo que protege a uno (ej. un arnés).<!--[cite: 16]--></p>
+    </div>
+
+    <hr>
+
+    <h2>3. Otras Definiciones Disciplinares</h2>
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Seguridad en el trabajo</h4>
+            <p>Condiciones que suponen accidentes. Analíticas u operativas.<!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>Higiene Industrial</h4>
+            <p>Situaciones peligro para la salud.<!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>Medicina del trabajo</h4>
+            <p>Estudia accidentes y enfermedades consecuencia de la actividad laboral.<!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>Ergonomía</h4>
+            <p>Adecuar el trabajo al hombre.<!--[cite: 16]--></p>
+        </div>
+        <div class="bloque">
+            <h4>Psicosociología</h4>
+            <p>Estudia daños psicológicos y sociales en el entorno laboral.<!--[cite: 16]--></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. Órganos de Prevención en la Policía Nacional (RD 2/2006)</h2>
+    
+    <ul>
+        <li><strong>Comisión de Seguridad y Salud Policial:</strong> Es el órgano colegiado paritario a <strong>nivel nacional</strong>.<!--[cite: 16]--> Está compuesto por el mismo número de representantes de la Administración y de los Sindicatos Policiales (Miembros organizaciones sindicales + representantes Admón).<!--[cite: 16]--></li>
+        <li><strong>Comités de Seguridad y Salud (Periféricos):</strong> Órganos paritarios y colegiados de participación a <strong>nivel territorial</strong>.<!--[cite: 16]--> Hay uno por Jefatura Superior y conjunto de servicios centrales (Delegados de prevención + representantes Admón).<!--[cite: 16]--></li>
+        <li><strong>Delegados de Prevención en la Policía:</strong> Son elegidos <strong>POR y ENTRE</strong> los representantes sindicales (los propios policías).<!--[cite: 16]--> Deben estar en servicio activo o segunda actividad.<!--[cite: 16]--></li>
+        <li><strong>IPySS:</strong> Auditorías cada <strong>5 años</strong>.<!--[cite: 16]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Tabla Comparativa de Delegados de Prevención</h2>
+    <p>Memoriza la diferencia entre el ámbito General (empresa privada) y el de la Policía Nacional.<!--[cite: 16]--></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2" style="background-color: var(--callout-abstract-bg); text-align: center;">🏢 RÉGIMEN GENERAL<!--[cite: 16]--></th>
+                <th colspan="2" style="background-color: var(--callout-info-bg); text-align: center;">👮 POLICÍA NACIONAL<!--[cite: 16]--></th>
+            </tr>
+            <tr>
+                <th>Nº TRABAJADORES<!--[cite: 16]--></th>
+                <th>DELEGADOS<!--[cite: 16]--></th>
+                <th>Nº TRABAJADORES (Policías)<!--[cite: 16]--></th>
+                <th>DELEGADOS<!--[cite: 16]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hasta 30<!--[cite: 16]--></td>
+                <td><strong>1</strong><!--[cite: 16]--></td>
+                <td>Hasta 500<!--[cite: 16]--></td>
+                <td><strong>0</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>31 - 49<!--[cite: 16]--></td>
+                <td><strong>1</strong><!--[cite: 16]--></td>
+                <td>501 - 1000<!--[cite: 16]--></td>
+                <td><strong>1</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>50 - 100<!--[cite: 16]--></td>
+                <td><strong>2</strong><!--[cite: 16]--></td>
+                <td>1001 - 2000<!--[cite: 16]--></td>
+                <td><strong>2</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>101 - 500<!--[cite: 16]--></td>
+                <td><strong>3</strong><!--[cite: 16]--></td>
+                <td>2001 - 3000<!--[cite: 16]--></td>
+                <td><strong>3</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>501 - 1000<!--[cite: 16]--></td>
+                <td><strong>4</strong><!--[cite: 16]--></td>
+                <td>3001 - 4000<!--[cite: 16]--></td>
+                <td><strong>4</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>1001 - 2000<!--[cite: 16]--></td>
+                <td><strong>5</strong><!--[cite: 16]--></td>
+                <td>4001 - 5000<!--[cite: 16]--></td>
+                <td><strong>5</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>2001 - 3000<!--[cite: 16]--></td>
+                <td><strong>6</strong><!--[cite: 16]--></td>
+                <td>5001 - 6000<!--[cite: 16]--></td>
+                <td><strong>6</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>3001 - 4000<!--[cite: 16]--></td>
+                <td><strong>7</strong><!--[cite: 16]--></td>
+                <td>6001 - 7000<!--[cite: 16]--></td>
+                <td><strong>7</strong><!--[cite: 16]--></td>
+            </tr>
+            <tr>
+                <td>+ 4000<!--[cite: 16]--></td>
+                <td><strong>8</strong><!--[cite: 16]--></td>
+                <td>+ 7000<!--[cite: 16]--></td>
+                <td><strong>8</strong><!--[cite: 16]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- NAVEGACIÓN INFERIOR (Saltando al 26 directamente como solicitaste) -->
+    <div class="nav-temas">
+        <a href="tema23.html" class="btn-nav">← Tema Anterior (T23)</a>
+        <a href="tema26.html" class="btn-nav">Tema Siguiente (T26) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
