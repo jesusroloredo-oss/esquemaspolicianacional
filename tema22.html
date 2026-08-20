@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 22: Estatuto de la Víctima - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        
+        /* Secuencia OAV */
+        .fases-oav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .fase-box { flex: 1; min-width: 150px; background: var(--callout-abstract-bg); border: 1px solid var(--callout-abstract-border); padding: 15px; text-align: center; border-radius: 8px; font-weight: bold; color: var(--title-main); }
+        .fase-num { display: block; font-size: 1.5em; margin-bottom: 5px; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            
+            .fases-oav { display: flex !important; flex-wrap: nowrap !important; gap: 2px !important; }
+            .fase-box { padding: 5px !important; font-size: 7.5pt; border: 1px solid #555 !important; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>⚖️ Tema 22: Estatuto de la Víctima</h1>
+
+    <h2>1. Disposiciones Generales</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🌍 Ámbito de Aplicación</h4>
+            <ul>
+                <li>Víctimas de los delitos cometidos en España o que puedan ser perseguidos en España.<!--[cite: 18]--></li>
+                <li>También aplicable a <strong>víctimas residentes en España</strong> por hechos cometidos en la UE.<!--[cite: 18]--></li>
+                <li>Aplicable tengan <strong>residencia legal o no</strong>.<!--[cite: 18]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>👥 Tipos de Víctima</h4>
+            <ul>
+                <li><strong>Víctima directa:</strong> Persona física.<!--[cite: 18]--></li>
+                <li><strong>Víctima indirecta:</strong> Hasta <strong>tercer grado</strong> de parentesco.<!--[cite: 18]--></li>
+                <li><span style="color: red; font-weight: bold;">NO aplicable</span> a terceros.<!--[cite: 18]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚫 Prohibición Expresa</div>
+        <p>Está vedada (prohibida) la mediación y conciliación en casos de <strong>violencia sexual o de género</strong>.<!--[cite: 18]--></p>
+    </div>
+
+    <hr>
+
+    <h2>2. Derechos Básicos</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>DERECHO<!--[cite: 18]--></th>
+                <th>ESPECIFICACIONES / CLAVES<!--[cite: 18]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Entender y ser entendida</strong><!--[cite: 18]--></td>
+                <td>Lenguaje sencillo y accesible; podrá estar acompañada de una persona de su elección.<!--[cite: 18]--></td>
+            </tr>
+            <tr>
+                <td><strong>Información desde el 1er contacto</strong><!--[cite: 18]--></td>
+                <td>De manera inmediata, información adaptada.<!--[cite: 18]--></td>
+            </tr>
+            <tr>
+                <td><strong>Derechos como denunciante</strong><!--[cite: 18]--></td>
+                <td>Copia certificada, asistencia lingüística y traducción.<!--[cite: 18]--></td>
+            </tr>
+            <tr>
+                <td><strong>Información sobre la causa penal</strong><!--[cite: 18]--></td>
+                <td>La víctima puede solicitar <em>no ser informada</em>.<!--[cite: 18]--></td>
+            </tr>
+            <tr>
+                <td><strong>Traducción e interpretación</strong><!--[cite: 18]--></td>
+                <td>Intérprete gratuito. Excepcionalmente la traducción escrita de documentos podrá sustituirse de forma oral.<!--[cite: 18]--></td>
+            </tr>
+            <tr>
+                <td><strong>Acceso servicios de asistencia/apoyo</strong><!--[cite: 18]--></td>
+                <td>Gratuita y confidencial. <em>Incluye hijos y menores sujetos a víctima de violencia de género, sexual o doméstica</em>.<!--[cite: 18]--></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⏳ El Período de Reflexión (¡Cuidado en el test!)</div>
+        <p><strong>45 días:</strong> Los abogados no podrán dirigirse ni a la víctima directa ni a la indirecta durante este plazo.<!--[cite: 18]--></p>
+    </div>
+
+    <hr>
+
+    <h2>3. Oficina de Asistencia a la Víctima (OAV)</h2>
+    
+    <ul>
+        <li>El Gobierno y las CCAA organizarán las oficinas.<!--[cite: 18]--></li>
+        <li><strong>Acceso:</strong> NO requiere denuncia previa.<!--[cite: 18]--></li>
+        <li>Se extiende a <strong>familiares</strong> por delitos de especial gravedad.<!--[cite: 18]--></li>
+        <li>Prestan <strong>servicio de apoyo a justicia restaurativa</strong> y solución extrajudicial.<!--[cite: 18]--></li>
+    </ul>
+
+    <h3>Las 4 Fases de la OAV</h3>
+    <div class="fases-oav">
+        <div class="fase-box"><span class="fase-num">1</span> Acogida - Orientación<!--[cite: 18]--></div>
+        <div class="fase-box"><span class="fase-num">2</span> Información<!--[cite: 18]--></div>
+        <div class="fase-box"><span class="fase-num">3</span> Intervención<!--[cite: 18]--></div>
+        <div class="fase-box"><span class="fase-num">4</span> Seguimiento<!--[cite: 18]--></div>
+    </div>
+
+    <hr>
+
+    <h2>4. Otros Datos de Interés</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>💰 Reembolsos y Denuncia Falsa</h4>
+            <p>Si la víctima es condenada por denuncia falsa o simulación de delito:<!--[cite: 18]--></p>
+            <ul>
+                <li>Se exige reembolso + interés del <strong>50%</strong>.<!--[cite: 18]--></li>
+                <li>Hay un derecho a liquidar de <strong>4 años</strong>.<!--[cite: 18]--></li>
+            </ul>
+        </div>
+        
+        <div class="bloque">
+            <h4>🛡️ Medidas de Protección Especial</h4>
+            <p>Dirigidas a menores, personas con discapacidad necesitadas de protección especial y víctimas de violencias sexuales:<!--[cite: 18]--></p>
+            <ul>
+                <li>Sus declaraciones en fase de investigación <strong>serán grabadas</strong>.<!--[cite: 18]--></li>
+                <li>Dichas grabaciones <strong>podrán ser reproducidas en juicio</strong>.<!--[cite: 18]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR (Conexión T21 al T23) -->
+    <div class="nav-temas">
+        <a href="tema21.html" class="btn-nav">← Tema Anterior (T21)</a>
+        <a href="tema23.html" class="btn-nav">Tema Siguiente (T23) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
