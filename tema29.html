@@ -56,6 +56,12 @@
         .bloque-con h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.05em;}
         .bloque-con p { margin: 0; font-size: 0.95em; }
 
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+        
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
             .container { padding: 20px 15px; border-radius: 8px; }
@@ -87,6 +93,7 @@
             .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left: 3px solid #333 !important; break-inside: avoid; page-break-inside: avoid; }
             .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
             .callout p, .callout ul { margin: 0; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
         }
     </style>
 </head>
