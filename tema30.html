@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 30: Principios Éticos - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #059669; /* Verde para bloque Ciencias Sociales */
+            --title-sec: #047857; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #ecfdf5; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #34d399; --title-sec: #10b981; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; }
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .keyword { color: var(--title-sec); font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🌍 Tema 30: Principios Éticos</h1>
+
+    <h2>1. Definiciones Fundamentales</h2>
+    
+    <div class="callout callout-abstract">
+        <div class="callout-title">🧠 Socialización (Rocher)</div>
+        <p>Persona aprende e interioriza elementos socioculturales de su medio ambiente y los integra en su personalidad.<!--[cite: 18]--></p>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🌱 Fases de la Socialización</h4>
+            <ul>
+                <li><strong>Primaria:</strong> Familia y grupo de amigos.<!--[cite: 18]--></li>
+                <li><strong>Secundaria:</strong> Grupos de trabajo, escuela y medios de comunicación.<!--[cite: 18]--></li>
+                <li><strong>Terciaria / Resocialización:</strong> Se pierden comportamientos aprendidos en favor de otros (transculturación).<!--[cite: 18]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>🧩 Procesos Culturales</h4>
+            <ul>
+                <li><strong>Endoculturación:</strong> Primer trasplante cultural.<!--[cite: 18]--></li>
+                <li><strong>Aculturación:</strong> Recepción y asimilación.<!--[cite: 18]--> Se juntan dos culturas y forman una.<!--[cite: 18]--></li>
+                <li><strong>Transculturación:</strong> Sustituir elementos de cultura propia por otra.<!--[cite: 18]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>2. Teorías del Desarrollo</h2>
+
+    <div class="grid-blocks">
+        <!-- PIAGET -->
+        <div class="bloque" style="border-top: 4px solid var(--title-main);">
+            <h4>🧠 Teoría del Desarrollo Cognitivo (Piaget)</h4>
+            <p>Se centra en el desarrollo cognitivo infantil.<!--[cite: 18]--></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>FASES<!--[cite: 18]--></th>
+                        <th>EDAD<!--[cite: 18]--></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sensoriomotora<!--[cite: 18]--></td>
+                        <td>0 - 2 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Preoperacional<!--[cite: 18]--></td>
+                        <td>2 - 7 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Operaciones concretas<!--[cite: 18]--></td>
+                        <td>7 - 11 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Operaciones formales<!--[cite: 18]--></td>
+                        <td>A partir de 12 años<!--[cite: 18]--></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FREUD -->
+        <div class="bloque" style="border-top: 4px solid var(--title-sec);">
+            <h4>🛋️ Teoría Psicoanalítica (Freud)</h4>
+            <p>Se centra en las pulsiones sexuales.<!--[cite: 18]--></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>FASES<!--[cite: 18]--></th>
+                        <th>EDAD<!--[cite: 18]--></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Oral<!--[cite: 18]--></td>
+                        <td>Primer año de vida<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Anal<!--[cite: 18]--></td>
+                        <td>2 - 3 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Fálica<!--[cite: 18]--></td>
+                        <td>4 - 6 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Periodo de latencia (pubertad)<!--[cite: 18]--></td>
+                        <td>7 - 12 años<!--[cite: 18]--></td>
+                    </tr>
+                    <tr>
+                        <td>Fase genital (adolescencia)<!--[cite: 18]--></td>
+                        <td>12 años en adelante<!--[cite: 18]--></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>3. Definiciones de Contravalores</h2>
+    
+    <p><strong>Racismo:</strong> Despreciar y discriminar a otro ser humano por una característica, normalmente raza o etnia.<!--[cite: 18]--></p>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">🚨 Tipos de Racismo (Ojo al test)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>TIPO<!--[cite: 18]--></th>
+                    <th>CARACTERÍSTICA PRINCIPAL<!--[cite: 18]--></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tradicional (Todorov)</strong><!--[cite: 18]--></td>
+                    <td>Existencia de diferentes razas, <em>sin que conlleve discriminación</em>.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Aversivo</strong><!--[cite: 18]--></td>
+                    <td>Afirmar no ser racista y simpatizar.<!--[cite: 18]--> Con otros el comportamiento varía.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Simbólico</strong><!--[cite: 18]--></td>
+                    <td>No inferioridad, pero sí afectan a símbolos o creencias propias.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Biológico</strong><!--[cite: 18]--></td>
+                    <td>Superioridad desde el nacimiento.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Sutil</strong><!--[cite: 18]--></td>
+                    <td>No se expresa debido a presión social, pero es racista respecto a minorías.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Institucional</strong><!--[cite: 18]--></td>
+                    <td>Políticas por parte del Estado que perjudican la igualdad.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Ambivalente</strong><!--[cite: 18]--></td>
+                    <td>Consideración positiva y negativa a la vez.<!--[cite: 18]--></td>
+                </tr>
+                <tr>
+                    <td><strong>Regresivo</strong><!--[cite: 18]--></td>
+                    <td>Solo en momentos de tensión o amenaza.<!--[cite: 18]--></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>🗣️ Fanatismo</h4>
+            <p>Pasión exagerada en defensas de creencias u opiniones.<!--[cite: 18]--></p>
+            <p><strong>Tipología de Merton:</strong><!--[cite: 18]--></p>
+            <ul>
+                <li>Liberales consecuentes<!--[cite: 18]--></li>
+                <li>Liberales tibios<!--[cite: 18]--></li>
+                <li>Fanáticos tímidos<!--[cite: 18]--></li>
+                <li>Fanáticos activos<!--[cite: 18]--></li>
+            </ul>
+        </div>
+        
+        <div class="bloque">
+            <h4>📖 Fundamentalismo</h4>
+            <p>Creencia estricta en la interpretación de libros sagrados.<!--[cite: 18]--></p>
+            
+            <h4 style="margin-top: 15px;">🚫 Sectarismo</h4>
+            <p>Defiende y sigue con fanatismo e intransigencia una idea o doctrina filosófica, religiosa o ideológica, <strong>sin admitir crítica</strong>.<!--[cite: 18]--></p>
+            
+            <h4 style="margin-top: 15px;">🏟️ Hooliganismo</h4>
+            <p>Surgió en Inglaterra.<!--[cite: 18]--> Designa grupos que cometen actos vandálicos principalmente en actos deportivos.<!--[cite: 18]--></p>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema29.html" class="btn-nav">← Tema Anterior (T29)</a>
+        <a href="tema31.html" class="btn-nav">Tema Siguiente (T31) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
