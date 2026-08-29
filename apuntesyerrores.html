@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Apuntes y Errores - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #e11d48; /* Carmesí oscuro */
+            --title-sec: #be123c; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #fff1f2; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --respuesta-bg: #ffe4e6; --respuesta-color: #9f1239;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #fb7185; --title-sec: #f43f5e; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --respuesta-bg: rgba(225, 29, 72, 0.2); --respuesta-color: #fda4af;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        
+        .tema-block { background: var(--bg-container); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); overflow: hidden;}
+        .tema-header { background: var(--table-header); padding: 12px 20px; font-weight: bold; font-size: 1.2em; color: var(--title-sec); border-bottom: 2px solid var(--title-main); }
+        .error-list { list-style-type: none; padding: 0; margin: 0; }
+        .error-list li { padding: 12px 20px; border-bottom: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 4px; }
+        .error-list li:last-child { border-bottom: none; }
+        .error-list li:nth-child(even) { background-color: var(--table-row-even); }
+        
+        /* Estilos visuales para la pregunta y respuesta */
+        .flecha { color: var(--title-main); font-weight: bold; margin: 0 8px; font-size: 1.2em; }
+        .respuesta { background-color: var(--respuesta-bg); color: var(--respuesta-color); padding: 3px 8px; border-radius: 6px; font-weight: bold; display: inline-block; margin-top: 2px;}
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            .error-list li { padding: 10px 15px; font-size: 0.95em; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            .tema-block { break-inside: avoid; margin-bottom: 10px !important; border: 1px solid #000 !important; }
+            .tema-header { background: #eee !important; color: #000 !important; border-bottom: 1px solid #000 !important; padding: 4px 8px !important; font-size: 10pt !important; }
+            .error-list li { padding: 4px 8px !important; border-bottom: 1px solid #ccc !important; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 4px; }
+            .respuesta { background: transparent !important; color: #000 !important; border: 1px solid #000; padding: 1px 4px; font-size: 8pt; }
+            .flecha { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>📝 Apuntes y Correcciones (Fallos)</h1>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 1: El Derecho</div>
+        <ul class="error-list">
+            <li>Plazos desaparición<!--[cite: 19]--></li>
+            <li>Carta naturaleza<!--[cite: 19]--></li>
+            <li>diez años últimas noticias<!--[cite: 19]--></li>
+            <li>mayor 14 años asistido<!--[cite: 19]--></li>
+            <li>Ley personal <span class="flecha">→</span> <span class="respuesta">nacionalidad<!--[cite: 19]--></span></li>
+            <li>Denegar adquisición nacionalidad por residencia Orden Público e Interés Nacional (OPINa)<!--[cite: 19]--></li>
+            <li>Derecho optar nacionalidad padre o madre originariamente español y nacido en España<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 2 y 3: Constitución Española</div>
+        <ul class="error-list">
+            <li>Sufragio diputados: universal, libre, igual, directo y secreto<!--[cite: 19]--></li>
+            <li>Derecho petición SOLO españoles<!--[cite: 19]--></li>
+            <li>Gobierno en funciones NO puede <span class="flecha">→</span> <span class="respuesta">Presentar Proyectos de Ley<!--[cite: 19]--></span></li>
+            <li>Convocar Congreso 30 días siguientes promulgación<!--[cite: 19]--></li>
+            <li>CE garantiza autonomia (140) <span class="flecha">→</span> <span class="respuesta">Municipios<!--[cite: 19]--></span></li>
+            <li>Proyectos reforma constitucional primera votación 3/5 cada Cámara<!--[cite: 19]--></li>
+            <li>Adjuntos DP serán nombrados DP previa conformidad Cámaras<!--[cite: 19]--></li>
+            <li>Gobierno en funciones Delegaciones legislativas quedan en SUSPENSO<!--[cite: 19]--></li>
+            <li>Miembros CGPJ<!--[cite: 19]--></li>
+            <li>El Estado podrá transferir o delegar a las CCAA <span class="flecha">→</span> <span class="respuesta">Ley Orgánica<!--[cite: 19]--></span></li>
+            <li>Ppio artículo 25 CE <span class="flecha">→</span> <span class="respuesta">Ppio legalidad penal<!--[cite: 19]--></span></li>
+            <li>Vicepresidente Mesa Congreso Cuatro<!--[cite: 19]--></li>
+            <li>Impugnación Gobierno, resolución autonómica <span class="flecha">→</span> <span class="respuesta">5 meses<!--[cite: 19]--></span></li>
+            <li>Sesión plenaria Cámara sea secreta <span class="flecha">→</span> <span class="respuesta">El Pleno de la Cámara<!--[cite: 19]--></span></li>
+            <li>Plazo DP recurso inconstitucionalidad 3 meses<!--[cite: 19]--></li>
+            <li>NO disolución anticipada Congreso estado excepción o sitio<!--[cite: 19]--></li>
+            <li>jurisdicción ordinaria<!--[cite: 19]--></li>
+            <li>Alegar ppios rectores política social y económica jurisdicción ordinaria<!--[cite: 19]--></li>
+            <li>Cortes Generales Inviolables<!--[cite: 19]--></li>
+            <li>Gobierno extraordinaria y urgente <span class="flecha">→</span> <span class="respuesta">Decreto Ley<!--[cite: 19]--></span></li>
+            <li>Alteración límite provincial aprobada Cortes Generales<!--[cite: 19]--></li>
+            <li>Delito de traición acusación cuarta parte miembros Congreso<!--[cite: 19]--></li>
+            <li>Decreto ley, convalidar o derogar <span class="flecha">→</span> <span class="respuesta">30 días<!--[cite: 19]--></span></li>
+            <li>DP se dirige a presidentes<!--[cite: 19]--></li>
+            <li>DP se relaciona Comision Mixta<!--[cite: 19]--></li>
+            <li>Aprobar proyecto urgente ley <span class="flecha">→</span> <span class="respuesta">15 días<!--[cite: 19]--></span></li>
+            <li>Prerrogativa cuarta parte miembros Congreso<!--[cite: 19]--></li>
+            <li>Justicia, libertad y la seguridad y promover el bien de cuantos la integran<!--[cite: 19]--></li>
+            <li>Fundamento paz social dignidad de la persona<!--[cite: 19]--></li>
+            <li>Investigaciones comisiones investigación comunicadas <span class="flecha">→</span> <span class="respuesta">MF<!--[cite: 19]--></span></li>
+            <li>Vincular a tribunales conclusión Comisión Investigación NUNCA<!--[cite: 19]--></li>
+            <li>Validez actas, control Judicial<!--[cite: 19]--></li>
+            <li>Sanción leyes Rey <span class="flecha">→</span> <span class="respuesta">15 días<!--[cite: 19]--></span></li>
+            <li>Ministros o PG Refrendan actos del Rey<!--[cite: 19]--></li>
+            <li>Aprobado proyecto ley, Capítulo Segundo Título III, Presidente Congreso, da cuenta P. Senado<!--[cite: 19]--></li>
+            <li>Recurso de inconstitucionalidad plazo 9 meses<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 4: UE</div>
+        <ul class="error-list">
+            <li>Consejo Europeo reuniones <span class="flecha">→</span> <span class="respuesta">4 veces al año<!--[cite: 19]--></span></li>
+            <li>OEDE, no consintiese entrega <span class="flecha">→</span> <span class="respuesta">60 días<!--[cite: 19]--></span></li>
+            <li>Acta Única Europea<!--[cite: 19]--></li>
+            <li>10 años<!--[cite: 19]--></li>
+            <li>Sustituye unanimidad por mayoría cualificada<!--[cite: 19]--></li>
+            <li>Fiscal Delegado Europeo se necesitan<!--[cite: 19]--></li>
+            <li>España entra UE <span class="flecha">→</span> <span class="respuesta">1986<!--[cite: 19]--></span></li>
+            <li>TJUE <span class="flecha">→</span> <span class="respuesta">TJ (1 juez EM y 11 abogados) y Tribunal General<!--[cite: 19]--></span></li>
+            <li>Jueces TEDH Asamblea Parlamentaria<!--[cite: 19]--></li>
+            <li>Consejo de la UE - Intereses nacionales<!--[cite: 19]--></li>
+            <li>Impulso Consejo Europeo<!--[cite: 19]--></li>
+            <li>Combatir falsificación euro <span class="flecha">→</span> <span class="respuesta">Europol<!--[cite: 19]--></span></li>
+            <li>Espaldas mojadas <span class="flecha">→</span> <span class="respuesta">México<!--[cite: 19]--></span></li>
+            <li>Red Europea de Funcionarios de Enlace de Inmigración - Porosidad fronteras y ofertas de trabajo<!--[cite: 19]--></li>
+            <li>Consejo de Europa - EUROsocial cohesión inmigrantes latinoamericanos<!--[cite: 19]--></li>
+            <li>Centro Análisis de Inteligencia de la UE Bruselas<!--[cite: 19]--></li>
+            <li>Presidente y Vicepresidentes TJUE <span class="flecha">→</span> <span class="respuesta">3 años<!--[cite: 19]--></span></li>
+            <li>Comité Político y Social Europeo (CESE) <span class="flecha">→</span> <span class="respuesta">Órgano consultivo, Bruselas<!--[cite: 19]--></span></li>
+            <li>Tratado Ámsterdam <span class="flecha">→</span> <span class="respuesta">1999<!--[cite: 19]--></span></li>
+            <li>Notificación VERDE Europol persona comete delitos y probable reincidencia<!--[cite: 19]--></li>
+            <li>Palacio de Paz de La Haya - Consejo administración FRONTEX <span class="flecha">→</span> <span class="respuesta">4 años<!--[cite: 19]--></span></li>
+            <li>Corte Internacional de Justicia<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 5: AGE</div>
+        <ul class="error-list">
+            <li>DG RD del CM a propuesta de titular Departamento o PG<!--[cite: 19]--></li>
+            <li>SDG IMC por Ministro, SE o Subsecretario, funcionarios A1<!--[cite: 19]--></li>
+            <li>Directores insulares RPT, por el Delegado de Gobierno<!--[cite: 19]--></li>
+            <li>Jefatura de FCSE Delegados de Gobierno<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 6: Empleado público</div>
+        <ul class="error-list">
+            <li>UE Personal Funcionario igual condiciones<!--[cite: 19]--></li>
+            <li>Ascenso estructura de puestos <span class="flecha">→</span> <span class="respuesta">Carrera vertical<!--[cite: 19]--></span></li>
+            <li>Monoparental, descanso obligatorio 22 semanas<!--[cite: 19]--></li>
+            <li>Enfermedades graves, intervención sin hospitalización 1º grado 5 días<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 7: Ministerio del Interior</div>
+        <ul class="error-list">
+            <li>Ejerce Relatoría Nacional TSH <span class="flecha">→</span> <span class="respuesta">Gabinete SES<!--[cite: 19]--></span></li>
+            <li>Secretario General Categoria Subsecretario y nombrado RD del CM a propuesta del Ministerio PG<!--[cite: 19]--></li>
+            <li>SDG de Secretaria General Instituciones Penitenciarias<!--[cite: 19]--></li>
+            <li>Depende persona titula Subsecretaria Interior Oficina Presupuestaria<!--[cite: 19]--></li>
+            <li>Asesoramiento técnico a la SES ministerios y organismos integrados en el PIC<!--[cite: 19]--></li>
+            <li>Instituto Nacional de Ciberseguridad (INCIBE) <span class="flecha">→</span> <span class="respuesta">M.Transformación Digital y Función Pública<!--[cite: 19]--></span></li>
+            <li>Delegación Gobierno Violencia de Género Dirección General<!--[cite: 19]--></li>
+            <li>Delegaciones Gobierno adscritas organicamente Ministerio de Política Territorial y Memoria Democrática<!--[cite: 19]--></li>
+            <li>Delegado de Gobierno adscrito<!--[cite: 19]--></li>
+            <li>Tramitación asuntos con Delegación y Subdelegación SES<!--[cite: 19]--></li>
+            <li>Ejercer coordinación Centro de Cooperación Policial y Aduanera D.G. Coordinación y Estudios<!--[cite: 19]--></li>
+            <li>Unidad Policía Judicial Delitos Terrorismo CITCO (TEPOL) <span class="flecha">→</span> <span class="respuesta">SES<!--[cite: 19]--></span></li>
+            <li>Dirección y coordinación Cooperación Policial Internacional<!--[cite: 19]--></li>
+            <li>Oficina Presupuestaria Subsecretario interior<!--[cite: 19]--></li>
+            <li>Relaciones MI y DP Secretaría General Técnica<!--[cite: 19]--></li>
+            <li>Gabinetes Subsecretario interior y SES <span class="flecha">→</span> <span class="respuesta">Uno (ambos)<!--[cite: 19]--></span></li>
+            <li>Intervención Delegada Subsecretaria Interior<!--[cite: 19]--></li>
+            <li>Dirección relaciones y coordinación Comité Europeo para la Prevención Tortura <span class="flecha">→</span> <span class="respuesta">SES<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 8: DGP</div>
+        <ul class="error-list">
+            <li>Puestos de servicio MeCA<!--[cite: 19]--></li>
+            <li>Estafas especial transcendencia - CNIF FRONTEX BC Delincuencia Económica y Fiscal<!--[cite: 19]--></li>
+            <li>SDG Recursos Humanos y Formación - RED AZUL GOIV - SDG Logística e Innovación<!--[cite: 19]--></li>
+            <li>Designa miembros tribunal Unidad de Planificación de Recursos Humanos<!--[cite: 19]--></li>
+            <li>Régimen interior y seguridad Canillas DGP<!--[cite: 19]--></li>
+            <li>Policía servicios especiales, infracción régimen situación administrativa<!--[cite: 19]--></li>
+            <li>Centro nacional de Comunicaciones Unidad Planificación Estratégica y Coordinación (DAO)<!--[cite: 19]--></li>
+            <li>Unidad Central de Apoyo Tecnológico D.Operaciones y Transformación Digital<!--[cite: 19]--></li>
+            <li>U.C. Delincuencia Económica y Fiscal Unidad adscrita a la Fiscalía Especial contra la Corrupción y CO<!--[cite: 19]--></li>
+            <li>Responsable nacional interlocución social en materia delitos odio U.C. Participación Ciudadana<!--[cite: 19]--></li>
+            <li>Brigada Acción Exterior UCRIF<!--[cite: 19]--></li>
+            <li>Brigada de Respuesta Inmigración Clandestina <span class="flecha">→</span> <span class="respuesta">U.C.Fronteras<!--[cite: 19]--></span></li>
+            <li>División Económica y Técnica y División Documentación S.D.G Logística e Innovación<!--[cite: 19]--></li>
+            <li>Secretario Junta de Gobierno Titular Jefatura División de Personal<!--[cite: 19]--></li>
+            <li>NO depende de DGP con nivel de SDG SDG Recursos Humanos y Innovación (sería Formación)<!--[cite: 19]--></li>
+            <li>Observatorio tecnológico policía Unidad Central Apoyo Tecnológico<!--[cite: 19]--></li>
+            <li>Suspensión funciones falta grave 5 días a 3 meses<!--[cite: 19]--></li>
+            <li>Unidad Central Ciberdelincuencia Centro Prevención Respuesta E-Crime<!--[cite: 19]--></li>
+            <li>Órgano interlocución con S.G.Interpol Oficina Central Nacional de Interpol PN<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 9: LO 2/1986</div>
+        <ul class="error-list">
+            <li>Criterios selección y formación policías locales CCAA<!--[cite: 19]--></li>
+            <li>Estudios personal a 2ª actividad y jubilación por lesiones Consejo de Policía<!--[cite: 19]--></li>
+            <li>Representantes Administración Consejo Policía Ministro de Interior<!--[cite: 19]--></li>
+            <li>Comité de Expertos <span class="flecha">→</span> <span class="respuesta">Consejo de Política de Seguridad<!--[cite: 19]--></span></li>
+            <li>Miembros Comité Expertos Anualmente<!--[cite: 19]--></li>
+            <li>Proponer programas de formación y perfeccionamiento de Policías Comité de Expertos<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 10: Extranjería</div>
+        <ul class="error-list">
+            <li>Renovar autorización RT <span class="flecha">→</span> <span class="respuesta">2 meses antes caduque<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 11: Infracciones extranjería</div>
+        <ul class="error-list">
+            <li>Contratación trabajadores autorización no habilita ocupación Leve<!--[cite: 19]--></li>
+            <li>Infracción leve trabajo cuenta PROPIA, con permiso de residencia<!--[cite: 19]--></li>
+            <li>Infracción leve hasta 500€<!--[cite: 19]--></li>
+            <li>Entrada ilegal, prohibición 2 años<!--[cite: 19]--></li>
+            <li>Expulsión comunitarios Motivos imperiosos seguridad pública<!--[cite: 19]--></li>
+            <li>Procedimiento ordinario, plazo voluntario <span class="flecha">→</span> <span class="respuesta">7 a 30 días desde momento notificación<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 12: Protección Internacional</div>
+        <ul class="error-list">
+            <li>Denegación derecho asilo peligro seg España y condena firme delito grave constituya amenaza comunidad<!--[cite: 19]--></li>
+            <li>Pretensión Protocolo sobre Estatuto Refugiados Eliminar las limitaciones geográficas y temporales de la Convención<!--[cite: 19]--></li>
+            <li>Convención Estatuto Refugiados (Ginebra) <span class="flecha">→</span> <span class="respuesta">1961<!--[cite: 19]--></span></li>
+            <li>Protocolo Estatuto Refugiados Nueva York<!--[cite: 19]--></li>
+            <li>Procedimiento solicitar apátrida Siempre a instancia de parte<!--[cite: 19]--></li>
+            <li>Permanencia segunda fase máximo 12 meses<!--[cite: 19]--></li>
+            <li>Medidas cautelares asilo y ps <span class="flecha">→</span> <span class="respuesta">salud y seguridad públicas<!--[cite: 19]--></span></li>
+            <li>No admisión a trámite asilo y ps 1 mes y silencio positivo<!--[cite: 19]--></li>
+            <li>Ampliar plazo notificación 10 días resolución MI<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 13: Seguridad Privada</div>
+        <ul class="error-list">
+            <li>Vigilantes seguridad y guardas <span class="flecha">→</span> <span class="respuesta">No 55 años<!--[cite: 19]--></span></li>
+            <li>Conservación informes detectives privados 3 años<!--[cite: 19]--></li>
+            <li>Actividades SP y compatibles<!--[cite: 19]--></li>
+            <li>Destrucción grabaciones detectives SP 3 años<!--[cite: 19]--></li>
+            <li>Actividades compatibles SP - Investigaciones privadas Reservado<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 14: Seguridad Ciudadana</div>
+        <ul class="error-list">
+            <li>Procedimiento seguridad ciudadana caduca <span class="flecha">→</span> <span class="respuesta">1 año<!--[cite: 19]--></span></li>
+            <li>Impiden funcionamiento servicios emergencia Infracción grave<!--[cite: 19]--></li>
+            <li>Juez autoriza interceptación medios comunicación plazo 72h<!--[cite: 19]--></li>
+            <li>Asientos libro-registro cancelan de oficio 3 años<!--[cite: 19]--></li>
+            <li>Dar conocimiento diligencias 24 horas<!--[cite: 19]--></li>
+            <li>Conservación grabaciones ACUDE <span class="flecha">→</span> <span class="respuesta">Al menos un mes<!--[cite: 19]--></span></li>
+            <li>Instalación videocámaras fijas resolución dos meses<!--[cite: 19]--></li>
+            <li>Periodos renovación DNI<!--[cite: 19]--></li>
+            <li>Obstaculizar funcionamientos servicios de emergencia Grave<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 15: PIC</div>
+        <ul class="error-list">
+            <li>PES revisión <span class="flecha">→</span> <span class="respuesta">2 AÑOS<!--[cite: 19]--></span></li>
+            <li>Grupo Trabajo Interdepartamental Bianual, semestralmente<!--[cite: 19]--></li>
+            <li>Preservar, garantizar y promover existencia cultura seguridad Comisión Nacional PIC<!--[cite: 19]--></li>
+            <li>Plan Nacional Infraestructuras Críticas <span class="flecha">→</span> <span class="respuesta">documento ESTRUCTURAL<!--[cite: 19]--></span></li>
+            <li>Impulsar y coordinar mecanismos seguridad infraestructuras M.Interior<!--[cite: 19]--></li>
+            <li>Colabora con ministerios y organismos <span class="flecha">→</span> <span class="respuesta">SES<!--[cite: 19]--></span></li>
+            <li>Modificación datos o instrucciones SES<!--[cite: 19]--></li>
+            <li>Identifica ámbitos SES<!--[cite: 19]--></li>
+            <li>Órgano técnico de coordinación SES ciberseguridad Oficina Coordinación Cibernética<!--[cite: 19]--></li>
+            <li>Presta apoyo técnico a SES y organismos Oficina Coordinación Cibernética<!--[cite: 19]--></li>
+            <li>PSO, plazo notificación 6 meses<!--[cite: 19]--></li>
+            <li>Plan Nacional de las IC coordinadamente <span class="flecha">→</span> <span class="respuesta">Plan de Prevención y Protección Antiterrorista<!--[cite: 19]--></span></li>
+            <li>Aprobar zona crítica <span class="flecha">→</span> <span class="respuesta">SES<!--[cite: 19]--></span></li>
+            <li>Niveles PIC <span class="flecha">→</span> <span class="respuesta">bajo, moderado, medio, alto y muy alto<!--[cite: 19]--></span></li>
+            <li>Actualización Catálogo Nacional Infraestructuras Criticas CNPIC<!--[cite: 19]--></li>
+            <li>Comisión Nacional para la PIC reunión una vez al año<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 16: Derecho Penal General</div>
+        <ul class="error-list">
+            <li>Penas menos graves prescriben <span class="flecha">→</span> <span class="respuesta">5 años<!--[cite: 19]--></span></li>
+            <li>Medidas seguridad >3 años prescriben <span class="flecha">→</span> <span class="respuesta">10 años<!--[cite: 19]--></span></li>
+            <li>PPL &lt;5 años Enjuiciamiento rápido<!--[cite: 19]--></li>
+            <li>P.P.L no superior 9 años <span class="flecha">→</span> <span class="respuesta">Procedimiento abreviado<!--[cite: 19]--></span></li>
+            <li>Dolo indirecto sabe que PUEDE provocar resultado lesivo no querido (ES POSIBLE)<!--[cite: 19]--></li>
+            <li>Procedimiento Simplificado 2meses<!--[cite: 19]--></li>
+            <li>Alevosía modo o forma DIRECTA, NO INDIRECTA<!--[cite: 19]--></li>
+            <li>Penas aplicables personas jurídicas SIEMPRE Graves<!--[cite: 19]--></li>
+            <li>Principio Intervención Mínima Subsidiariedad y fragmentación<!--[cite: 19]--></li>
+            <li>Autores tentativa Inferior 1 o 2 grados<!--[cite: 19]--></li>
+            <li>No agravante genérica artículo 22 Ensañamiento<!--[cite: 19]--></li>
+            <li>Elimina causas justificación antijuricidad (j-j)<!--[cite: 19]--></li>
+            <li>Duración penas accesorias igual que principal<!--[cite: 19]--></li>
+            <li>Movimiento reflejos, eliminan la acción<!--[cite: 19]--></li>
+            <li>Se acepta perdón privados y semiprivados<!--[cite: 19]--></li>
+            <li>Derecho Penal Objetivo Código Penal y Derecho Penal Especial<!--[cite: 19]--></li>
+            <li>Pena autores en tentativa Inferior en 1 o 2 grados<!--[cite: 19]--></li>
+            <li>Principio impunidad actos internos <span class="flecha">→</span> <span class="respuesta">Principio de hecho<!--[cite: 19]--></span></li>
+            <li>Trabajos beneficio comunidad solo consentimiento del reo<!--[cite: 19]--></li>
+            <li>Inhabilitación profesional Medida privativa de libertad<!--[cite: 19]--></li>
+            <li>Delito continuado pluralidad de acciones que ofendan a uno o vario sujetos<!--[cite: 19]--></li>
+            <li>Penas-multa Física (10 días-2 años y 2-400€) Jurídica (10 días-5 años y 30-5000€)<!--[cite: 19]--></li>
+            <li>Pena prisión de 20 años, prescribe <span class="flecha">→</span> <span class="respuesta">25 años<!--[cite: 19]--></span></li>
+            <li>Delitos descubrimiento y revelación secretos, denuncia <span class="flecha">→</span> <span class="respuesta">No necesaria si menor o discapacitada<!--[cite: 19]--></span></li>
+            <li>Delito por imprudencia menos grave consideración <span class="flecha">→</span> <span class="respuesta">Leve<!--[cite: 19]--></span></li>
+            <li>LECRIM, delincuencia organizada 3 o más personas<!--[cite: 19]--></li>
+            <li>Animus necandi Querer matar<!--[cite: 19]--></li>
+            <li>Animus laedendi Querer lesionar<!--[cite: 19]--></li>
+            <li>Libidinoso <span class="flecha">→</span> <span class="respuesta">Sexual<!--[cite: 19]--></span></li>
+            <li>Inhabilitación absoluta 6 a 20 años<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 17: Derecho Penal Especial</div>
+        <ul class="error-list">
+            <li>Homicidio imprudencia menos grave denuncia de la persona agraviada o su representante legal<!--[cite: 19]--></li>
+            <li>Homicidio subsiguiente a delito sexual superior en grado<!--[cite: 19]--></li>
+            <li>Lesiones agrava menor de 14 años<!--[cite: 19]--></li>
+            <li>PODRÁ IMPONER fuera establecimiento acreditado IMPONDRÁ Mitad Superior <span class="flecha">→</span> <span class="respuesta">22 semanas<!--[cite: 19]--></span></li>
+            <li>Forza a abandonar territorio español y obligar contraer matrimonio Violencia, Intimidación grave o engaño<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 18: Derecho Patrimonial</div>
+        <ul class="error-list">
+            <li>NO agravante especifica de estafa valor defraudación sea superior a 50.000€<!--[cite: 19]--></li>
+            <li>Delito robo con fuerza básico Inutilización sistemas de alarmas<!--[cite: 19]--></li>
+            <li>Agravante grupo u organización criminal <span class="flecha">→</span> <span class="respuesta">hurto y robo con fuerza. Estafa NO.<!--[cite: 19]--></span></li>
+            <li>Defraudaciones de fluido eléctrico y análogas<!--[cite: 19]--></li>
+            <li>Inscripción fraudulenta Padrón Municipal, ánimo lucro <span class="flecha">→</span> <span class="respuesta">MG<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 19: Derecho contra Orden Público</div>
+        <ul class="error-list">
+            <li>Resistencia VS Atentado<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 20: Delitos Informáticos y Tema 21: Derecho Procesal Penal</div>
+        <ul class="error-list">
+            <li>NO Tribunal Central de Instancia Social<!--[cite: 19]--></li>
+            <li>Tribunal Jurado, sometido a principios de: independencia, responsabilidad y sumisión a la ley<!--[cite: 19]--></li>
+            <li>Causas inelegibilidad e incompatibilidad TJ ley electoral<!--[cite: 19]--></li>
+            <li>Requisitos TJ<!--[cite: 19]--></li>
+            <li>TJ excusa Se jurado 4 años precedentes; militares en activo<!--[cite: 19]--></li>
+            <li>Policía Judicial adscribe al MF oído el FGE<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 22: Estatuto de la Víctima</div>
+        <ul class="error-list">
+            <li>Estatuto victima, voluntad recurrir 5 días<!--[cite: 19]--></li>
+            <li>Víctima directa Persona FISICA<!--[cite: 19]--></li>
+            <li>Víctima imaginaria cree erróneamente haber sido objeto de delito<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 23: Igualdad</div>
+        <ul class="error-list">
+            <li>Alarma <span class="flecha">→</span> <span class="respuesta">Incidencia técnica grave<!--[cite: 19]--></span></li>
+            <li>Alerta Aproximación inculpado<!--[cite: 19]--></li>
+            <li>Alarma <span class="flecha">→</span> <span class="respuesta">Entrada del inculpado<!--[cite: 19]--></span></li>
+            <li>Plazo primera VPER Máximo de 15 días desde VPR<!--[cite: 19]--></li>
+            <li>Periodicidad VPR nivel medio 30 días<!--[cite: 19]--></li>
+            <li>Alta complejidad características especiales<!--[cite: 19]--></li>
+            <li>Observatorio Estatal de Violencia sobre la Mujer, adscrito Delegación Gobierno contra Vº Género<!--[cite: 19]--></li>
+            <li>Delegación de Gobierno contra Violencia Género, adscrito SE de Igualdad y para la Erradicación de Violencia contra las Mujeres<!--[cite: 19]--></li>
+            <li>Formulará políticas públicas Vº género Delegación de Gobierno<!--[cite: 19]--></li>
+            <li>Notificación proceso sancionador LGTBI 6 meses<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 24 y 25: PRL</div>
+        <ul class="error-list">
+            <li>Principios PRL <span class="flecha">→</span> <span class="respuesta">Participación, coordinación y eficacia (PCE)<!--[cite: 19]--></span></li>
+            <li>Órganos colegiados paritarios Comisión Seguridad y Salud Laboral Policial y Comités Seguridad y Salud<!--[cite: 19]--></li>
+            <li>Comisión de Seguridad y Salud Policial conocer, informar las actuaciones y participar en la elaboración y aprobación de los planes y programas<!--[cite: 19]--></li>
+            <li>Comisión Nacional de Seguridad y Salud en el Trabajo Pleno, Comisión Permanente o Grupos de Trabajo<!--[cite: 19]--></li>
+            <li>Auditoría actividad preventiva <span class="flecha">→</span> <span class="respuesta">cada 4 años<!--[cite: 19]--></span></li>
+            <li>Designa representantes Administración Comités de Seguridad y Salud (PN)<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 26: PD</div>
+        <ul class="error-list">
+            <li>PD 2 normas misma acción, castigo la que más pena<!--[cite: 19]--></li>
+            <li>Prueba cumplimiento deber responder Responsable tratamiento<!--[cite: 19]--></li>
+            <li>Prescripción infracciones PD 3,2,1<!--[cite: 19]--></li>
+            <li>Consejo Consultivo AEPD semestralmente<!--[cite: 19]--></li>
+            <li>Órgano colegiado asesoriamiento AEPD Consejo Consultivo<!--[cite: 19]--></li>
+            <li>Delegado PD de SES <span class="flecha">→</span> <span class="respuesta">D.G.Coordinación y Estudios<!--[cite: 19]--></span></li>
+            <li>Aprueba Estatuto AEPD <span class="flecha">→</span> <span class="respuesta">DGP<!--[cite: 19]--></span></li>
+            <li>PD cuantía infracciones MG (360.001-1.000.000), G (60.001-360.000), L (6.000-60.000)<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 27: Derechos Humanos</div>
+        <ul class="error-list">
+            <li>Visitas Comité Prevención Tortura<!--[cite: 19]--></li>
+            <li>Comité contra la Tortura (CAT) <span class="flecha">→</span> <span class="respuesta">10 expertos<!--[cite: 19]--></span></li>
+            <li>Mandato miembro Subcomité Tortura 4 años reelegible 1 vez<!--[cite: 19]--></li>
+            <li>DUDH<!--[cite: 19]--></li>
+            <li>Consejo de Derechos Humanos ONU, reunión 1/3 EM solicita<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 28: Globalización</div>
+        <ul class="error-list">
+            <li>FSM surge FEM (Davos, Suiza)<!--[cite: 19]--></li>
+            <li>Pilares FSM <span class="flecha">→</span> <span class="respuesta">Comité Organizador, Consejo Internacional y Secretaría FSM<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 30: Principios Éticos</div>
+        <ul class="error-list">
+            <li>III Plan Delitos Odio <span class="flecha">→</span> <span class="respuesta">6 líneas; 15 objetivos; 109 medidas<!--[cite: 19]--></span></li>
+            <li>Comisión Seguimiento III Plan Delitos Odio Semestre<!--[cite: 19]--></li>
+            <li>Intolerancia niega diversidad y viola o denigra dignidad<!--[cite: 19]--></li>
+            <li>Estereotipo creencias o ideas organizadas<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 32: Geografía Humana</div>
+        <ul class="error-list">
+            <li>Conglomerado no se comunican entre sí<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 34: Drogodependencia</div>
+        <ul class="error-list">
+            <li>Adicción intoxicación periódica y deseo compulsivo de consumir Tolerancia física funcional<!--[cite: 19]--></li>
+            <li>Heroína más pura Blanca<!--[cite: 19]--></li>
+            <li>Números de heroína<!--[cite: 19]--></li>
+            <li>GHB Depresor Disminución sensibilidad sistema nervioso<!--[cite: 19]--></li>
+            <li>MDMA (éxtasis) <span class="flecha">→</span> <span class="respuesta">Estimulante<!--[cite: 19]--></span></li>
+            <li>Psilocibina <span class="flecha">→</span> <span class="respuesta">setas<!--[cite: 19]--></span></li>
+            <li>MDMA + Psilocibina Hippieflip<!--[cite: 19]--></li>
+            <li>Morfina origen <span class="flecha">→</span> <span class="respuesta">natural<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 39: Redes Informáticas</div>
+        <ul class="error-list">
+            <li>HUB capa física 1 modelo OSI, centralizar cableado<!--[cite: 19]--></li>
+            <li>Enroutador o router subredes<!--[cite: 19]--></li>
+            <li>IPV4 (32bits) IPV6 (128bits)<!--[cite: 19]--></li>
+            <li>Tecnología broadcast <span class="flecha">→</span> <span class="respuesta">Un solo canal, pero solo máquina destinataria procesa<!--[cite: 19]--></span></li>
+            <li>Servidor DNS aceptar consultas cliente y responder con resultados<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 40: Inteligencia y Tema 41: Ciberdelincuencia</div>
+        <ul class="error-list">
+            <li>4x4, nivel 2 observado misma fuente, no es policial<!--[cite: 19]--></li>
+            <li>4 x 4 aprender bien<!--[cite: 19]--></li>
+            <li>Conjunto de ordenadores Botnet<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 42: Armas</div>
+        <ul class="error-list">
+            <li>Arma automática se trasforma en semiautomática Parcialmente prohibida<!--[cite: 19]--></li>
+            <li>Categoría armas 3 <span class="flecha">→</span> <span class="respuesta">3.2 Escopetas<!--[cite: 19]--></span></li>
+            <li>Matriz origen, guía remitente y filial destino<!--[cite: 19]--></li>
+            <li>Uso armas guerra autoriza Gobierno<!--[cite: 19]--></li>
+            <li>Categorías armas<!--[cite: 19]--></li>
+            <li>Depósito de armas guerra fabricación, comercialización o tenencia. NO 5 o más, eso es de armas de fuego reglamentadas<!--[cite: 19]--></li>
+            <li>Categoría 7 armas <span class="flecha">→</span> <span class="respuesta">Flobert no necesita licencia<!--[cite: 19]--></span></li>
+            <li>Berdan central, NO yunque<!--[cite: 19]--></li>
+            <li>Boca de mina o de Hoffman <span class="flecha">→</span> <span class="respuesta">A bocajarro (boca-boca)<!--[cite: 19]--></span></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Tema 44: Seguridad Vehículos Prioritarios</div>
+        <ul class="error-list">
+            <li>Seguridad Activa Siempre<!--[cite: 19]--></li>
+            <li>A parte de V-2 distintivos retroreflectantes <span class="flecha">→</span> <span class="respuesta">voluntario<!--[cite: 19]--></span></li>
+            <li>Anchura celdas vehículos <span class="flecha">→</span> <span class="respuesta">60 individuales y 100 dobles<!--[cite: 19]--></span></li>
+            <li>Ventana de socorro 60 cm x 110 cm en el sentido de la marcha<!--[cite: 19]--></li>
+            <li>Ventanas vehículos M1 12cm x 30 cm<!--[cite: 19]--></li>
+            <li>Cubierta neumático <span class="flecha">→</span> <span class="respuesta">entre banda rodadura, flanco y neumático<!--[cite: 19]--></span></li>
+            <li>Composición neumático Cámara, banda rodadura, flanco, talones, carcasa y hombro<!--[cite: 19]--></li>
+            <li>COLOCACIÓN dispositivos preseñalización peligro accidente (triángulo) <span class="flecha">→</span> <span class="respuesta">50 metros<!--[cite: 19]--></span></li>
+            <li>VISIBILIDAD 100 metros<!--[cite: 19]--></li>
+            <li>Permisos de conducir<!--[cite: 19]--></li>
+            <li>NO Obligación registro documental mercancias peligrosas<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <div class="tema-block">
+        <div class="tema-header">Conceptos Mixtos y Otros Temas</div>
+        <ul class="error-list">
+            <li>Acordar incoación procedimiento repatriación menor Delegado o Subdelegado de Gobierno<!--[cite: 19]--></li>
+            <li>Incapacidad permanente <span class="flecha">→</span> <span class="respuesta">Incapacidad permanente parcial (IPP), Total y Absoluta<!--[cite: 19]--></span></li>
+            <li>Organismo Naciones Unidas fuente asistencia financiera países en desarrollo <span class="flecha">→</span> <span class="respuesta">Banco Mundial<!--[cite: 19]--></span></li>
+            <li>Mandato Protocolo Kioto Berlin<!--[cite: 19]--></li>
+            <li>Conferencia Mundial S/Mujer <span class="flecha">→</span> <span class="respuesta">1 Mexico 2 Copenhague 3 Nairobi 4 Beijing<!--[cite: 19]--></span></li>
+            <li>Equidad género distribución justa... y respeto<!--[cite: 19]--></li>
+            <li>Sanciones pecuniarias 15 días<!--[cite: 19]--></li>
+            <li>Manifestaciones capacidad obrar negociar, procesal y penal<!--[cite: 19]--></li>
+            <li>Requisito edad en base jurisdicción voluntaria<!--[cite: 19]--></li>
+            <li>Sector más radical Globofóbicos<!--[cite: 19]--></li>
+            <li>Sheldon Mesomorfo (musculoso)<!--[cite: 19]--></li>
+            <li>Rosenverg y Hovland <span class="flecha">→</span> <span class="respuesta">Afecto, cognición y conducta (ACC)<!--[cite: 19]--></span></li>
+            <li>Vander Zanden interacción individuos<!--[cite: 19]--></li>
+            <li>Delincuentes Garófalo asesino, lascivo, ladrón y violento<!--[cite: 19]--></li>
+            <li>Elton Mayo Formal e Informal<!--[cite: 19]--></li>
+            <li>Durkheim, sociedades rurales mecánica<!--[cite: 19]--></li>
+            <li>Socialización Durkheim<!--[cite: 19]--></li>
+            <li>Informe Brutland Nuestro Futuro Común<!--[cite: 19]--></li>
+            <li>Acomodación (Piaget) <span class="flecha">→</span> <span class="respuesta">modifica sus esquemas para incorporar nuevos<!--[cite: 19]--></span></li>
+            <li>Respuesta entre varias imágenes Método SAM<!--[cite: 19]--></li>
+            <li>Hoyd sectores<!--[cite: 19]--></li>
+            <li>Ullman multinuclear<!--[cite: 19]--></li>
+            <li>Hurd Estrella o radial<!--[cite: 19]--></li>
+        </ul>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR (Para volver arriba o al index) -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+        <a href="#" class="btn-nav invisible">Siguiente →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
