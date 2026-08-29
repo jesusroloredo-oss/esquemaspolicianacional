@@ -30,6 +30,9 @@
 
             --color-actualizaciones: #7c3aed; /* Morado */
             --hover-actualizaciones: #f5f3ff;
+
+            --color-errores: #e11d48; /* Rojo/Carmesí para los errores */
+            --hover-errores: #fff1f2;
         }
 
         /* Variables Modo Oscuro Automático */
@@ -53,6 +56,9 @@
 
                 --color-actualizaciones: #a78bfa;
                 --hover-actualizaciones: rgba(124, 58, 237, 0.1);
+
+                --color-errores: #fb7185;
+                --hover-errores: rgba(225, 29, 72, 0.1);
             }
         }
 
@@ -126,6 +132,10 @@
         .btn-actualizaciones { color: var(--color-actualizaciones); }
         .btn-actualizaciones:hover { transform: translateY(-4px); border-color: var(--color-actualizaciones); background-color: var(--hover-actualizaciones); }
 
+        .title-errores { color: var(--color-errores); border-color: var(--color-errores); }
+        .btn-errores { color: var(--color-errores); }
+        .btn-errores:hover { transform: translateY(-4px); border-color: var(--color-errores); background-color: var(--hover-errores); }
+
         .empty-state {
             grid-column: 1 / -1;
             text-align: center;
@@ -196,6 +206,12 @@
     <h2 class="section-title title-actualizaciones">🆕 Actualizaciones</h2>
     <div class="grid-temas">
         <a href="actualizaciones.html" class="btn-tema btn-actualizaciones">Últimas Actualizaciones</a>
+    </div>
+
+    <!-- BLOQUE 5: APUNTES Y ERRORES -->
+    <h2 class="section-title title-errores">📝 Apuntes y Errores (Fallos de Test)</h2>
+    <div class="grid-temas">
+        <a href="apuntesyerrores.html" class="btn-tema btn-errores">Ver Mis Fallos y Correcciones</a>
     </div>
 
 </body>
