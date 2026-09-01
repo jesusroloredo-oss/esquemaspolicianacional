@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Reglas Mnemotécnicas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #7c3aed; /* Púrpura intenso */
+            --title-sec: #6d28d9; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f3e8ff; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --respuesta-bg: #ede9fe; --respuesta-color: #5b21b6;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #a78bfa; --title-sec: #8b5cf6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --respuesta-bg: rgba(124, 58, 237, 0.2); --respuesta-color: #ddd6fe;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        
+        .mnemo-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+        
+        .mnemo-card {
+            background: var(--bg-container);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--title-main);
+            border-radius: 8px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .mnemo-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-color: var(--title-sec);
+        }
+
+        .mnemo-content-wrapper { display: flex; align-items: center; flex: 1; flex-wrap: wrap; }
+        .mnemo-q { font-weight: 600; font-size: 1.1em; color: var(--text-main); }
+        .mnemo-arrow { color: var(--title-main); font-weight: bold; font-size: 1.5em; margin: 0 15px; }
+        .mnemo-a { background: var(--respuesta-bg); color: var(--respuesta-color); padding: 6px 14px; border-radius: 6px; font-weight: bold; font-size: 1.1em; border: 1px solid rgba(124, 58, 237, 0.2); }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            .mnemo-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .mnemo-content-wrapper { flex-direction: column; align-items: flex-start; }
+            .mnemo-arrow { transform: rotate(90deg); margin: 5px 0; align-self: flex-start; margin-left: 10px; }
+            .mnemo-a { width: 100%; box-sizing: border-box; text-align: left; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            .mnemo-grid { gap: 4px !important; margin-top: 10px !important; }
+            .mnemo-card { padding: 6px 10px !important; border: 1px solid #ccc !important; border-left: 3px solid #000 !important; flex-direction: row; align-items: baseline; gap: 4px; box-shadow: none !important; transform: none !important; margin-bottom: 2px; break-inside: avoid; }
+            .mnemo-content-wrapper { flex-direction: row; align-items: baseline; }
+            .mnemo-q { font-size: 9pt; }
+            .mnemo-a { background: #eee !important; color: #000 !important; border: 1px solid #888; padding: 2px 6px !important; font-size: 9pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .mnemo-arrow { color: #000 !important; margin: 0 5px !important; font-size: 1.2em; transform: none !important; align-self: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🧠 Reglas Mnemotécnicas</h1>
+
+    <div class="mnemo-grid">
+        
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Funcionario Interino</span><span class="mnemo-arrow">→</span><span class="mnemo-a">IMCPC<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Personal Laboral</span><span class="mnemo-arrow">→</span><span class="mnemo-a">IMC C<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Directivo Profesional</span><span class="mnemo-arrow">→</span><span class="mnemo-a">MeCal<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">ONGADH</span><span class="mnemo-arrow">→</span><span class="mnemo-a">(G) D.G.Coordinación y Estudios<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">OCC</span><span class="mnemo-arrow">→</span><span class="mnemo-a">D.G.Coordinación y Estudios<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Promoción Profesional</span><span class="mnemo-arrow">→</span><span class="mnemo-a">OIMC<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Provisión Puestos de Trabajo</span><span class="mnemo-arrow">→</span><span class="mnemo-a">MeCA<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Silencio positivo</span><span class="mnemo-arrow">→</span><span class="mnemo-a">trámite<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Silencio negativo</span><span class="mnemo-arrow">→</span><span class="mnemo-a">resolución<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">ISA</span><span class="mnemo-arrow">→</span><span class="mnemo-a">612 123 123<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Seguridad Privada sanciones e infracciones</span><span class="mnemo-arrow">→</span><span class="mnemo-a">1, 2 y 3<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Identificación</span><span class="mnemo-arrow">→</span><span class="mnemo-a">PINO<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Registro Corporal</span><span class="mnemo-arrow">→</span><span class="mnemo-a">PINO + Injerencia Mínima<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Contra Voluntad</span><span class="mnemo-arrow">→</span><span class="mnemo-a">PIN<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Planes PIC aprueba</span><span class="mnemo-arrow">→</span><span class="mnemo-a">SES, menos PES que hace Comisión<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Antijuricidad</span><span class="mnemo-arrow">→</span><span class="mnemo-a">(J) Justificación<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Tribunales</span><span class="mnemo-arrow">→</span><span class="mnemo-a">PeCoSo<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Identidad Sexual</span><span class="mnemo-arrow">→</span><span class="mnemo-a">(1) Interior<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Expresión de Género</span><span class="mnemo-arrow">→</span><span class="mnemo-a">(E) Escaparate/Exterior<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Orientación</span><span class="mnemo-arrow">→</span><span class="mnemo-a">(O) Hacia Otro<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Actividades</span><span class="mnemo-arrow">→</span><span class="mnemo-a">ámbitos<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Servicios</span><span class="mnemo-arrow">→</span><span class="mnemo-a">acciones<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Funciones</span><span class="mnemo-arrow">→</span><span class="mnemo-a">facultades<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Medidas</span><span class="mnemo-arrow">→</span><span class="mnemo-a">disposiciones<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Medicina en el trabajo</span><span class="mnemo-arrow">→</span><span class="mnemo-a">Estudia acciones y enfermedades<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Higiene industrial</span><span class="mnemo-arrow">→</span><span class="mnemo-a">Peligro Salud<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Objetivos Ciberseguridad</span><span class="mnemo-arrow">→</span><span class="mnemo-a">CID<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Capas OSI</span><span class="mnemo-arrow">→</span><span class="mnemo-a">FERT SPA<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Capas TCP-IP</span><span class="mnemo-arrow">→</span><span class="mnemo-a">ATIA<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Ciclo Inteligencia</span><span class="mnemo-arrow">→</span><span class="mnemo-a">RETAD<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Cyber Kill Chain</span><span class="mnemo-arrow">→</span><span class="mnemo-a">RPDEICA<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-content-wrapper">
+                <span class="mnemo-q">Fases Oficina Asistencia Víctimas</span><span class="mnemo-arrow">→</span><span class="mnemo-a">AISS<!--[cite: 11]--></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+        <a href="#" class="btn-nav invisible">Siguiente →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
