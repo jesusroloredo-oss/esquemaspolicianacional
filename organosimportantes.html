@@ -10,7 +10,7 @@
     <style>
         :root {
             --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
-            --title-main: #0284c7; /* Azul institucional */
+            --title-main: #0284c7; 
             --title-sec: #0369a1; --title-third: #0f172a; --border-color: #e2e8f0;
             --table-header: #e0f2fe; --table-row-even: #f8fafc; --table-border: #cbd5e1;
         }
@@ -27,10 +27,10 @@
         h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
         
         ul { padding-left: 20px; margin-top: 5px; margin-bottom: 10px;}
-        li { margin-bottom: 6px; }
+        li { margin-bottom: 8px; }
 
         table { width: 100%; border-collapse: collapse; margin: 15px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
-        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 120px; vertical-align: middle; }
         th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
         tr:nth-child(even) { background-color: var(--table-row-even); }
 
@@ -38,15 +38,16 @@
         .bloque { background: var(--bg-container); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); border-top: 4px solid var(--title-main); box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .bloque h4 { margin: 0 0 12px 0; color: var(--title-sec); font-size: 1.2em; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
         
-        /* Estilos para las flechas y respuestas destacadas */
+        /* TRUCOS VISUALES */
         .flecha { color: var(--title-main); font-weight: bold; margin: 0 6px; }
         .resaltado { color: var(--title-sec); font-weight: 600; background: rgba(2, 132, 199, 0.08); padding: 2px 6px; border-radius: 4px; }
-
+        .badge-num { background-color: #2563eb; color: #fff; padding: 2px 6px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); white-space: nowrap;}
+        .badge-loc { background-color: #ea580c; color: #fff; padding: 2px 6px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); white-space: nowrap;}
+        
         /* NAVEGACIÓN INFERIOR */
         .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
         .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
         .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
-        .btn-nav.invisible { visibility: hidden; }
 
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
@@ -67,6 +68,7 @@
             .bloque h4 { font-size: 10pt; color: #000 !important; border-bottom: 1px solid #ccc; margin-bottom: 4px; padding-bottom: 2px; }
             .resaltado { background: transparent !important; color: #000 !important; border: 1px solid #ccc; padding: 1px 4px; }
             .flecha { color: #000 !important; }
+            .badge-num, .badge-loc { background: transparent !important; color: #000 !important; border: 1px solid #000; padding: 1px 4px; box-shadow: none !important; }
             table { display: table !important; width: 100% !important; border: 1px solid #000 !important; margin: 5px 0 !important; }
             th, td { border: 1px solid #000 !important; padding: 4px !important; }
             th { background-color: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -82,14 +84,13 @@
 
     <div class="grid-blocks">
 
-        <!-- 1. Tribunal de Instancia -->
         <div class="bloque">
             <h4>1. Tribunal de Instancia:</h4>
             <ul>
                 <li>En cada Partido Judicial<!--[cite: 10]--></li>
-                <li>Sede <span class="flecha">→</span> <span class="resaltado">capital</span><!--[cite: 10]--></li>
+                <li>Sede <span class="flecha">→</span> <span class="badge-loc">capital</span><!--[cite: 10]--></li>
                 <li>Sección Única / Sección Civil e Instrucción<!--[cite: 10]--></li>
-                <li>Otras secciones:
+                <li>Otras secciones:<!--[cite: 10]-->
                     <ul>
                         <li>Familia, Infancia y Capacidad<!--[cite: 10]--></li>
                         <li>Violencia contra Infancia y Adolescencia<!--[cite: 10]--></li>
@@ -98,15 +99,14 @@
                         <li>Vigilancia Penitenciaria<!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>Presidencia <span class="flecha">→</span> <span class="resaltado">una por Tribunal</span><!--[cite: 10]-->
+                <li>Presidencia <span class="flecha">→</span> <span class="badge-num">una por Tribunal</span><!--[cite: 10]-->
                     <ul>
-                        <li>Las secciones tendrán presidencia sí <span class="flecha">→</span> <span class="resaltado">2 o más secciones; 8 o más plazas judiciales (sección); 12 o más plazas judiciales Tribunal</span><!--[cite: 10]--></li>
+                        <li>Las secciones tendrán presidencia sí <span class="flecha">→</span> <span class="badge-num">2 o más</span> secciones; <span class="badge-num">8 o más</span> plazas judiciales (sección); <span class="badge-num">12 o más</span> plazas judiciales Tribunal<!--[cite: 10]--></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <!-- 2. Defensor del Pueblo -->
         <div class="bloque">
             <h4>2. Defensor del Pueblo (art 54 CE):</h4>
             <ul>
@@ -114,13 +114,13 @@
                 <li>Defiende <span class="flecha">→</span> <span class="resaltado">Derechos Título I: De los Derechos y Deberes Fundamentales</span><!--[cite: 10]--></li>
                 <li>NO sujeto a mandato imperativo<!--[cite: 10]--></li>
                 <li>Enjuiciamiento <span class="flecha">→</span> <span class="resaltado">TS</span><!--[cite: 10]--></li>
-                <li>Incompatibilidad <span class="flecha">→</span> <span class="resaltado">10 días</span><!--[cite: 10]--></li>
-                <li>Elección <span class="flecha">→</span> <span class="resaltado">3/5 Congreso, 20 días, 3/5 Senado. Sino 3/5 Congreso y MA Senado</span><!--[cite: 10]--></li>
-                <li>Mandato <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
+                <li>Incompatibilidad <span class="flecha">→</span> <span class="badge-num">10 días</span><!--[cite: 10]--></li>
+                <li>Elección <span class="flecha">→</span> <span class="badge-num">3/5</span> Congreso, <span class="badge-num">20 días</span>, <span class="badge-num">3/5</span> Senado. Sino <span class="badge-num">3/5</span> Congreso y MA Senado<!--[cite: 10]--></li>
+                <li>Mandato <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
                 <li>Informe Anual<!--[cite: 10]--></li>
                 <li>Queja Conducta contra Adm Justicia <span class="flecha">→</span> <span class="resaltado">MF, puede derivar a CGPJ</span><!--[cite: 10]--></li>
                 <li>Queja conducta presumiblemente delictiva <span class="flecha">→</span> <span class="resaltado">FGE</span><!--[cite: 10]--></li>
-                <li>2 Adjuntos <span class="flecha">→</span> <span class="resaltado">Dp previa conformidad Cámaras</span><!--[cite: 10]--></li>
+                <li><span class="badge-num">2</span> Adjuntos <span class="flecha">→</span> <span class="resaltado">Dp previa conformidad Cámaras</span><!--[cite: 10]--></li>
                 <li>Se dirige <span class="flecha">→</span> <span class="resaltado">Presidentes</span><!--[cite: 10]--></li>
                 <li>Se relaciona <span class="flecha">→</span> <span class="resaltado">Comisión Mixta</span><!--[cite: 10]--></li>
                 <li>Asesores <span class="flecha">→</span> <span class="resaltado">libremente, límite presupuestario</span><!--[cite: 10]--></li>
@@ -128,24 +128,23 @@
             </ul>
         </div>
 
-        <!-- 3. Tribunal Constitucional -->
         <div class="bloque">
             <h4>3. Tribunal Constitucional:</h4>
             <ul>
                 <li>Intérprete Supremo de la Constitución<!--[cite: 10]--></li>
                 <li>Independiente <span class="flecha">→</span> <span class="resaltado">sometido a CE y LO TC</span><!--[cite: 10]--></li>
-                <li>Miembros <span class="flecha">→</span> <span class="resaltado">12 + Presidente</span><!--[cite: 10]-->
+                <li>Miembros <span class="flecha">→</span> <span class="badge-num">12 + Presidente</span><!--[cite: 10]-->
                     <ul>
-                        <li>4 Congreso<!--[cite: 10]--></li>
-                        <li>4 Senado<!--[cite: 10]--></li>
-                        <li>2 Gobierno<!--[cite: 10]--></li>
-                        <li>2 CGPJ<!--[cite: 10]--></li>
+                        <li><span class="badge-num">4</span> Congreso<!--[cite: 10]--></li>
+                        <li><span class="badge-num">4</span> Senado<!--[cite: 10]--></li>
+                        <li><span class="badge-num">2</span> Gobierno<!--[cite: 10]--></li>
+                        <li><span class="badge-num">2</span> CGPJ<!--[cite: 10]--></li>
                     </ul>
                 </li>
                 <li>Actúa en <span class="flecha">→</span> <span class="resaltado">Pleno, Sala y Gran Sala</span><!--[cite: 10]-->
                     <ul>
                         <li>Pleno <span class="flecha">→</span> <span class="resaltado">todos</span><!--[cite: 10]--></li>
-                        <li>Sala <span class="flecha">→</span> <span class="resaltado">6 magistrados</span><!--[cite: 10]-->
+                        <li>Sala <span class="flecha">→</span> <span class="badge-num">6</span> magistrados<!--[cite: 10]-->
                             <ul>
                                 <li>Presidente 1ª <span class="flecha">→</span> <span class="resaltado">Presidente TC</span><!--[cite: 10]--></li>
                                 <li>Presidente 2ª <span class="flecha">→</span> <span class="resaltado">Vicepresidente</span><!--[cite: 10]--></li>
@@ -155,12 +154,12 @@
                 </li>
                 <li>Presidente <span class="flecha">→</span> <span class="resaltado">nombra Rey, propuesta TC en Pleno (votación secreta)</span><!--[cite: 10]-->
                     <ul>
-                        <li>Mandato <span class="flecha">→</span> <span class="resaltado">3 años, reelegible 1 vez</span><!--[cite: 10]--></li>
+                        <li>Mandato <span class="flecha">→</span> <span class="badge-num">3 años</span>, reelegible 1 vez<!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>Magistrados <span class="flecha">→</span> <span class="resaltado">9 años, renovándose por terceras partes cada 3</span><!--[cite: 10]-->
+                <li>Magistrados <span class="flecha">→</span> <span class="badge-num">9 años</span>, renovándose por terceras partes cada 3<!--[cite: 10]-->
                     <ul>
-                        <li>+15 años de ejercicio profesional<!--[cite: 10]--></li>
+                        <li><span class="badge-num">+15 años</span> de ejercicio profesional<!--[cite: 10]--></li>
                     </ul>
                 </li>
                 <li>Recursos de Inconstitucionalidad<!--[cite: 10]--></li>
@@ -169,30 +168,28 @@
             </ul>
         </div>
 
-        <!-- 4. CGPJ -->
         <div class="bloque">
             <h4>4. CGPJ:</h4>
             <ul>
                 <li>Garantizar independencia de jueces<!--[cite: 10]--></li>
                 <li>Jurisdicción <span class="flecha">→</span> <span class="resaltado">solo jueces, juezas y Tribunales</span><!--[cite: 10]--></li>
-                <li>Miembros <span class="flecha">→</span> <span class="resaltado">20 + Presidente</span><!--[cite: 10]-->
+                <li>Miembros <span class="flecha">→</span> <span class="badge-num">20 + Presidente</span><!--[cite: 10]-->
                     <ul>
-                        <li>10 Congreso <span class="flecha">→</span> <span class="resaltado">6 jueces/magistrados y 4 juristas</span><!--[cite: 10]--></li>
-                        <li>10 Senado <span class="flecha">→</span> <span class="resaltado">6 jueces/magistrados y 4 juristas</span><!--[cite: 10]--></li>
+                        <li><span class="badge-num">10</span> Congreso <span class="flecha">→</span> <span class="badge-num">6</span> jueces/magistrados y <span class="badge-num">4</span> juristas<!--[cite: 10]--></li>
+                        <li><span class="badge-num">10</span> Senado <span class="flecha">→</span> <span class="badge-num">6</span> jueces/magistrados y <span class="badge-num">4</span> juristas<!--[cite: 10]--></li>
                     </ul>
                 </li>
                 <li>Presidente <span class="flecha">→</span> <span class="resaltado">También del TS</span><!--[cite: 10]-->
                     <ul>
                         <li>Nombra Rey, elige CGPJ en Pleno<!--[cite: 10]--></li>
-                        <li>+25 años de ejercicio profesional<!--[cite: 10]--></li>
+                        <li><span class="badge-num">+25 años</span> de ejercicio profesional<!--[cite: 10]--></li>
                         <li>RD refrendado PG<!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>Mandato <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
+                <li>Mandato <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 5. Ministerio Fiscal y FGE -->
         <div class="bloque">
             <h4>5. Ministerio Fiscal y FGE:</h4>
             <ul>
@@ -202,67 +199,64 @@
                 <li>Fiscalía Territoriales<!--[cite: 10]--></li>
                 <li>Fiscalías Especiales <span class="flecha">→</span> <span class="resaltado">Antidroga; contra Corrupción y Crimen Organizado</span><!--[cite: 10]--></li>
                 <li>Órganos de asesoramiento <span class="flecha">→</span> <span class="resaltado">Consejo Fiscal; Junta de Fiscales de Sala; Junta Fiscales Superiores</span><!--[cite: 10]--></li>
-                <li>Fiscal de Sala y FIscal Especialista<!--[cite: 10]--></li>
+                <li>Fiscal de Sala y Fiscal Especialista<!--[cite: 10]--></li>
                 <li>FGE <span class="flecha">→</span> <span class="resaltado">nombra Rey, propone Gobierno, oído CGPJ</span><!--[cite: 10]-->
                     <ul>
-                        <li>Jurista +15 años<!--[cite: 10]--></li>
-                        <li>Mandato <span class="flecha">→</span> <span class="resaltado">4 años no renovable</span><!--[cite: 10]--></li>
+                        <li>Jurista <span class="badge-num">+15 años</span><!--[cite: 10]--></li>
+                        <li>Mandato <span class="flecha">→</span> <span class="badge-num">4 años</span> no renovable<!--[cite: 10]--></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <!-- 6. Consejo de Europa -->
         <div class="bloque">
             <h4>6. Consejo de Europa:</h4>
             <ul>
                 <li>NO es Institución<!--[cite: 10]--></li>
                 <li>Defensa de los Derechos Humanos<!--[cite: 10]--></li>
-                <li>46 países<!--[cite: 10]--></li>
+                <li><span class="badge-num">46</span> países<!--[cite: 10]--></li>
                 <li>Convenio Europeo DH<!--[cite: 10]--></li>
-                <li>Palacio de Europa (Estrasburgo)<!--[cite: 10]--></li>
+                <li>Palacio de Europa <span class="badge-loc">(Estrasburgo)</span><!--[cite: 10]--></li>
                 <li>TEDH <span class="flecha">→</span> <span class="resaltado">Tribunal de Estrasbrugo</span><!--[cite: 10]-->
                     <ul>
                         <li>Nº Jueces igual Altas Partes Contratantes<!--[cite: 10]--></li>
                         <li>Jueces <span class="flecha">→</span> <span class="resaltado">MA votos, lista 3 candidatos</span><!--[cite: 10]--></li>
-                        <li>9 años, no reelegibles<!--[cite: 10]--></li>
-                        <li>Presidente <span class="flecha">→</span> <span class="resaltado">3 años reelegible</span><!--[cite: 10]--></li>
+                        <li><span class="badge-num">9 años</span>, no reelegibles<!--[cite: 10]--></li>
+                        <li>Presidente <span class="flecha">→</span> <span class="badge-num">3 años</span> reelegible<!--[cite: 10]--></li>
                         <li>Presidente Sala; Secretario; Secretarios Adjuntos<!--[cite: 10]--></li>
-                        <li>Comités <span class="flecha">→</span> <span class="resaltado">3 jueces</span><!--[cite: 10]--></li>
-                        <li>Salas <span class="flecha">→</span> <span class="resaltado">7 jueces</span><!--[cite: 10]--></li>
-                        <li>Gran Sala <span class="flecha">→</span> <span class="resaltado">17 jueces</span><!--[cite: 10]--></li>
+                        <li>Comités <span class="flecha">→</span> <span class="badge-num">3</span> jueces<!--[cite: 10]--></li>
+                        <li>Salas <span class="flecha">→</span> <span class="badge-num">7</span> jueces<!--[cite: 10]--></li>
+                        <li>Gran Sala <span class="flecha">→</span> <span class="badge-num">17</span> jueces<!--[cite: 10]--></li>
                         <li>Sentencias <span class="flecha">→</span> <span class="resaltado">definitiva</span><!--[cite: 10]--></li>
-                        <li>Remisión <span class="flecha">→</span> <span class="resaltado">Gran Sala <span class="flecha">→</span> <span class="resaltado">5 jueces aceptan</span></span><!--[cite: 10]--></li>
+                        <li>Remisión <span class="flecha">→</span> Gran Sala <span class="flecha">→</span> <span class="badge-num">5</span> jueces aceptan<!--[cite: 10]--></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <!-- 7. Comisión Europea -->
         <div class="bloque">
             <h4>7. Comisión Europea:</h4>
             <ul>
-                <li>Bruselas<!--[cite: 10]--></li>
-                <li>27 miembros<!--[cite: 10]--></li>
+                <li><span class="badge-loc">Bruselas</span><!--[cite: 10]--></li>
+                <li><span class="badge-num">27</span> miembros<!--[cite: 10]--></li>
                 <li>Defienden intereses UE<!--[cite: 10]--></li>
                 <li>Proponen <span class="flecha">→</span> <span class="resaltado">monopolio <strong>iniciativa</strong> legislativa</span><!--[cite: 10]--></li>
                 <li>Ejecutan presupuesto<!--[cite: 10]--></li>
-                <li>Mandato <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
+                <li>Mandato <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 8. Fiscalía Europea (EPPO) -->
         <div class="bloque">
             <h4>8. Fiscalía Europea (EPPO):</h4>
             <ul>
-                <li>Luxemburgo<!--[cite: 10]--></li>
+                <li><span class="badge-loc">Luxemburgo</span><!--[cite: 10]--></li>
                 <li>Proteger presupuesto UE<!--[cite: 10]--></li>
-                <li>Fraudes IVA transfronterizos de al menos 10M €<!--[cite: 10]--></li>
+                <li>Fraudes IVA transfronterizos de al menos <span class="badge-num">10M €</span><!--[cite: 10]--></li>
                 <li>Niveles <span class="flecha">→</span> <span class="resaltado">Central y descentralizado (nacional)</span><!--[cite: 10]--></li>
-                <li>FGE <span class="flecha">→</span> <span class="resaltado">7 años, no reelegible</span><!--[cite: 10]--></li>
-                <li>FEuropeo <span class="flecha">→</span> <span class="resaltado">6 años</span><!--[cite: 10]--></li>
-                <li>F Delegado Europeo <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
-                <li>25 EM, último Hungría<!--[cite: 10]--></li>
+                <li>FGE <span class="flecha">→</span> <span class="badge-num">7 años</span>, no reelegible<!--[cite: 10]--></li>
+                <li>FEuropeo <span class="flecha">→</span> <span class="badge-num">6 años</span><!--[cite: 10]--></li>
+                <li>F Delegado Europeo <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
+                <li><span class="badge-num">25</span> EM, último Hungría<!--[cite: 10]--></li>
                 <li>Coopera con Europol, Eurojust y OLAF<!--[cite: 10]--></li>
                 <li>Discrepancias<!--[cite: 10]-->
                     <ul>
@@ -274,7 +268,6 @@
             </ul>
         </div>
 
-        <!-- 9. Alto Representante Asuntos Exteriores -->
         <div class="bloque">
             <h4>9. Alto Representante Asuntos Exteriores:</h4>
             <ul>
@@ -283,25 +276,23 @@
                 <li>Vicepresidente <span class="flecha">→</span> <span class="resaltado">Comisión Europea (exteriores)</span><!--[cite: 10]--></li>
                 <li>Dirige Agencia Europea Defensa<!--[cite: 10]--></li>
                 <li>Dirige SEAE (Servicio Europeo de Acción Exterior)<!--[cite: 10]--></li>
-                <li>Mandato <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
+                <li>Mandato <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 10. Instituciones UE -->
         <div class="bloque">
             <h4>10. Instituciones UE:</h4>
             <ul>
-                <li>Parlamento Europeo (Pleno Estrasburgo; Secretaría Luxemburgo; Comisión Bruselas) <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
-                <li>Consejo Europeo (Bruselas) <span class="flecha">→</span> <span class="resaltado">Presidente 2,5 años</span><!--[cite: 10]--></li>
-                <li>Consejo de la UE (Bruselas) <span class="flecha">→</span> <span class="resaltado">Presidencia rotatoria cada 6 meses</span><!--[cite: 10]--></li>
-                <li>Comisión Europea (Bruselas) <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
-                <li>Tribunal Justicia UE (Luxemburgo) <span class="flecha">→</span> <span class="resaltado">Tribunal Justicia (1 juez EM ++ 11 abogados generales) y Tribunal General (2 jueces EM)</span><!--[cite: 10]--></li>
-                <li>BCE (Frankfurt) <span class="flecha">→</span> <span class="resaltado">Gestiona euro</span><!--[cite: 10]--></li>
-                <li>Tribunal de Cuentas (Luxemburgo) <span class="flecha">→</span> <span class="resaltado">vigila dinero (recaudación y uso fondos)</span><!--[cite: 10]--></li>
+                <li>Parlamento Europeo (Pleno <span class="badge-loc">Estrasburgo</span>; Secretaría <span class="badge-loc">Luxemburgo</span>; Comisión <span class="badge-loc">Bruselas</span>) <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
+                <li>Consejo Europeo (<span class="badge-loc">Bruselas</span>) <span class="flecha">→</span> <span class="resaltado">Presidente <span class="badge-num">2,5 años</span></span><!--[cite: 10]--></li>
+                <li>Consejo de la UE (<span class="badge-loc">Bruselas</span>) <span class="flecha">→</span> <span class="resaltado">Presidencia rotatoria cada <span class="badge-num">6 meses</span></span><!--[cite: 10]--></li>
+                <li>Comisión Europea (<span class="badge-loc">Bruselas</span>) <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
+                <li>Tribunal Justicia UE (<span class="badge-loc">Luxemburgo</span>) <span class="flecha">→</span> <span class="resaltado">Tribunal Justicia (<span class="badge-num">1</span> juez EM ++ <span class="badge-num">11</span> abogados generales) y Tribunal General (<span class="badge-num">2</span> jueces EM)</span><!--[cite: 10]--></li>
+                <li>BCE (<span class="badge-loc">Frankfurt</span>) <span class="flecha">→</span> <span class="resaltado">Gestiona euro</span><!--[cite: 10]--></li>
+                <li>Tribunal de Cuentas (<span class="badge-loc">Luxemburgo</span>) <span class="flecha">→</span> <span class="resaltado">vigila dinero (recaudación y uso fondos)</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 11. Delegado de Gobierno -->
         <div class="bloque">
             <h4>11. Delegado de Gobierno:</h4>
             <ul>
@@ -316,7 +307,6 @@
             </ul>
         </div>
 
-        <!-- 12. Órganos superiores y directivos -->
         <div class="bloque" style="grid-column: 1 / -1;">
             <h4>12. Órganos superiores y directivos:</h4>
             <table>
@@ -339,7 +329,7 @@
             </table>
             
             <ul>
-                <li>CM:<!--[cite: 10]-->
+                <li><strong>CM:</strong><!--[cite: 10]-->
                     <ul>
                         <li>Preside <span class="flecha">→</span> <span class="resaltado">PG</span><!--[cite: 10]--></li>
                         <li>Acude <span class="flecha">→</span> <span class="resaltado">PG, Vicepresidente, Ministros y puede SE y excepcionalmente altos cargos</span><!--[cite: 10]--></li>
@@ -347,14 +337,14 @@
                         <li>Deliberaciones <span class="flecha">→</span> <span class="resaltado">Secretas</span><!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>Comisiones Delegadas de Gobierno:<!--[cite: 10]-->
+                <li><strong>Comisiones Delegadas de Gobierno:</strong><!--[cite: 10]-->
                     <ul>
-                        <li>Son 5 <span class="flecha">→</span> <span class="resaltado">A. Económicos; Seguridad Nacional; Inteligencia; Reto Demográfico; Agenda 2030</span><!--[cite: 10]--></li>
+                        <li>Son <span class="badge-num">5</span> <span class="flecha">→</span> <span class="resaltado">A. Económicos; Seguridad Nacional; Inteligencia; Reto Demográfico; Agenda 2030</span><!--[cite: 10]--></li>
                         <li>Deliberaciones <span class="flecha">→</span> <span class="resaltado">secretas</span><!--[cite: 10]--></li>
                         <li>Crea <span class="flecha">→</span> <span class="resaltado">RD del CM a propuesta del PG</span><!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>CG SE y Subsecretarios:<!--[cite: 10]-->
+                <li><strong>CG SE y Subsecretarios:</strong><!--[cite: 10]-->
                     <ul>
                         <li>Asiste <span class="flecha">→</span> <span class="resaltado">SE y subsecretarios</span><!--[cite: 10]--></li>
                         <li>Preside <span class="flecha">→</span> <span class="resaltado">Vicepresidente / M Presidencia, Justicia y Rel. Cortes</span><!--[cite: 10]--></li>
@@ -362,7 +352,7 @@
                         <li>Deliberaciones <span class="flecha">→</span> <span class="resaltado">reservadas</span><!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>Secretariado de Gobierno:<!--[cite: 10]-->
+                <li><strong>Secretariado de Gobierno:</strong><!--[cite: 10]-->
                     <ul>
                         <li>Órgano apoyo CM, Comisiones Delegadas y CG SE y Subsecretarios<!--[cite: 10]--></li>
                         <li>Prepara reuniones<!--[cite: 10]--></li>
@@ -374,7 +364,6 @@
             </ul>
         </div>
 
-        <!-- 13. CITCO -->
         <div class="bloque">
             <h4>13. CITCO:</h4>
             <ul>
@@ -386,7 +375,6 @@
             </ul>
         </div>
 
-        <!-- 14. D.G. Coordinación y Estudios -->
         <div class="bloque">
             <h4>14. D.G. Coordinación y Estudios:</h4>
             <ul>
@@ -409,7 +397,6 @@
             </ul>
         </div>
 
-        <!-- 15. DAO -->
         <div class="bloque">
             <h4>15. DAO:</h4>
             <ul>
@@ -430,35 +417,33 @@
                         <li>Unidades Adscritas<!--[cite: 10]--></li>
                     </ul>
                 </li>
-                <li>5 Comisarias Generales <span class="flecha">→</span> <span class="resaltado">Información; Seg Ciudadana; Policía Judicial, Científica; Extranjería y Fronteras</span><!--[cite: 10]--></li>
+                <li><span class="badge-num">5</span> Comisarias Generales <span class="flecha">→</span> <span class="resaltado">Información; Seg Ciudadana; Policía Judicial, Científica; Extranjería y Fronteras</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 16. Consejo de Policía -->
         <div class="bloque">
             <h4>16. Consejo de Policía:</h4>
             <ul>
                 <li>Sindicación y acción sindical<!--[cite: 10]--></li>
                 <li>Negociación colectiva<!--[cite: 10]--></li>
                 <li>Preside <span class="flecha">→</span> <span class="resaltado">MI o en quien delegue</span><!--[cite: 10]--></li>
-                <li>Miembros <span class="flecha">→</span> <span class="resaltado">14 Adm + 14 Policía</span><!--[cite: 10]--></li>
+                <li>Miembros <span class="flecha">→</span> <span class="resaltado"><span class="badge-num">14</span> Adm + <span class="badge-num">14</span> Policía</span><!--[cite: 10]--></li>
                 <li>Informe <span class="flecha">→</span> <span class="resaltado">Faltas MG o contra representantes sindicatos</span><!--[cite: 10]--></li>
-                <li>Reunión <span class="flecha">→</span> <span class="resaltado">al menos 1 vez cada 2 meses</span><!--[cite: 10]--></li>
-                <li>Convoca <span class="flecha">→</span> <span class="resaltado">55 - 70 días</span><!--[cite: 10]--></li>
-                <li>Celebra <span class="flecha">→</span> <span class="resaltado">45 - 70 días</span><!--[cite: 10]--></li>
+                <li>Reunión <span class="flecha">→</span> <span class="resaltado">al menos <span class="badge-num">1 vez</span> cada <span class="badge-num">2 meses</span></span><!--[cite: 10]--></li>
+                <li>Convoca <span class="flecha">→</span> <span class="resaltado"><span class="badge-num">55 - 70 días</span></span><!--[cite: 10]--></li>
+                <li>Celebra <span class="flecha">→</span> <span class="resaltado"><span class="badge-num">45 - 70 días</span></span><!--[cite: 10]--></li>
                 <li>Sufragio <span class="flecha">→</span> <span class="resaltado">libre, personal, directo y secreto</span><!--[cite: 10]--></li>
-                <li>Comisión Garantía <span class="flecha">→</span> <span class="resaltado">3 miembros / 6 mesa electoral única</span><!--[cite: 10]--></li>
+                <li>Comisión Garantía <span class="flecha">→</span> <span class="resaltado"><span class="badge-num">3</span> miembros / <span class="badge-num">6</span> mesa electoral única</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 17. Consejo Política de Seguridad -->
         <div class="bloque">
             <h4>17. Consejo Política de Seguridad:</h4>
             <ul>
                 <li>Coordinación políticas seguridad públicas del Estado y CCAA<!--[cite: 10]--></li>
                 <li>Preside <span class="flecha">→</span> <span class="resaltado">MI</span><!--[cite: 10]--></li>
                 <li>Miembros <span class="flecha">→</span> <span class="resaltado">Consejeros Interior / Gobernación CCAA + Representantes Estado</span><!--[cite: 10]--></li>
-                <li>Comité Expertos <span class="flecha">→</span> <span class="resaltado">8 representantes (4 CCAA y 4 Estado)</span><!--[cite: 10]-->
+                <li>Comité Expertos <span class="flecha">→</span> <span class="resaltado"><span class="badge-num">8</span> representantes (<span class="badge-num">4</span> CCAA y <span class="badge-num">4</span> Estado)</span><!--[cite: 10]-->
                     <ul>
                         <li>Asesoramiento Técnico<!--[cite: 10]--></li>
                         <li>Programas formación<!--[cite: 10]--></li>
@@ -467,7 +452,6 @@
             </ul>
         </div>
 
-        <!-- 18. D.G. Protección Internacional -->
         <div class="bloque">
             <h4>18. D.G. Protección Internacional:</h4>
             <ul>
@@ -480,7 +464,6 @@
             </ul>
         </div>
 
-        <!-- 19. Personal SP -->
         <div class="bloque">
             <h4>19. Personal SP:</h4>
             <ul>
@@ -488,13 +471,12 @@
                 <li>Personal SP <span class="flecha">→</span> <span class="resaltado">personas físicas con habilitación</span><!--[cite: 10]--></li>
                 <li>Personal acreditado <span class="flecha">→</span> <span class="resaltado">profesores, centros, ingenieros y técnicos</span><!--[cite: 10]--></li>
                 <li>Usuario <span class="flecha">→</span> <span class="resaltado">contrata</span><!--[cite: 10]--></li>
-                <li>Despacho detectives <span class="flecha">→</span> <span class="resaltado">oficinas, 1 o más detectives</span><!--[cite: 10]--></li>
+                <li>Despacho detectives <span class="flecha">→</span> <span class="resaltado">oficinas, <span class="badge-num">1</span> o más detectives</span><!--[cite: 10]--></li>
                 <li>Jefe <span class="flecha">→</span> <span class="resaltado">obligatorio</span><!--[cite: 10]--></li>
                 <li>Director <span class="flecha">→</span> <span class="resaltado">dirige departamentos</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 20. CNPIC -->
         <div class="bloque">
             <h4>20. CNPIC:</h4>
             <ul>
@@ -505,36 +487,33 @@
             </ul>
         </div>
 
-        <!-- 21. Tribunal Supremo -->
         <div class="bloque">
             <h4>21. Tribunal Supremo:</h4>
             <ul>
                 <li>Órgano jurisdiccional único competencia en toda España<!--[cite: 10]--></li>
                 <li>Tribunal Superior cualquier orden<!--[cite: 10]--></li>
-                <li>5 salas <span class="flecha">→</span> <span class="resaltado">Civil, Penal, Contencioso-Administrivo, Social y Militar</span><!--[cite: 10]--></li>
+                <li><span class="badge-num">5</span> salas <span class="flecha">→</span> <span class="resaltado">Civil, Penal, Contencioso-Administrivo, Social y Militar</span><!--[cite: 10]--></li>
                 <li>Presidente <span class="flecha">→</span> <span class="resaltado">CGPJ</span><!--[cite: 10]--></li>
-                <li>Mandato <span class="flecha">→</span> <span class="resaltado">5 años</span><!--[cite: 10]--></li>
+                <li>Mandato <span class="flecha">→</span> <span class="badge-num">5 años</span><!--[cite: 10]--></li>
                 <li>Recursos de casación<!--[cite: 10]--></li>
                 <li>Presidente + Presidente Sala + Magistrados<!--[cite: 10]--></li>
                 <li>Gabinete Técnico <span class="flecha">→</span> <span class="resaltado">le asiste</span><!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 22. Tribunal Jurado -->
         <div class="bloque">
             <h4>22. Tribunal Jurado:</h4>
             <ul>
                 <li>Preside <span class="flecha">→</span> <span class="resaltado">magistrado AP / magistrado Penal TS / Civil y Penal TSJ</span><!--[cite: 10]--></li>
-                <li>9 Jurados + 2 suplentes<!--[cite: 10]-->
+                <li><span class="badge-num">9</span> Jurados + <span class="badge-num">2</span> suplentes<!--[cite: 10]-->
                     <ul>
-                        <li>Últimos 15 días Septiembre de los años pares<!--[cite: 10]--></li>
+                        <li>Últimos <span class="badge-num">15 días</span> Septiembre de los años pares<!--[cite: 10]--></li>
                     </ul>
                 </li>
                 <li>NO prevaricación, NO incendios<!--[cite: 10]--></li>
             </ul>
         </div>
 
-        <!-- 23. Oficina Asistencia Víctimas -->
         <div class="bloque">
             <h4>23. Oficina Asistencia Víctimas (OAV):</h4>
             <ul>
@@ -545,7 +524,6 @@
             </ul>
         </div>
 
-        <!-- 24. Delegación de Gobierno Erradicación Violencia -->
         <div class="bloque">
             <h4>24. Delegación de Gobierno Erradicación Violencia S/mujer:</h4>
             <ul>
@@ -560,7 +538,6 @@
             </ul>
         </div>
 
-        <!-- 25. Observatorios Igualdad -->
         <div class="bloque">
             <h4>25. Observatorios Igualdad:</h4>
             <ul>
@@ -571,7 +548,6 @@
             </ul>
         </div>
 
-        <!-- 26. ONLDO/ONDOD -->
         <div class="bloque">
             <h4>26. ONLDO/ONDOD:</h4>
             <ul>
@@ -593,4 +569,5 @@
 </div>
 
 </body>
+</html>
 </html>
