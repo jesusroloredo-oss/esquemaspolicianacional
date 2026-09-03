@@ -36,6 +36,9 @@
 
             --color-mnemo: #7c3aed; /* Púrpura para mnemotécnicas */
             --hover-mnemo: #f3e8ff;
+
+            --color-organos: #0284c7; /* Azul institucional */
+            --hover-organos: #e0f2fe;
         }
 
         /* Variables Modo Oscuro Automático */
@@ -65,6 +68,9 @@
 
                 --color-mnemo: #a78bfa;
                 --hover-mnemo: rgba(124, 58, 237, 0.1);
+
+                --color-organos: #38bdf8;
+                --hover-organos: rgba(2, 132, 199, 0.1);
             }
         }
 
@@ -145,6 +151,10 @@
         .title-mnemo { color: var(--color-mnemo); border-color: var(--color-mnemo); }
         .btn-mnemo { color: var(--color-mnemo); }
         .btn-mnemo:hover { transform: translateY(-4px); border-color: var(--color-mnemo); background-color: var(--hover-mnemo); }
+
+        .title-organos { color: var(--color-organos); border-color: var(--color-organos); }
+        .btn-organos { color: var(--color-organos); }
+        .btn-organos:hover { transform: translateY(-4px); border-color: var(--color-organos); background-color: var(--hover-organos); }
 
         .empty-state {
             grid-column: 1 / -1;
@@ -228,6 +238,12 @@
     <h2 class="section-title title-mnemo">🧠 Reglas Mnemotécnicas</h2>
     <div class="grid-temas">
         <a href="reglasmnemotecnicas.html" class="btn-tema btn-mnemo">Ver Mis Reglas Mnemotécnicas</a>
+    </div>
+
+    <!-- BLOQUE 7: ÓRGANOS IMPORTANTES -->
+    <h2 class="section-title title-organos">🏛️ Órganos Importantes</h2>
+    <div class="grid-temas">
+        <a href="organosimportantes.html" class="btn-tema btn-organos">Ver Órganos Importantes</a>
     </div>
 
 </body>
