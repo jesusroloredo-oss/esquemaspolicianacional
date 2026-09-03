@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Órganos Importantes - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #0284c7; /* Azul institucional */
+            --title-sec: #0369a1; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #e0f2fe; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #f0f9ff; --callout-abstract-border: #38bdf8;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #38bdf8; --title-sec: #7dd3fc; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(56, 189, 248, 0.1); --callout-abstract-border: #38bdf8;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top:0;}
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 6px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-main); display: block; overflow-x: auto; white-space: normal; }
+        th, td { border: 1px solid var(--table-border); padding: 12px; text-align: left; min-width: 140px; vertical-align: top; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 0.95em; text-align: left; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        td ul { margin: 0; padding-left: 15px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); }
+        .bloque h4 { margin: 0 0 8px 0; color: var(--title-third); font-size: 1.1em; border-bottom: 2px solid var(--border-color); padding-bottom: 4px; }
+        
+        .badge { background-color: var(--title-main); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+        .btn-nav.invisible { visibility: hidden; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; margin: 8px 0 3px 0; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; page-break-after: avoid; }
+            h3 { font-size: 9.5pt; margin: 6px 0 2px 0; color: #000 !important; break-after: avoid; page-break-after: avoid; }
+            p, ul, ol { margin: 3px 0; padding-left: 15px; }
+            li { margin-bottom: 2px; }
+            
+            table { display: table !important; width: 100% !important; margin: 5px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+            tr { break-inside: avoid; page-break-inside: avoid; }
+            th, td { padding: 3px 5px !important; border: 1px solid #555 !important; font-size: 8pt; color: #000 !important; vertical-align: top; }
+            th { background-color: #eaeaea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; margin-top: 5px !important; }
+            .bloque { flex: 1 1 45% !important; margin: 2px !important; padding: 6px !important; border: 1px solid #888 !important; break-inside: avoid; page-break-inside: avoid; background: #fff !important; }
+            .bloque h4 { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            
+            .callout { padding: 5px 8px !important; margin: 5px 0 !important; background: #fff !important; border: 1px solid #888 !important; border-left-width: 4px !important; break-inside: avoid; page-break-inside: avoid; }
+            .callout-title { font-size: 9pt; margin-bottom: 2px; color: #000 !important; }
+            .callout p, .callout ul { margin: 0; }
+            .badge { background: transparent; color: #000; border: 1px solid #000; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🏛️ Órganos Importantes</h1>
+
+    <h2>1. Órganos de la Administración de Justicia</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Tribunal de Instancia</h4>
+            <ul>
+                <li>En cada <strong>Partido Judicial</strong>. Sede en la capital.<!--[cite: 9]--></li>
+                <li>Sección Única / Sección Civil e Instrucción.<!--[cite: 9]--></li>
+                <li>Otras: Familia, Infancia y Capacidad; Violencia contra Infancia y Adolescencia; Violencia s/mujer; Menores; Vigilancia Penitenciaria.<!--[cite: 9]--></li>
+                <li><strong>Presidencia:</strong> Una por Tribunal.<!--[cite: 9]--> Las secciones tendrán presidencia si: 2 o más secciones; 8 o más plazas judiciales (sección); o 12 o más plazas judiciales Tribunal.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Tribunal Supremo</h4>
+            <ul>
+                <li>Órgano jurisdiccional único competencia en toda España.<!--[cite: 9]--></li>
+                <li>Tribunal Superior en cualquier orden.<!--[cite: 9]--></li>
+                <li><strong>5 salas:</strong> Civil, Penal, Contencioso-Administrativo, Social y Militar.<!--[cite: 9]--></li>
+                <li><strong>Presidente:</strong> del CGPJ. Mandato 5 años.<!--[cite: 9]--></li>
+                <li><strong>Recursos:</strong> Casación.<!--[cite: 9]--></li>
+                <li>Compuesto por: Presidente + Presidente de Sala + Magistrados. Le asiste un Gabinete Técnico.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Tribunal Jurado</h4>
+            <ul>
+                <li><strong>Preside:</strong> Magistrado AP / Magistrado Penal TS / Civil y Penal TSJ.<!--[cite: 9]--></li>
+                <li><strong>Miembros:</strong> 9 Jurados + 2 suplentes.<!--[cite: 9]--></li>
+                <li>Sorteo: Últimos 15 días Septiembre de los años pares.<!--[cite: 9]--></li>
+                <li><strong>Excepciones:</strong> NO prevaricación, NO incendios.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">⚖️ Consejo General del Poder Judicial (CGPJ)</div>
+        <ul>
+            <li>Garantizar independencia de jueces.<!--[cite: 9]--> Jurisdicción solo jueces, juezas y Tribunales.<!--[cite: 9]--></li>
+            <li><strong>Miembros:</strong> 20 + Presidente.<!--[cite: 9]--> (10 por el Congreso y 10 por el Senado: de ellos 6 jueces/magistrados y 4 juristas).<!--[cite: 9]--></li>
+            <li><strong>Presidente:</strong> También del TS. Lo nombra el Rey y lo elige el CGPJ en Pleno.<!--[cite: 9]--></li>
+            <li><strong>Requisitos Presidencia:</strong> Jurista +25 años de ejercicio profesional.<!--[cite: 9]--></li>
+            <li><strong>Nombramiento:</strong> RD refrendado por el PG. Mandato de 5 años.<!--[cite: 9]--></li>
+        </ul>
+    </div>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">🏛️ Tribunal Constitucional</div>
+        <ul>
+            <li>Intérprete Supremo de la CE. Independiente, sometido a CE y LO TC.<!--[cite: 9]--></li>
+            <li><strong>Miembros:</strong> 12 + Presidente (4 Congreso, 4 Senado, 2 Gobierno, 2 CGPJ).<!--[cite: 9]--></li>
+            <li><strong>Composición:</strong> Pleno (todos), Sala (6 magistrados), Gran Sala.<!--[cite: 9]--></li>
+            <li>Presidente Sala 1ª: Presidente TC. Presidente Sala 2ª: Vicepresidente.<!--[cite: 9]--></li>
+            <li><strong>Nombramientos y Mandatos:</strong> 
+                <ul>
+                    <li>Presidente: nombra Rey, propuesta TC en Pleno (voto secreto). Mandato 3 años, reelegible 1 vez.<!--[cite: 9]--></li>
+                    <li>Magistrados: 9 años (renovándose por 1/3 cada 3 años). Requisito: +15 años de ejercicio profesional.<!--[cite: 9]--></li>
+                </ul>
+            </li>
+            <li><strong>Funciones:</strong> Recursos de Inconstitucionalidad, Cuestión Inconstitucionalidad (jueces/tribunales) y Recurso de Amparo (salas/secciones).<!--[cite: 9]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>2. Órganos Constitucionales y de Control</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>👤 Defensor del Pueblo (Art. 54 CE)</h4>
+            <ul>
+                <li>Alto Comisionado de las CG. Defiende los Derechos del Título I.<!--[cite: 9]--></li>
+                <li>NO sujeto a mandato imperativo. Enjuiciamiento TS. Incompatibilidad 10 días.<!--[cite: 9]--></li>
+                <li><strong>Elección:</strong> 3/5 Congreso, (20 días), 3/5 Senado. Si no: 3/5 Congreso y MA Senado.<!--[cite: 9]--></li>
+                <li><strong>Mandato:</strong> 5 años. Emite Informe Anual.<!--[cite: 9]--></li>
+                <li><strong>Quejas:</strong> Conducta Adm Justicia al MF (puede derivar CGPJ). Conducta delictiva al FGE.<!--[cite: 9]--></li>
+                <li><strong>Estructura:</strong> 2 Adjuntos (conformidad Cámaras). Asesores (límite presupuestario). Mecanismo Nac. Prevención Tortura.<!--[cite: 9]--></li>
+                <li>Se dirige a Presidentes y se relaciona con Comisión Mixta.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>⚖️ Ministerio Fiscal y FGE</h4>
+            <ul>
+                <li>Promover la acción de justicia y velar por independencia Tribunales.<!--[cite: 9]--></li>
+                <li>Fiscalía Órganos Centrales y Fiscalías Territoriales.<!--[cite: 9]--></li>
+                <li><strong>Fiscalías Especiales:</strong> Antidroga; Corrupción y Crimen Organizado.<!--[cite: 9]--></li>
+                <li><strong>Órganos de asesoramiento:</strong> Consejo Fiscal; Junta de Fiscales de Sala; Junta Fiscales Superiores.<!--[cite: 9]--></li>
+                <li>Fiscal de Sala y Fiscal Especialista.<!--[cite: 9]--></li>
+                <li><strong>FGE (Fiscal General del Estado):</strong> Nombra Rey, propone Gobierno, oído CGPJ.<!--[cite: 9]--></li>
+                <li><strong>Requisito FGE:</strong> Jurista +15 años. Mandato de 4 años (no renovable).<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>3. Órganos de la Administración General del Estado (AGE)</h2>
+    
+    <div class="grid-blocks">
+        <div class="bloque" style="grid-column: 1 / -1;">
+            <h4>Estructura de Órganos Superiores y Directivos</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Superiores Centrales<!--[cite: 9]--></th>
+                        <th>Directivos Centrales<!--[cite: 9]--></th>
+                        <th>Directivos Territoriales<!--[cite: 9]--></th>
+                        <th>Exterior<!--[cite: 9]--></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Consejo de Ministros (CM)<br>Secretarías de Estado (SE)<!--[cite: 9]--></td>
+                        <td>Subsecretario<br>Secretaría General (SG)<br>SGT<br>D.G.<br>S.D.G.<!--[cite: 9]--></td>
+                        <td>Delegado de Gobierno<br>Subdelegado<!--[cite: 9]--></td>
+                        <td>Embajadores<br>Representantes permanentes ante org. internacionales<!--[cite: 9]--></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Consejo de Ministros (CM)</h4>
+            <ul>
+                <li><strong>Preside:</strong> PG. <strong>Acude:</strong> PG, Vicepresidente, Ministros (puede SE y altos cargos excepcionalmente).<!--[cite: 9]--></li>
+                <li><strong>Secretario:</strong> Ministerio Presidencia, Justicia y Rel. Cortes.<!--[cite: 9]--></li>
+                <li>Deliberaciones Secretas.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Comisiones Delegadas de Gobierno</h4>
+            <ul>
+                <li><strong>Son 5:</strong> Asuntos Económicos; Seg. Nacional; Inteligencia; Reto Demográfico; Agenda 2030.<!--[cite: 9]--></li>
+                <li>Deliberaciones secretas. Crea por RD del CM a propuesta del PG.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Delegado de Gobierno</h4>
+            <ul>
+                <li>Representa Gobierno de la nación en cada CCAA.<!--[cite: 9]--></li>
+                <li><strong>Organicamente:</strong> PG. <strong>Funcionalmente:</strong> Ministerio competente. <strong>Adscrito:</strong> M. Política Territorial.<!--[cite: 9]--></li>
+                <li><strong>Categoría:</strong> Subsecretario. Nombra RD del CM a propuesta PG.<!--[cite: 9]--></li>
+                <li><strong>Sede:</strong> Consejo de Gobierno, salvo CM determine otra. <strong>Suplencia:</strong> Subdelegado que designe.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <ul>
+        <li><strong>CG SE y Subsecretarios:</strong> Asiste a SE y subsecretarios. Preside Vicepres. / M. Presidencia. Secretario Subsecretario Presidencia / Director Secretariado de Gobierno. Deliberaciones reservadas.<!--[cite: 9]--></li>
+        <li><strong>Secretariado de Gobierno:</strong> Órgano de apoyo a CM, CDG y CG SE. Prepara reuniones, convocatorias y actas. SG Técnica M. Presidencia. (Rango DG).<!--[cite: 9]--></li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Órganos del Ministerio del Interior y Seguridad</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>D.G. Coordinación y Estudios</h4>
+            <ul>
+                <li>Coordinación y supervisión FCSE. Estadística Nacional de Criminalidad.<!--[cite: 9]--></li>
+                <li>Servicio Central VG (responsable VIOGEN).<!--[cite: 9]--></li>
+                <li>Centro Nacional Desaparecidos, ONLDO, ONVIOSEX.<!--[cite: 9]--></li>
+                <li>Observatorio Cibercriminalidad, a través de OCC.<!--[cite: 9]--></li>
+                <li>Subregistro OTAN-UE, Delegado PD del SES, ONGADH, Código deontológico.<!--[cite: 9]--></li>
+                <li>DILISES-SES (libro registro detenidos). Depende de ella IPYSS (SDG).<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>DAO (Dirección Adjunta Operativa)</h4>
+            <ul>
+                <li><strong>Categoría:</strong> SDG. (Siempre en Divisiones y SDG: Secretaría General).<!--[cite: 9]--></li>
+                <li>UPEC (Centro Nac. Comunicaciones), GEO, UAI (Asuntos Internos), BOA.<!--[cite: 9]--></li>
+                <li>D. Operaciones Transformación Digital (RPT).<!--[cite: 9]--></li>
+                <li>Área de Coordinación Operativa. Jefatura Sistemas Especiales. UCAT.<!--[cite: 9]--></li>
+                <li>Unidad Aérea (Medios Aéreos y Seg. Protección Aérea).<!--[cite: 9]--></li>
+                <li>Comisarías Especiales (Casa Real, PG/CD/DP, T.Cuentas, Senado, TC, CGPJ/TS/AN) y Unidades Adscritas.<!--[cite: 9]--></li>
+                <li>5 Comisarías Generales: Información, Seg Ciudadana, Policía Judicial, Científica, Extranjería y Fronteras.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Otros Centros Directivos</h4>
+            <ul>
+                <li><strong>CITCO (Rango SDG):</strong> Punto Focal Relatoría TSH. Punto Nac. Contacto Localización Activos (ORA). Precursores explosivos. UNECI, ONIP, TEPOI.<!--[cite: 9]--></li>
+                <li><strong>CNPIC:</strong> Da impulso y coordina actividades SES en materia IC. Depende del SES. Altas, bajas y modificaciones Catálogo. Determinación criticidad.<!--[cite: 9]--></li>
+                <li><strong>D.G. Protección Internacional:</strong> Depende de Subsecretaría Interior. SDG Relaciones Institucionales; SDG Asuntos Generales; SDG Instrucción PI y Apatridia. OAR tramita solicitudes PI. CIAR órgano colegiado eleva a MI.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout-info">
+        <div class="callout-title">🤝 Consejos y Personal SP</div>
+        <ul>
+            <li><strong>Consejo de Policía:</strong> Sindicación, acción sindical, negociación colectiva. Preside MI. 14 Adm + 14 Policía. Sufragio libre, personal, directo y secreto. Reunión al menos 1 vez cada 2 meses (Convoca 55-70 días, Celebra 45-70). Comisión Garantía: 3 miembros / 6 mesa única. Informe: Faltas MG o contra rep. sindicales.<!--[cite: 9]--></li>
+            <li><strong>Consejo Política de Seguridad:</strong> Coordinación políticas seguridad públicas Estado y CCAA. Preside MI. Miembros: Consejeros CCAA + Rep. Estado. Comité Expertos (8 representantes: 4 CCAA y 4 Estado) para asesoramiento y programas formación.<!--[cite: 9]--></li>
+            <li><strong>Seguridad Privada:</strong> Prestadores servicio SP (empresas, despachos y personal habilitado). Personal SP (personas físicas habilitadas). Personal acreditado (profesores, centros, ingenieros). Despacho detectives (1 o más). Jefe (obligatorio). Director (dirige departamentos).<!--[cite: 9]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>5. Igualdad, Asistencia a Víctimas y Derechos Humanos</h2>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Oficina Asistencia Víctimas (OAV)</h4>
+            <ul>
+                <li>Gobierno y CCAA.<!--[cite: 9]--></li>
+                <li><strong>Acceso:</strong> NO denuncia previa.<!--[cite: 9]--></li>
+                <li><strong>Extensión:</strong> Familiares por especial gravedad.<!--[cite: 9]--></li>
+                <li><strong>Fases:</strong> Acogida, Información, Intervención, Seguimiento (AISS).<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Delegación del Gobierno Erradicación VG</h4>
+            <ul>
+                <li>Ministerio Igualdad. <strong>Categoría:</strong> DG.<!--[cite: 9]--></li>
+                <li>Impulsar, coordinar y asesorar medidas contra violencia s/mujer.<!--[cite: 9]--></li>
+                <li>SE Igualdad y Erradicación Violencia.<!--[cite: 9]--></li>
+                <li>SDG Coordinación Institucional. SDG Sensibilización, Prevención y Estudios.<!--[cite: 9]--></li>
+                <li>Unidades de Coordinación contra Violencia s/mujer. Observatorio VG.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque">
+            <h4>Observatorios y Delitos de Odio</h4>
+            <ul>
+                <li><strong>Observatorios Igualdad:</strong> Instituto de la Mujer. Valoración mujer en diversas áreas. Cambios socio-laborales. Proponer mejoras políticas.<!--[cite: 9]--></li>
+                <li><strong>ONLDO / ONDOD:</strong> D.G. Coordinación y Estudios. Coordinar FCSE en delitos de odio. Atención víctimas y fomentar denuncias. Estudios y estadísticas en la materia.<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>6. Órganos de la Unión Europea y ámbito Internacional</h2>
+
+    <div class="callout callout-abstract">
+        <div class="callout-title">🇪🇺 Instituciones de la UE (10) y sus Mandatos</div>
+        <ul>
+            <li><strong>Parlamento Europeo (5 años):</strong> Pleno Estrasburgo; Secretaría Luxemburgo; Comisión Bruselas.<!--[cite: 9]--></li>
+            <li><strong>Consejo Europeo (Bruselas):</strong> Presidente 2,5 años.<!--[cite: 9]--></li>
+            <li><strong>Consejo de la UE (Bruselas):</strong> Presidencia rotatoria cada 6 meses.<!--[cite: 9]--></li>
+            <li><strong>Comisión Europea (Bruselas):</strong> 27 miembros (5 años). Tienen el <strong>monopolio iniciativa legislativa</strong>, defienden intereses UE y ejecutan presupuesto.<!--[cite: 9]--></li>
+            <li><strong>Tribunal Justicia UE (Luxemburgo):</strong> Tribunal de Justicia (1 juez EM + 11 abogados generales) y Tribunal General (2 jueces EM).<!--[cite: 9]--></li>
+            <li><strong>Tribunal de Cuentas (Luxemburgo):</strong> Vigila dinero (recaudación y uso fondos).<!--[cite: 9]--></li>
+            <li><strong>BCE (Frankfurt):</strong> Gestiona euro.<!--[cite: 9]--></li>
+            <li><strong>Alto Representante Asuntos Exteriores:</strong> Nombra Consejo Europeo (Mayoría Cualificada), aprobado Presidente Comisión. Presidente Consejo A. Exteriores, Vicepres. Comisión. Dirige Agencia Europea Defensa y SEAE. Mandato 5 años.<!--[cite: 9]--></li>
+        </ul>
+    </div>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>Fiscalía Europea (EPPO)</h4>
+            <ul>
+                <li>Sede: Luxemburgo. Protege presupuesto UE. 25 EM (último Hungría).<!--[cite: 9]--></li>
+                <li>Fraudes IVA transfronterizos de al menos 10M €. Niveles: Central y descentralizado.<!--[cite: 9]--></li>
+                <li>FGE: 7 años (no reelegible). FEuropeo: 6 años. F Delegado: 5 años.<!--[cite: 9]--></li>
+                <li>Coopera con Europol, Eurojust y OLAF.<!--[cite: 9]--></li>
+                <li>Discrepancias: FED y FGEspaña (MF); FED y TCInstancia (Sala Penal TS). Juez de garantías (cooperación reforzada).<!--[cite: 9]--></li>
+            </ul>
+        </div>
+        <div class="bloque" style="border-left: 4px solid var(--callout-warning-border);">
+            <h4>🌍 Consejo de Europa (No es Institución UE)</h4>
+            <ul>
+                <li>Defensa de los Derechos Humanos. 46 países. Convenio Europeo DH.<!--[cite: 9]--></li>
+                <li>Palacio de Europa (Estrasburgo).<!--[cite: 9]--></li>
+                <li><strong>TEDH (Tribunal de Estrasburgo):</strong> N° Jueces igual Altas Partes Contratantes. MA votos de lista 3 candidatos. 9 años (no reelegibles).<!--[cite: 9]--></li>
+                <li><strong>Estructura:</strong> Presidente 3 años (reelegible), Presidente Sala, Secretario y Adjuntos.<!--[cite: 9]--></li>
+                <li>Comités (3 jueces), Salas (7 jueces), Gran Sala (17 jueces). Sentencias definitivas. Remisión Gran Sala (5 jueces aceptan).<!--[cite: 9]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+        <a href="#" class="btn-nav invisible">Siguiente →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
