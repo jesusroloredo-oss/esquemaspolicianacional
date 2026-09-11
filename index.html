@@ -39,6 +39,9 @@
 
             --color-organos: #0284c7; /* Azul institucional */
             --hover-organos: #e0f2fe;
+
+            --color-mandatos: #0d9488; /* Verde azulado (Teal) */
+            --hover-mandatos: #f0fdfa;
         }
 
         /* Variables Modo Oscuro Automático */
@@ -71,6 +74,9 @@
 
                 --color-organos: #38bdf8;
                 --hover-organos: rgba(2, 132, 199, 0.1);
+
+                --color-mandatos: #2dd4bf;
+                --hover-mandatos: rgba(13, 148, 136, 0.1);
             }
         }
 
@@ -155,6 +161,10 @@
         .title-organos { color: var(--color-organos); border-color: var(--color-organos); }
         .btn-organos { color: var(--color-organos); }
         .btn-organos:hover { transform: translateY(-4px); border-color: var(--color-organos); background-color: var(--hover-organos); }
+
+        .title-mandatos { color: var(--color-mandatos); border-color: var(--color-mandatos); }
+        .btn-mandatos { color: var(--color-mandatos); }
+        .btn-mandatos:hover { transform: translateY(-4px); border-color: var(--color-mandatos); background-color: var(--hover-mandatos); }
 
         .empty-state {
             grid-column: 1 / -1;
@@ -250,6 +260,12 @@
     <h2 class="section-title title-organos">🔒 Secreto, Confidencial o Reservado</h2>
     <div class="grid-temas">
         <a href="secreto.html" class="btn-tema btn-organos">Ver Clasificación de la Información</a>
+    </div>
+
+    <!-- BLOQUE 9: MANDATOS Y PLAZOS -->
+    <h2 class="section-title title-mandatos">⏳ Plazos y Mandatos</h2>
+    <div class="grid-temas">
+        <a href="mandatos.html" class="btn-tema btn-mandatos">Ver Esquema de Mandatos por Años</a>
     </div>
 
 </body>
