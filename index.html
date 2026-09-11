@@ -42,6 +42,9 @@
 
             --color-mandatos: #0d9488; /* Verde azulado (Teal) */
             --hover-mandatos: #f0fdfa;
+
+            --color-infracciones: #4f46e5; /* Índigo */
+            --hover-infracciones: #e0e7ff;
         }
 
         /* Variables Modo Oscuro Automático */
@@ -77,6 +80,9 @@
 
                 --color-mandatos: #2dd4bf;
                 --hover-mandatos: rgba(13, 148, 136, 0.1);
+
+                --color-infracciones: #818cf8;
+                --hover-infracciones: rgba(79, 70, 229, 0.1);
             }
         }
 
@@ -165,6 +171,10 @@
         .title-mandatos { color: var(--color-mandatos); border-color: var(--color-mandatos); }
         .btn-mandatos { color: var(--color-mandatos); }
         .btn-mandatos:hover { transform: translateY(-4px); border-color: var(--color-mandatos); background-color: var(--hover-mandatos); }
+
+        .title-infracciones { color: var(--color-infracciones); border-color: var(--color-infracciones); }
+        .btn-infracciones { color: var(--color-infracciones); }
+        .btn-infracciones:hover { transform: translateY(-4px); border-color: var(--color-infracciones); background-color: var(--hover-infracciones); }
 
         .empty-state {
             grid-column: 1 / -1;
@@ -266,6 +276,12 @@
     <h2 class="section-title title-mandatos">⏳ Plazos y Mandatos</h2>
     <div class="grid-temas">
         <a href="mandatos.html" class="btn-tema btn-mandatos">Ver Esquema de Mandatos por Años</a>
+    </div>
+
+    <!-- BLOQUE 10: INFRACCIONES Y SANCIONES -->
+    <h2 class="section-title title-infracciones">🛑 Infracciones y Sanciones</h2>
+    <div class="grid-temas">
+        <a href="infracciones.html" class="btn-tema btn-infracciones">Ver Plazos de Prescripción</a>
     </div>
 
 </body>
