@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Infracciones y Sanciones - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #4f46e5; --title-sec: #4338ca; --border-color: #e2e8f0;
+            --table-header: #e0e7ff; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #818cf8; --title-sec: #6366f1; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        
+        /* DISEÑO DE LA TABLA */
+        .table-responsive { overflow-x: auto; margin-top: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th, td { border: 1px solid var(--table-border); padding: 16px 12px; text-align: left; vertical-align: middle; }
+        th { background-color: var(--table-header); font-weight: bold; font-size: 1.05em; color: var(--title-sec); text-transform: uppercase; letter-spacing: 0.5px; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        tr:hover { background-color: rgba(79, 70, 229, 0.05); }
+
+        .ley-titulo { font-weight: 700; font-size: 1.05em; color: var(--text-main); }
+        
+        /* ETIQUETAS VISUALES */
+        .badge-container { display: flex; gap: 6px; flex-wrap: wrap; }
+        .badge-inf { background-color: #f59e0b; color: #fff; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .badge-san { background-color: #ef4444; color: #fff; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+
+        /* MNEMOTÉCNICAS */
+        .mnemo-box { background: rgba(79, 70, 229, 0.05); border-left: 5px solid var(--title-main); padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .mnemo-box h3 { color: var(--title-sec); margin-top: 0; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;}
+        .mnemo-item { font-size: 1.1em; margin-bottom: 10px; font-weight: 500; }
+        .mnemo-arrow { color: var(--title-main); font-weight: bold; margin: 0 10px; font-size: 1.2em; }
+        .mnemo-res { background-color: #fff; color: var(--title-sec); padding: 4px 10px; border-radius: 6px; font-weight: bold; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            .badge-container { flex-direction: column; gap: 4px; align-items: flex-start; }
+            th, td { padding: 10px 8px; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, .nav-temas { display: none !important; }
+            body { font-size: 9pt; line-height: 1.2; }
+            h1 { font-size: 14pt; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; margin-bottom: 10px;}
+            
+            table { width: 100% !important; border: 1px solid #000 !important; }
+            th, td { border: 1px solid #000 !important; padding: 6px !important; }
+            th { background-color: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; color: #000 !important; }
+            
+            .badge-inf { background-color: #fff !important; color: #000 !important; border: 1px solid #f59e0b; padding: 1px 4px; box-shadow: none !important; }
+            .badge-san { background-color: #fff !important; color: #000 !important; border: 1px solid #ef4444; padding: 1px 4px; box-shadow: none !important; }
+            
+            .mnemo-box { border: 1px solid #000 !important; background: #fff !important; break-inside: avoid; }
+            .mnemo-box h3 { color: #000 !important; }
+            .mnemo-arrow { color: #000 !important; }
+            .mnemo-res { border: 1px solid #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🛑 Infracciones y Sanciones (Prescripciones)</h1>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>LEY / NORMATIVA<!--[cite: 13]--></th>
+                    <th>INFRACCIÓN<!--[cite: 13]--></th>
+                    <th>SANCIÓN<!--[cite: 13]--></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ley-titulo">REGIMEN DISCIPLINARIO DGP<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">1 mes</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">3 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 mes</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">LOEX<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">6 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">5 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">SEGURIDAD PRIVADA<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">1 años</span>
+                            <span class="badge-inf">6 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">4 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">SEGURIDAD CIUDADANA<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">1 años</span>
+                            <span class="badge-inf">6 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">3 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">DEPENDENCIA<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">4 años</span>
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">5 años</span>
+                            <span class="badge-san">4 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">LGTBI<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">9 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span>
+                            <span class="badge-san">6 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">PROTECCIÓN DE DATOS<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">3 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ley-titulo">DATOS PERSONALES PREVENCIÓN<!--[cite: 13]--></td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-inf">3 años</span>
+                            <span class="badge-inf">2 años</span>
+                            <span class="badge-inf">6 meses</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="badge-container">
+                            <span class="badge-san">3 años</span>
+                            <span class="badge-san">2 años</span>
+                            <span class="badge-san">1 año</span><!--[cite: 13]-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MNEMOTÉCNICAS -->
+    <div class="mnemo-box">
+        <h3>🧠 Trucos Mnemotécnicos</h3>
+        <div class="mnemo-item">
+            <strong>- Seguridad Ciudadana (ISA)</strong> <span class="mnemo-arrow">→</span> <span class="mnemo-res">612 123 123<!--[cite: 13]--></span>
+        </div>
+        <div class="mnemo-item">
+            <strong>- Dependencia</strong> <span class="mnemo-arrow">→</span> <span class="mnemo-res">la que más y rara<!--[cite: 13]--></span>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+    </div>
+
+</div>
+
+</body>
+</html>
