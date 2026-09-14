@@ -45,6 +45,9 @@
 
             --color-infracciones: #4f46e5; /* Índigo */
             --hover-infracciones: #e0e7ff;
+
+            --color-bd: #db2777; /* Rosa oscuro / Magenta */
+            --hover-bd: #fce7f3;
         }
 
         /* Variables Modo Oscuro Automático */
@@ -83,6 +86,9 @@
 
                 --color-infracciones: #818cf8;
                 --hover-infracciones: rgba(79, 70, 229, 0.1);
+
+                --color-bd: #f472b6;
+                --hover-bd: rgba(219, 39, 119, 0.1);
             }
         }
 
@@ -175,6 +181,10 @@
         .title-infracciones { color: var(--color-infracciones); border-color: var(--color-infracciones); }
         .btn-infracciones { color: var(--color-infracciones); }
         .btn-infracciones:hover { transform: translateY(-4px); border-color: var(--color-infracciones); background-color: var(--hover-infracciones); }
+
+        .title-bd { color: var(--color-bd); border-color: var(--color-bd); }
+        .btn-bd { color: var(--color-bd); }
+        .btn-bd:hover { transform: translateY(-4px); border-color: var(--color-bd); background-color: var(--hover-bd); }
 
         .empty-state {
             grid-column: 1 / -1;
@@ -282,6 +292,12 @@
     <h2 class="section-title title-infracciones">🛑 Infracciones y Sanciones</h2>
     <div class="grid-temas">
         <a href="infracciones.html" class="btn-tema btn-infracciones">Ver Plazos de Prescripción</a>
+    </div>
+
+    <!-- BLOQUE 11: BASES DE DATOS -->
+    <h2 class="section-title title-bd">💾 Bases de Datos y Sistemas</h2>
+    <div class="grid-temas">
+        <a href="basesdedatos.html" class="btn-tema btn-bd">Ver Bases de Datos Nacionales e Internacionales</a>
     </div>
 
 </body>
