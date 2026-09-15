@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tema 18: Delitos contra el Patrimonio - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #1e3a8a; /* Azul Jurídica */
+            --title-sec: #2563eb; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #f1f5f9; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --callout-abstract-bg: #eff6ff; --callout-abstract-border: #3b82f6;
+            --callout-danger-bg: #fef2f2; --callout-danger-border: #ef4444;
+            --callout-warning-bg: #fffbeb; --callout-warning-border: #f59e0b;
+            --callout-info-bg: #f0fdf4; --callout-info-border: #22c55e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #60a5fa; --title-sec: #3b82f6; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --callout-abstract-bg: rgba(59, 130, 246, 0.1); --callout-abstract-border: #3b82f6;
+                --callout-danger-bg: rgba(239, 68, 68, 0.1); --callout-danger-border: #ef4444;
+                --callout-warning-bg: rgba(245, 158, 11, 0.1); --callout-warning-border: #f59e0b;
+                --callout-info-bg: rgba(34, 197, 94, 0.1); --callout-info-border: #22c55e;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        h2 { color: var(--title-sec); margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { color: var(--title-third); margin-top: 20px; }
+        hr { border: 0; height: 1px; background: var(--border-color); margin: 40px 0; }
+        
+        ul { padding-left: 20px; margin-top: 10px; margin-bottom: 15px; }
+        li { margin-bottom: 6px; }
+
+        .callout { padding: 15px 20px; margin: 20px 0; border-left: 5px solid; border-radius: 4px; }
+        .callout-abstract { background-color: var(--callout-abstract-bg); border-color: var(--callout-abstract-border); }
+        .callout-danger { background-color: var(--callout-danger-bg); border-color: var(--callout-danger-border); }
+        .callout-warning { background-color: var(--callout-warning-bg); border-color: var(--callout-warning-border); }
+        .callout-info { background-color: var(--callout-info-bg); border-color: var(--callout-info-border); }
+        .callout-title { font-weight: bold; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: var(--text-main); font-size: 1.1em;}
+
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .bloque { background: var(--table-header); padding: 15px; border-radius: 8px; border: 1px solid var(--table-border); border-top: 3px solid var(--title-sec); }
+        .bloque h4 { margin: 0 0 10px 0; color: var(--title-third); font-size: 1.15em; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
+        
+        .badge-num { background-color: #2563eb; color: #fff; padding: 2px 6px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); white-space: nowrap;}
+        .flecha { color: var(--title-main); font-weight: bold; margin: 0 6px; }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--table-border); transition: all 0.3s ease; }
+        .btn-nav:hover { border-color: var(--title-main); background-color: var(--table-row-even); transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 9pt; line-height: 1.2; }
+            h1 { font-size: 14pt; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; }
+            h2 { font-size: 11pt; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; margin-top: 15px;}
+            .callout { border: 1px solid #888 !important; border-left-width: 4px !important; background: #fff !important; padding: 6px 10px !important; break-inside: avoid; }
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; }
+            .bloque { flex: 1 1 45% !important; border: 1px solid #888 !important; border-top: 3px solid #000 !important; padding: 8px !important; break-inside: avoid; background: #fff !important;}
+            .badge-num { background: transparent !important; color: #000 !important; border: 1px solid #000; padding: 1px 4px; box-shadow: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel de Temas</a>
+    
+    <h1>🏦 Tema 18: Delitos contra el Patrimonio</h1>
+
+    <h2>1. Agravantes de hurto y robo con fuerza</h2>
+    
+    <ul>
+        <li>Alarmas en las cosas <span class="flecha">→</span> <strong>hurto</strong><!--[cite: 14]--></li>
+        <li>Cosas de valor artístico, histórico, cultural o científico<!--[cite: 14]--></li>
+        <li>1ª necesidad y desabastecimiento<!--[cite: 14]--></li>
+        <li>Servicio interés general y quebranto grave<!--[cite: 14]--></li>
+        <li>Explotaciones agrícolas <span class="badge-num">+400€</span><!--[cite: 14]--></li>
+        <li>Especial gravedad<!--[cite: 14]--></li>
+        <li>Graves situación económica<!--[cite: 14]--></li>
+        <li>Reincidencia<!--[cite: 14]--></li>
+        <li>Utilice a menor de 16<!--[cite: 14]--></li>
+        <li>Organización criminal que se dedicare<!--[cite: 14]--></li>
+        <li>Teléfonos móviles con información<!--[cite: 14]--></li>
+    </ul>
+
+    <div class="callout callout-warning">
+        <div class="callout-title">⚠️ Reglas de Aplicación</div>
+        <ul>
+            <li><strong>Mitad superior:</strong> dos o más circunstancias.<!--[cite: 14]--></li>
+            <li><strong>Casa habitada:</strong> agrava robo con fuerza y violencia.<!--[cite: 14]--></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="grid-blocks">
+        <div class="bloque">
+            <h4>2. Tipicidad robo con fuerza</h4>
+            <ul>
+                <li>Escalamiento<!--[cite: 14]--></li>
+                <li>Rompimiento o fractura<!--[cite: 14]--></li>
+                <li>Llaves falsas<!--[cite: 14]--></li>
+                <li>Descubrimiento de claves<!--[cite: 14]--></li>
+                <li>Inutilización de alarma para acceder<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <div class="bloque" style="border-top-color: var(--callout-info-border);">
+            <h4>3. Extorsión</h4>
+            <p>Acto o negocio jurídico, en su perjuicio o de un tercero.<!--[cite: 14]--></p>
+        </div>
+
+        <div class="bloque">
+            <h4>4. Robo y hurto de uso</h4>
+            <ul>
+                <li>Requiere restitución en <span class="badge-num">48 horas</span><!--[cite: 14]--></li>
+                <li>Pena mayor con fuerza en las cosas<!--[cite: 14]--></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>5. Agravantes estafa</h2>
+
+    <div style="column-count: 2; column-gap: 30px; margin-bottom: 20px;">
+        <ul>
+            <li>1ª necesidad<!--[cite: 14]--></li>
+            <li>Firma de otro, documento oficial o público<!--[cite: 14]--></li>
+            <li>Artístico, histórico, cultural y científico<!--[cite: 14]--></li>
+            <li>Especial gravedad<!--[cite: 14]--></li>
+            <li><span class="badge-num">+50.000 €</span><!--[cite: 14]--></li>
+            <li>Elevado número de personas<!--[cite: 14]--></li>
+            <li>Abuso de relación personal o credibilidad empresarial<!--[cite: 14]--></li>
+            <li>Estafa procesal<!--[cite: 14]--></li>
+        </ul>
+    </div>
+
+    <div class="callout callout-danger">
+        <div class="callout-title">🚨 Hiperagravante</div>
+        <p><strong>Hiperagrava</strong> <span class="flecha">→</span> <span class="badge-num">+250.000€</span> o concurre 1ª necesidad con otros.<!--[cite: 14]--></p>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="tema17.html" class="btn-nav">← Tema Anterior (T17)</a>
+        <a href="tema19.html" class="btn-nav">Tema Siguiente (T19) →</a>
+    </div>
+
+</div>
+
+</body>
+</html>
