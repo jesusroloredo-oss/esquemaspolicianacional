@@ -60,12 +60,22 @@
 
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
-            .container { padding: 20px 15px; border-radius: 8px; }
-            h1 { font-size: 1.6rem; }
-            .bd-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .bd-content-wrapper { flex-direction: column; align-items: flex-start; }
-            .bd-arrow { transform: rotate(90deg); margin: 5px 0; align-self: flex-start; margin-left: 10px; }
-            .bd-a { width: 100%; box-sizing: border-box; text-align: left; }
+            .container { padding: 15px 10px; border-radius: 8px; }
+            h1 { font-size: 1.5rem; }
+            
+            /* Fuerza la estructura horizontal en el móvil */
+            .bd-card { padding: 10px 12px; }
+            .bd-content-wrapper { 
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: flex-start; 
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .bd-q { font-size: 0.95em; min-width: auto; flex: 0 1 auto; }
+            .bd-arrow { transform: none; margin: 0 4px; font-size: 1.2em; align-self: center; }
+            .bd-a { width: auto; font-size: 0.95em; padding: 4px 10px; text-align: center; }
+        }
         }
         
         /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
