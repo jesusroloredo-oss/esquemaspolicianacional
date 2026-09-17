@@ -110,6 +110,25 @@
             .badge-inf, .badge-san { font-size: 0.85em; padding: 4px 6px; }
             
             .mnemo-box { padding: 15px; margin-top: 20px; box-sizing: border-box; }
+
+            /* Arreglo para que los trucos mnemotécnicos no se rompan ni corten */
+            .mnemo-item { 
+                display: flex; 
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                align-items: center; 
+                gap: 6px; 
+            }
+            .mnemo-arrow { 
+                margin: 0 4px; 
+            }
+            .mnemo-res { 
+                display: inline-block; 
+                white-space: normal; 
+                word-break: break-word; 
+                max-width: 100%; 
+                box-sizing: border-box;
+            }
         }
         
         /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
