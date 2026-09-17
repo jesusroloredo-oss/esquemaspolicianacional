@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Sedes de Organismos - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #d97706; /* Ámbar */
+            --title-sec: #b45309; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #fef3c7; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #fbbf24; --title-sec: #f59e0b; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
+        .bloque { background: var(--bg-container); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); border-top: 4px solid var(--title-main); box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; flex-direction: column;}
+        .bloque h4 { margin: 0 0 12px 0; color: var(--title-sec); font-size: 1.3em; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; display: flex; align-items: center; gap: 8px;}
+        
+        ul { padding-left: 20px; margin-top: 5px; margin-bottom: 15px; flex-grow: 1;}
+        li { margin-bottom: 8px; font-weight: 500;}
+
+        /* MNEMOTÉCNICAS (Reutilizando el estilo que te gustó) */
+        .mnemo-nota { width: 100%; font-size: 0.9em; color: var(--text-muted); border-top: 1px dashed var(--border-color); margin-top: auto; padding-top: 10px; font-style: italic; display: block;}
+        
+        /* Grid pequeño para las ciudades con 1 sola sede */
+        .grid-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 20px;}
+        .mini-sede { background: var(--table-header); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; text-align: center; }
+        .mini-sede-ciudad { display: block; font-weight: bold; color: var(--title-sec); font-size: 0.9em; text-transform: uppercase; margin-bottom: 4px;}
+        .mini-sede-org { display: block; font-weight: bold; font-size: 1.1em;}
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            .bloque { padding: 15px; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.2; }
+            h1 { font-size: 14pt; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; margin-bottom: 10px;}
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; display: grid !important; grid-template-columns: repeat(2, 1fr) !important;}
+            .bloque { border: 1px solid #888 !important; border-top: 3px solid #000 !important; margin-bottom: 5px !important; break-inside: avoid; padding: 10px !important;}
+            .bloque h4 { color: #000 !important; font-size: 11pt !important; margin-bottom: 5px !important;}
+            .mnemo-nota { color: #333 !important; font-size: 8pt !important; padding-top: 5px !important; margin-top: 5px !important;}
+            .grid-mini { display: flex !important; flex-wrap: wrap !important; gap: 5px !important; }
+            .mini-sede { border: 1px solid #888 !important; flex: 1 1 30%; break-inside: avoid; padding: 6px !important; background: #fff !important;}
+            .mini-sede-ciudad { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🌍 Sedes de Organismos</h1>
+
+    <div class="grid-blocks">
+
+        <!-- BRUSELAS -->
+        <div class="bloque" style="grid-column: 1 / -1;">
+            <h4>📍 BRUSELAS</h4>
+            <div style="column-count: 2; column-gap: 30px;">
+                <ul>
+                    <li>Comisión Europea<!--[cite: 11]--></li>
+                    <li>Consejo de la UE<!--[cite: 11]--></li>
+                    <li>Consejo Europeo<!--[cite: 11]--></li>
+                    <li>Comisión Parlamento<!--[cite: 11]--></li>
+                    <li>Comité Económico y Social Europeo<!--[cite: 11]--></li>
+                    <li>Comité Europeo de Regiones<!--[cite: 11]--></li>
+                    <li>Comité Europeo PD<!--[cite: 11]--></li>
+                    <li>Supervisor Europeo PD<!--[cite: 11]--></li>
+                    <li>OTAN<!--[cite: 11]--></li>
+                    <li>Servio Europeo Acción Exterior<!--[cite: 11]--></li>
+                </ul>
+            </div>
+            <div class="mnemo-nota">
+                💡 <strong>Casi todo "Co":</strong> Todo lo que sea Comisión, Consejo o Comité (salvo DH/Tortura), va a Bruselas. Sede ejecutiva y política de la UE.<!--[cite: 11]-->
+            </div>
+        </div>
+
+        <!-- ESTRASBURGO -->
+        <div class="bloque">
+            <h4>📍 ESTRASBURGO</h4>
+            <ul>
+                <li>TEDH<!--[cite: 11]--></li>
+                <li>Comisario Europeo DH<!--[cite: 11]--></li>
+                <li>Comité Europeo Derechos Sociales<!--[cite: 11]--></li>
+                <li>Comité Europeo Prevención Tortura<!--[cite: 11]--></li>
+                <li>Parlamento (sede oficial)<!--[cite: 11]--></li>
+            </ul>
+            <div class="mnemo-nota">
+                💡 <strong>Derechos Humanos:</strong> Todo lo relacionado con juzgar o proteger derechos a nivel europeo.<!--[cite: 11]-->
+            </div>
+        </div>
+
+        <!-- GINEBRA -->
+        <div class="bloque">
+            <h4>📍 GINEBRA</h4>
+            <ul>
+                <li>CAT<!--[cite: 11]--></li>
+                <li>Subcomité Prevención Tortura<!--[cite: 11]--></li>
+                <li>ACNUR<!--[cite: 11]--></li>
+                <li>ACNUDH<!--[cite: 11]--></li>
+                <li>OMC<!--[cite: 11]--></li>
+                <li>OMS<!--[cite: 11]--></li>
+                <li>Oficina Naciones Unidas<!--[cite: 11]--></li>
+            </ul>
+            <div class="mnemo-nota">
+                💡 <strong>Salud, Refugiados y Global:</strong> Sede histórica europea de la ONU y convenciones mundiales (Salud, Comercio, Tortura).<!--[cite: 11]-->
+            </div>
+        </div>
+
+        <!-- LA HAYA -->
+        <div class="bloque">
+            <h4>📍 LA HAYA</h4>
+            <ul>
+                <li>Corte Justicia Internacional<!--[cite: 11]--></li>
+                <li>Corte Penal Internacional<!--[cite: 11]--></li>
+                <li>EUROJUST<!--[cite: 11]--></li>
+                <li>EUROPOL<!--[cite: 11]--></li>
+            </ul>
+            <div class="mnemo-nota">
+                💡 <strong>Justicia Internacional + Empiezan por EURO:</strong> Todo lo que implique justicia y policía a nivel transnacional (Europol/Eurojust).<!--[cite: 11]-->
+            </div>
+        </div>
+
+        <!-- LUXEMBURGO -->
+        <div class="bloque">
+            <h4>📍 LUXEMBURGO</h4>
+            <ul>
+                <li>Banco Europeo Inversiones<!--[cite: 11]--></li>
+                <li>Secretaría Parlamento<!--[cite: 11]--></li>
+                <li>TJUE<!--[cite: 11]--></li>
+            </ul>
+            <div class="mnemo-nota">
+                💡 <strong>Dinero, Justicia UE y Papeleo:</strong> El banco de inversiones, el tribunal de la UE (no confundir con el TEDH) y la secretaría.<!--[cite: 11]-->
+            </div>
+        </div>
+
+        <!-- ESTADOS UNIDOS (Washington y NY) -->
+        <div class="bloque">
+            <h4>📍 ESTADOS UNIDOS</h4>
+            <ul>
+                <li><strong>WASHINGTON:</strong><!--[cite: 11]-->
+                    <ul>
+                        <li>Banco Mundial<!--[cite: 11]--></li>
+                        <li>FMI<!--[cite: 11]--></li>
+                    </ul>
+                </li>
+                <li><strong>NUEVA YORK:</strong><!--[cite: 11]-->
+                    <ul>
+                        <li>ONU<!--[cite: 11]--></li>
+                        <li>UNICEF<!--[cite: 11]--></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="mnemo-nota">
+                💡 Washington mueve el <strong>dinero mundial</strong>. Nueva York mueve la <strong>política e infancia mundial</strong>.<!--[cite: 11]-->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CIUDADES DE 1 SOLA SEDE (Agrupadas para memorización rápida) -->
+    <h3 style="color: var(--title-sec); margin-top: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px;">📍 Ciudades Especialíficas (1 Sede)</h3>
+    <div class="grid-mini">
+        <div class="mini-sede">
+            <span class="mini-sede-ciudad">Frankfurt<!--[cite: 11]--></span>
+            <span class="mini-sede-org">BCE<!--[cite: 11]--></span>
+            <span style="font-size: 0.8em; color: var(--text-muted); display: block; margin-top: 4px;">(Motor económico)</span>
+        </div>
+        <div class="mini-sede">
+            <span class="mini-sede-ciudad">Budapest<!--[cite: 11]--></span>
+            <span class="mini-sede-org">CEPOL<!--[cite: 11]--></span>
+            <span style="font-size: 0.8em; color: var(--text-muted); display: block; margin-top: 4px;">(Formación Policial)</span>
+        </div>
+        <div class="mini-sede">
+            <span class="mini-sede-ciudad">Varsovia<!--[cite: 11]--></span>
+            <span class="mini-sede-org">FRONTEX<!--[cite: 11]--></span>
+            <span style="font-size: 0.8em; color: var(--text-muted); display: block; margin-top: 4px;">(Fronteras Este)</span>
+        </div>
+        <div class="mini-sede">
+            <span class="mini-sede-ciudad">Lyon<!--[cite: 11]--></span>
+            <span class="mini-sede-org">INTERPOL<!--[cite: 11]--></span>
+            <span style="font-size: 0.8em; color: var(--text-muted); display: block; margin-top: 4px;">(Policía Global)</span>
+        </div>
+        <div class="mini-sede">
+            <span class="mini-sede-ciudad">Atenas<!--[cite: 11]--></span>
+            <span class="mini-sede-org">ENISA<!--[cite: 11]--></span>
+            <span style="font-size: 0.8em; color: var(--text-muted); display: block; margin-top: 4px;">(Ciberseguridad)</span>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+    </div>
+
+</div>
+
+</body>
+</html>
