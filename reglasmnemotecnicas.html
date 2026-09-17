@@ -83,12 +83,23 @@
 
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
-            .container { padding: 20px 15px; border-radius: 8px; }
-            h1 { font-size: 1.6rem; }
-            .mnemo-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .mnemo-content-wrapper { flex-direction: column; align-items: flex-start; }
-            .mnemo-arrow { transform: rotate(90deg); margin: 5px 0; align-self: flex-start; margin-left: 10px; }
-            .mnemo-a { width: 100%; box-sizing: border-box; text-align: left; }
+            .container { padding: 15px 10px; border-radius: 8px; }
+            h1 { font-size: 1.5rem; }
+            
+            /* Fuerza la estructura horizontal en el móvil */
+            .mnemo-card { padding: 10px 12px; flex-direction: column; align-items: stretch; }
+            .mnemo-card.con-nota .mnemo-content-wrapper, .mnemo-content-wrapper { 
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: flex-start; 
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .mnemo-q { font-size: 0.95em; flex: 0 1 auto; }
+            .mnemo-arrow { transform: none; margin: 0 4px; font-size: 1.2em; align-self: center; }
+            .mnemo-a { width: auto; font-size: 0.95em; padding: 4px 10px; text-align: center; }
+            .mnemo-nota { font-size: 0.85em; margin-top: 8px; }
+        }
         }
         
         /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
