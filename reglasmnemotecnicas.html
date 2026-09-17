@@ -53,6 +53,10 @@
         .mnemo-arrow { color: var(--title-main); font-weight: bold; font-size: 1.5em; margin: 0 15px; }
         .mnemo-a { background: var(--respuesta-bg); color: var(--respuesta-color); padding: 6px 14px; border-radius: 6px; font-weight: bold; font-size: 1.1em; border: 1px solid rgba(124, 58, 237, 0.2); }
 
+        .mnemo-card.con-nota { flex-direction: column; align-items: flex-start; }
+        .mnemo-card.con-nota .mnemo-content-wrapper { width: 100%; }
+        .mnemo-nota { width: 100%; font-size: 0.9em; color: var(--text-muted); border-top: 1px dashed var(--border-color); margin-top: 10px; padding-top: 8px; font-style: italic; }
+        
         /* NAVEGACIÓN INFERIOR */
         .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
         .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
@@ -349,6 +353,9 @@
         <div class="mnemo-card">
             <div class="mnemo-content-wrapper">
                 <span class="mnemo-q">Comisiones Mixtas</span><span class="mnemo-arrow">→</span><span class="mnemo-a">PAN</span>
+            </div>
+            <div class="mnemo-nota">
+                💡 Provinciales, Autonómicas o Nacionales
             </div>
         </div>
         
