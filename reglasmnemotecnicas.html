@@ -54,15 +54,18 @@
         .mnemo-a { background: var(--respuesta-bg); color: var(--respuesta-color); padding: 6px 14px; border-radius: 6px; font-weight: bold; font-size: 1.1em; border: 1px solid rgba(124, 58, 237, 0.2); }
 
         .mnemo-card.con-nota { 
-            display: block; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: stretch; 
         }
         .mnemo-card.con-nota .mnemo-content-wrapper { 
             display: flex; 
+            flex-direction: row; 
             align-items: center; 
+            justify-content: space-between; 
             width: 100%; 
         }
         .mnemo-nota { 
-            display: block;
             width: 100%; 
             font-size: 0.9em; 
             color: var(--text-muted); 
