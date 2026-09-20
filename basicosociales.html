@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Básico Sociales - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #059669; /* Verde Esmeralda */
+            --title-sec: #047857; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #d1fae5; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #34d399; --title-sec: #10b981; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        
+        .grid-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px; }
+        .bloque { background: var(--bg-container); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); border-top: 4px solid var(--title-main); box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; flex-direction: column;}
+        .bloque h4 { margin: 0 0 12px 0; color: var(--title-sec); font-size: 1.25em; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; display: flex; align-items: center; gap: 8px;}
+        
+        ul { padding-left: 20px; margin-top: 5px; margin-bottom: 10px; flex-grow: 1;}
+        li { margin-bottom: 8px; }
+        
+        /* UTILIDADES VISUALES */
+        .flecha { color: var(--title-main); font-weight: bold; margin: 0 6px; }
+        .badge { display: inline-block; background-color: var(--title-main); color: #fff; padding: 2px 8px; border-radius: 6px; font-weight: bold; font-size: 0.9em; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .badge-alt { background-color: #3b82f6; } /* Azul */
+        .badge-warn { background-color: #f59e0b; } /* Naranja */
+        .badge-danger { background-color: #ef4444; } /* Rojo */
+        
+        .termino { font-weight: bold; color: var(--title-third); }
+
+        /* ESTILOS DE LA PIRÁMIDE DE MASLOW */
+        .piramide-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 20px; width: 100%;}
+        .nivel { padding: 10px; text-align: center; border-radius: 6px; font-weight: bold; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .nivel:hover { transform: scale(1.02); }
+        .nivel-5 { background-color: #064e3b; width: 40%; } /* Autorrealización */
+        .nivel-4 { background-color: #065f46; width: 55%; } /* Estima/Reconocimiento */
+        .nivel-3 { background-color: #047857; width: 70%; } /* Sociales/Afiliación */
+        .nivel-2 { background-color: #059669; width: 85%; } /* Seguridad */
+        .nivel-1 { background-color: #10b981; width: 100%; } /* Fisiológicas */
+
+        .nivel-desc { display: block; font-size: 0.8em; font-weight: normal; opacity: 0.9; margin-top: 2px;}
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 20px 15px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            .bloque { padding: 15px; }
+            
+            /* Ajuste de la pirámide en móvil */
+            .nivel-5 { width: 50%; }
+            .nivel-4 { width: 65%; }
+            .nivel-3 { width: 80%; }
+            .nivel-2 { width: 95%; }
+            .nivel-1 { width: 100%; }
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.2; }
+            h1 { font-size: 14pt; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; margin-bottom: 10px;}
+            .grid-blocks { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; display: grid !important; grid-template-columns: repeat(2, 1fr) !important;}
+            .bloque { border: 1px solid #888 !important; border-top: 3px solid #000 !important; margin-bottom: 5px !important; break-inside: avoid; padding: 10px !important;}
+            .bloque h4 { color: #000 !important; font-size: 11pt !important; margin-bottom: 5px !important;}
+            .badge { background: transparent !important; color: #000 !important; border: 1px solid #000; padding: 1px 4px; box-shadow: none !important; }
+            .piramide-wrap { border: 1px solid #000; padding: 10px; break-inside: avoid;}
+            .nivel { border: 1px solid #000; background: #fff !important; color: #000 !important; margin-bottom: 2px; padding: 4px !important;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🧠 Básico Sociales</h1>
+
+    <div class="grid-blocks">
+
+        <!-- 1. ACUÑÓ TÉRMINO -->
+        <div class="bloque">
+            <h4>1. Acuñó término:</h4>
+            <ul>
+                <li><span class="termino">Anomía</span> <span class="flecha">→</span> Durkheim y lo desarrolló Merton<!--[cite: 14]--></li>
+                <li><span class="termino">Sociología</span> <span class="flecha">→</span> Comte<!--[cite: 14]--></li>
+                <li><span class="termino">Globalización</span> <span class="flecha">→</span> Levitt<!--[cite: 14]--></li>
+                <li><span class="termino">Criminología</span> <span class="flecha">→</span> Garófalo<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 2. GENERACIONES DH -->
+        <div class="bloque">
+            <h4>2. Generaciones DH:</h4>
+            <p style="margin-top: 0; font-size: 0.9em; color: var(--text-muted); border-bottom: 1px dashed var(--border-color); padding-bottom: 5px;">
+                💡 Las tres primeras generaciones Karel Vasak<!--[cite: 14]-->
+            </p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><span class="badge badge-alt">1ª gen</span> <span class="flecha">→</span> Civiles y políticos<!--[cite: 14]--></li>
+                <li><span class="badge badge-alt">2ª gen</span> <span class="flecha">→</span> Económicos, sociales y culturales<!--[cite: 14]--></li>
+                <li><span class="badge badge-alt">3ª gen</span> <span class="flecha">→</span> Solidaridad (colectivos)<!--[cite: 14]--></li>
+                <li><span class="badge badge-alt">4ª gen</span> <span class="flecha">→</span> Tecnología/digital<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 3. CONDICIONAMIENTOS -->
+        <div class="bloque">
+            <h4>3. Condicionamientos:</h4>
+            <ul>
+                <li><span class="termino">Clásico (Paulov)</span> <span class="flecha">→</span> Reaccionar a estímulos<!--[cite: 14]--></li>
+                <li><span class="termino">Vicario (Bandura)</span> <span class="flecha">→</span> Observar a otro<!--[cite: 14]--></li>
+                <li><span class="termino">Operante (Skinner)</span> <span class="flecha">→</span> Modificar conductas con consecuencias (refuerzos y castigos)<!--[cite: 14]--></li>
+                <li><span class="termino">Instrumental (Thorndike)</span> <span class="flecha">→</span> Ensayo-error<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 4. EFECTOS -->
+        <div class="bloque">
+            <h4>4. Efectos:</h4>
+            <ul>
+                <li><span class="termino">Golem</span> <span class="flecha">→</span> Efecto NEGATIVO demás sobre persona<!--[cite: 14]--></li>
+                <li><span class="termino">Galatea</span> <span class="flecha">→</span> Piensa uno mismo<!--[cite: 14]--></li>
+                <li><span class="termino">Pigmalion</span> <span class="flecha">→</span> Expectativas de otra persona influye<!--[cite: 14]--></li>
+                <li><span class="termino">Halo</span> <span class="flecha">→</span> Impresión/proyección<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 5. AGENDA 2030 -->
+        <div class="bloque">
+            <h4>5. Agenda 2030:</h4>
+            <div style="margin-bottom: 10px;">
+                <span class="badge badge-warn">17 objetivos</span> 
+                <span class="badge badge-warn">169 metas</span><!--[cite: 14]-->
+            </div>
+            <p style="margin-top: 0; font-size: 0.9em;">Sociales, ambientales y económicos<!--[cite: 14]--></p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><strong>1.</strong> Fin pobreza<!--[cite: 14]--></li>
+                <li><strong>2.</strong> Hambre Cero<!--[cite: 14]--></li>
+                <li><strong>3.</strong> Salud y Bienestar<!--[cite: 14]--></li>
+                <li><strong>17.</strong> Alianzas<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 6. III PLAN DELITOS DE ODIO -->
+        <div class="bloque">
+            <h4>6. III Plan Delitos de Odio:</h4>
+            <div style="margin-bottom: 10px;">
+                <span class="badge badge-danger">6 líneas</span> 
+                <span class="badge badge-danger">15 objetivos</span> 
+                <span class="badge badge-danger">109 medidas</span><!--[cite: 14]-->
+            </div>
+            <ul>
+                <li><strong>Articula</strong> <span class="flecha">→</span> SES<!--[cite: 14]--></li>
+                <li><strong>Impulsa, coordina y supervisa</strong> <span class="flecha">→</span> ONDOD (D.G.Coord y Estudios)<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 7. DUDH -->
+        <div class="bloque">
+            <h4>7. DUDH:</h4>
+            <ul style="margin-bottom: 15px;">
+                <li>Asamblea General de Naciones Unidas<!--[cite: 14]--></li>
+                <li>10 de Diciembre de 1948, París<!--[cite: 14]--></li>
+                <li>30 artículos<!--[cite: 14]--></li>
+            </ul>
+            <ul style="list-style: none; padding-left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <li><span class="badge">1</span> Libres e iguales<!--[cite: 14]--></li>
+                <li><span class="badge">2</span> No distinción raza<!--[cite: 14]--></li>
+                <li><span class="badge">3</span> Vida, lib. y seguridad<!--[cite: 14]--></li>
+                <li><span class="badge">4</span> No esclavitud<!--[cite: 14]--></li>
+                <li><span class="badge">5</span> No torturas<!--[cite: 14]--></li>
+                <li><span class="badge">9</span> Detenida<!--[cite: 14]--></li>
+                <li><span class="badge">22</span> SS (Seguridad Social)<!--[cite: 14]--></li>
+                <li><span class="badge">30</span> Nadie arrebata<!--[cite: 14]--></li>
+            </ul>
+        </div>
+
+        <!-- 8. PIRÁMIDE DE MASLOW -->
+        <div class="bloque" style="grid-column: 1 / -1;">
+            <h4>8. Pirámide de Maslow:<!--[cite: 14]--></h4>
+            <div class="piramide-wrap">
+                <!-- Nivel 5 -->
+                <div class="nivel nivel-5">
+                    5. Autorrealización
+                    <span class="nivel-desc">Moralidad, creatividad, aceptación de hechos</span>
+                </div>
+                <!-- Nivel 4 -->
+                <div class="nivel nivel-4">
+                    4. Estima / Reconocimiento
+                    <span class="nivel-desc">Confianza, respeto, éxito</span>
+                </div>
+                <!-- Nivel 3 -->
+                <div class="nivel nivel-3">
+                    3. Sociales / Afiliación
+                    <span class="nivel-desc">Amistad, afecto, intimidad sexual</span>
+                </div>
+                <!-- Nivel 2 -->
+                <div class="nivel nivel-2">
+                    2. Seguridad
+                    <span class="nivel-desc">Física, empleo, recursos, moral, familiar, salud</span>
+                </div>
+                <!-- Nivel 1 -->
+                <div class="nivel nivel-1">
+                    1. Fisiológicas
+                    <span class="nivel-desc">Respiración, alimentación, descanso, sexo, homeostasis</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+    </div>
+
+</div>
+
+</body>
+</html>
