@@ -216,6 +216,45 @@
             border-radius: 12px;
             border: 1px dashed var(--card-border);
         }
+
+        /* SECCIONES DESPLEGABLES */
+        details.seccion-desplegable {
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 900px;
+        }
+        details.seccion-desplegable summary {
+            list-style: none; /* Oculta la flecha nativa del navegador */
+            cursor: pointer;
+            position: relative;
+            outline: none;
+        }
+        details.seccion-desplegable summary::-webkit-details-marker {
+            display: none; /* Oculta la flecha en Safari/iOS */
+        }
+        /* Flecha personalizada a la derecha */
+        details.seccion-desplegable summary::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7em;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+        }
+        /* Gira la flecha cuando está abierto */
+        details.seccion-desplegable[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        /* Animación suave al abrir */
+        details.seccion-desplegable[open] .grid-temas {
+            animation: deslizarAbajo 0.3s ease-out;
+        }
+        @keyframes deslizarAbajo {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -223,55 +262,61 @@
     <p class="subtitle">Selecciona el tema que deseas estudiar:</p>
 
     <!-- BLOQUE 1: CIENCIAS JURÍDICAS -->
-    <h2 class="section-title title-juridica">⚖️ Ciencias Jurídicas (Temas 1 - 26)</h2>
-    <div class="grid-temas">
-        <a href="tema1.html" class="btn-tema btn-juridica">Tema 1: El Derecho</a>
-        <a href="tema2.html" class="btn-tema btn-juridica">Tema 2: Constitución Española I</a>
-        <a href="tema3.html" class="btn-tema btn-juridica">Tema 3: Constitución Española II</a>
-        <a href="tema4.html" class="btn-tema btn-juridica">Tema 4: La Unión Europea</a>
-        <a href="tema5.html" class="btn-tema btn-juridica">Tema 5: El Gobierno y la Administración</a>
-        <a href="tema6.html" class="btn-tema btn-juridica">Tema 6: Empleados Públicos</a>
-        <a href="tema7.html" class="btn-tema btn-juridica">Tema 7: Ministerio del Interior</a>
-        <a href="tema8.html" class="btn-tema btn-juridica">⭐ Tema 8: Dirección General de la Policía (DGP)</a>
-        <a href="tema9.html" class="btn-tema btn-juridica">⭐ Tema 9: LO 2/1986 (FCS)</a>
-        <a href="tema10.html" class="btn-tema btn-juridica">Tema 10: Extranjería (Regímenes)</a>
-        <a href="tema11.html" class="btn-tema btn-juridica">Tema 11: Infracciones de Extranjería</a>
-        <a href="tema12.html" class="btn-tema btn-juridica">Tema 12: Protección Internacional</a>
-        <a href="tema13.html" class="btn-tema btn-juridica">Tema 13: Seguridad Privada</a>
-        <a href="tema14.html" class="btn-tema btn-juridica">⭐ Tema 14: Seguridad Ciudadana</a>
-        <a href="tema15.html" class="btn-tema btn-juridica">Tema 15: Medidas para PIC</a>
-        <a href="tema16.html" class="btn-tema btn-juridica">Tema 16: Derecho Penal</a>
-        <a href="tema17.html" class="btn-tema btn-juridica">Tema 17: Delitos contra las personas</a>
-        <a href="tema18.html" class="btn-tema btn-juridica">Tema 18: Delitos contra el Patrimonio</a>
-        <a href="tema21.html" class="btn-tema btn-juridica">⭐ Tema 21: Procesal Penal</a>
-        <a href="tema22.html" class="btn-tema btn-juridica">Tema 22: Estatuto de la Víctima</a>
-        <a href="tema23.html" class="btn-tema btn-juridica">Tema 23: Políticas de Igualdad</a>
-        <a href="tema24.html" class="btn-tema btn-juridica">Temas 24 y 25: Prevención de Riesgos Laborales</a>
-        <a href="tema26.html" class="btn-tema btn-juridica">Tema 26: Protección de Datos</a>
-    </div>
+    <details class="seccion-desplegable">
+        <summary class="section-title title-juridica">⚖️ Ciencias Jurídicas (Temas 1 - 26)</summary>
+        <div class="grid-temas">
+            <a href="tema1.html" class="btn-tema btn-juridica">Tema 1: El Derecho</a>
+            <a href="tema2.html" class="btn-tema btn-juridica">Tema 2: Constitución Española I</a>
+            <a href="tema3.html" class="btn-tema btn-juridica">Tema 3: Constitución Española II</a>
+            <a href="tema4.html" class="btn-tema btn-juridica">Tema 4: La Unión Europea</a>
+            <a href="tema5.html" class="btn-tema btn-juridica">Tema 5: El Gobierno y la Administración</a>
+            <a href="tema6.html" class="btn-tema btn-juridica">Tema 6: Empleados Públicos</a>
+            <a href="tema7.html" class="btn-tema btn-juridica">Tema 7: Ministerio del Interior</a>
+            <a href="tema8.html" class="btn-tema btn-juridica">⭐ Tema 8: Dirección General de la Policía (DGP)</a>
+            <a href="tema9.html" class="btn-tema btn-juridica">⭐ Tema 9: LO 2/1986 (FCS)</a>
+            <a href="tema10.html" class="btn-tema btn-juridica">Tema 10: Extranjería (Regímenes)</a>
+            <a href="tema11.html" class="btn-tema btn-juridica">Tema 11: Infracciones de Extranjería</a>
+            <a href="tema12.html" class="btn-tema btn-juridica">Tema 12: Protección Internacional</a>
+            <a href="tema13.html" class="btn-tema btn-juridica">Tema 13: Seguridad Privada</a>
+            <a href="tema14.html" class="btn-tema btn-juridica">⭐ Tema 14: Seguridad Ciudadana</a>
+            <a href="tema15.html" class="btn-tema btn-juridica">Tema 15: Medidas para PIC</a>
+            <a href="tema16.html" class="btn-tema btn-juridica">Tema 16: Derecho Penal</a>
+            <a href="tema17.html" class="btn-tema btn-juridica">Tema 17: Delitos contra las personas</a>
+            <a href="tema18.html" class="btn-tema btn-juridica">Tema 18: Delitos contra el Patrimonio</a>
+            <a href="tema21.html" class="btn-tema btn-juridica">⭐ Tema 21: Procesal Penal</a>
+            <a href="tema22.html" class="btn-tema btn-juridica">Tema 22: Estatuto de la Víctima</a>
+            <a href="tema23.html" class="btn-tema btn-juridica">Tema 23: Políticas de Igualdad</a>
+            <a href="tema24.html" class="btn-tema btn-juridica">Temas 24 y 25: Prevención de Riesgos Laborales</a>
+            <a href="tema26.html" class="btn-tema btn-juridica">Tema 26: Protección de Datos</a>
+        </div>
+    </details>
 
     <!-- BLOQUE 2: CIENCIAS SOCIALES -->
-    <h2 class="section-title title-social">🌍 Ciencias Sociales (Temas 27 - 37)</h2>
-    <div class="grid-temas">
-        <a href="tema27.html" class="btn-tema btn-social">⭐ Tema 27: Derechos Humanos</a>
-        <a href="tema28.html" class="btn-tema btn-social">⭐ Tema 28: Globalización</a>
-        <a href="tema29.html" class="btn-tema btn-social">Tema 29: Actitudes y Discriminación</a>
-        <a href="tema30.html" class="btn-tema btn-social">Tema 30: Principios Éticos</a>
-        <a href="tema31.html" class="btn-tema btn-social">Tema 31: Inmigración</a>
-        <a href="tema32.html" class="btn-tema btn-social">Tema 32: Geografía Humana</a>
-        <a href="tema33.html" class="btn-tema btn-social">Tema 33: Seguridad</a>
-        <a href="tema34.html" class="btn-tema btn-social">Tema 34: Drogodependencias</a>
-        <a href="tema35.html" class="btn-tema btn-social">Tema 35: Desarrollo Sostenible</a>
-    </div>
+    <details class="seccion-desplegable">
+        <summary class="section-title title-social">🌍 Ciencias Sociales (Temas 27 - 37)</summary>
+        <div class="grid-temas">
+            <a href="tema27.html" class="btn-tema btn-social">⭐ Tema 27: Derechos Humanos</a>
+            <a href="tema28.html" class="btn-tema btn-social">⭐ Tema 28: Globalización</a>
+            <a href="tema29.html" class="btn-tema btn-social">Tema 29: Actitudes y Discriminación</a>
+            <a href="tema30.html" class="btn-tema btn-social">Tema 30: Principios Éticos</a>
+            <a href="tema31.html" class="btn-tema btn-social">Tema 31: Inmigración</a>
+            <a href="tema32.html" class="btn-tema btn-social">Tema 32: Geografía Humana</a>
+            <a href="tema33.html" class="btn-tema btn-social">Tema 33: Seguridad</a>
+            <a href="tema34.html" class="btn-tema btn-social">Tema 34: Drogodependencias</a>
+            <a href="tema35.html" class="btn-tema btn-social">Tema 35: Desarrollo Sostenible</a>
+        </div>
+    </details>
 
     <!-- BLOQUE 3: MATERIAS TÉCNICAS -->
-    <h2 class="section-title title-tecnica">💻 Materias Técnicas (Temas 38 - 45)</h2>
-    <div class="grid-temas">
-        <a href="tema39.html" class="btn-tema btn-tecnica">Tema 39: Redes Informáticas</a>
-        <a href="tema40.html" class="btn-tema btn-tecnica">⭐ Tema 40: Inteligencia y Fuentes</a>
-        <a href="tema42.html" class="btn-tema btn-tecnica">Tema 42: Origen de las Armas</a>
-        <a href="tema43.html" class="btn-tema btn-tecnica">Tema 43: Vehículo Prioritario</a>
-    </div>
+    <details class="seccion-desplegable">
+        <summary class="section-title title-tecnica">💻 Materias Técnicas (Temas 38 - 45)</summary>
+        <div class="grid-temas">
+            <a href="tema39.html" class="btn-tema btn-tecnica">Tema 39: Redes Informáticas</a>
+            <a href="tema40.html" class="btn-tema btn-tecnica">⭐ Tema 40: Inteligencia y Fuentes</a>
+            <a href="tema42.html" class="btn-tema btn-tecnica">Tema 42: Origen de las Armas</a>
+            <a href="tema43.html" class="btn-tema btn-tecnica">Tema 43: Vehículo Prioritario</a>
+        </div>
+    </details>
 
     <!-- BLOQUE 4: ACTUALIZACIONES -->
     <h2 class="section-title title-actualizaciones">🆕 Actualizaciones</h2>
