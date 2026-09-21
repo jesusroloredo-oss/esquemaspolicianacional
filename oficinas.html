@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Oficinas - Esquemas</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6; --bg-container: #ffffff; --text-main: #1e293b; --text-muted: #64748b;
+            --title-main: #0891b2; /* Cian oscuro */
+            --title-sec: #0e7490; --title-third: #0f172a; --border-color: #e2e8f0;
+            --table-header: #cffafe; --table-row-even: #f8fafc; --table-border: #cbd5e1;
+            --respuesta-bg: #e0f2fe; --respuesta-color: #0369a1;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #020617; --bg-container: #0f172a; --text-main: #cbd5e1; --text-muted: #94a3b8;
+                --title-main: #22d3ee; --title-sec: #06b6d4; --title-third: #e2e8f0; --border-color: #334155;
+                --table-header: #1e293b; --table-row-even: #0f172a; --table-border: #334155;
+                --respuesta-bg: rgba(8, 145, 178, 0.2); --respuesta-color: #bae6fd;
+            }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 30px 15px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 950px; margin: 0 auto; background: var(--bg-container); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.3s; }
+        .btn-volver { display: inline-block; text-decoration: none; color: var(--title-main); font-weight: bold; margin-bottom: 20px; }
+        h1 { color: var(--title-main); border-bottom: 3px solid var(--title-main); padding-bottom: 10px; font-size: 2rem; margin-top: 0;}
+        h2 { color: var(--title-sec); margin-top: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; font-size: 1.5rem; }
+        
+        .ofi-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        
+        .ofi-card {
+            background: var(--bg-container);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--title-main);
+            border-radius: 8px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .ofi-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-color: var(--title-sec);
+        }
+
+        .ofi-content-wrapper { display: flex; align-items: center; flex: 1; flex-wrap: wrap; justify-content: space-between; width: 100%;}
+        .ofi-q { font-weight: 600; font-size: 1.05em; color: var(--text-main); flex: 1; min-width: 250px;}
+        .ofi-arrow { color: var(--title-main); font-weight: bold; font-size: 1.5em; margin: 0 15px; }
+        .ofi-a { background: var(--respuesta-bg); color: var(--respuesta-color); padding: 6px 14px; border-radius: 6px; font-weight: bold; font-size: 1em; border: 1px solid rgba(8, 145, 178, 0.2); text-align: right; flex: 1; min-width: 250px;}
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-temas { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color); }
+        .btn-nav { background-color: var(--table-header); color: var(--title-main); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--title-main); transition: all 0.3s ease; }
+        .btn-nav:hover { background-color: var(--title-main); color: #ffffff; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .container { padding: 15px 10px; border-radius: 8px; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; margin-top: 30px;}
+            
+            /* Fuerza la estructura horizontal adaptada en el móvil */
+            .ofi-card { padding: 10px 12px; }
+            .ofi-content-wrapper { 
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: flex-start; 
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .ofi-q { font-size: 0.95em; min-width: auto; flex: 0 1 auto; }
+            .ofi-arrow { transform: none; margin: 0 4px; font-size: 1.2em; align-self: center; }
+            .ofi-a { width: auto; font-size: 0.9em; padding: 4px 10px; text-align: left; flex: 1 1 100%; margin-top: 4px; box-sizing: border-box;}
+        }
+        
+        /* IMPRESIÓN EXTREMA Y ANTI-CORTES */
+        @media print {
+            @page { margin: 1cm; }
+            body, .container { background: #fff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+            .btn-volver, hr, .nav-temas { display: none !important; }
+            body { font-size: 8.5pt; line-height: 1.15; }
+            h1 { font-size: 13pt; margin: 0 0 4px 0; border-bottom: 1.5px solid #000; padding-bottom: 2px; break-after: avoid; page-break-after: avoid; }
+            h2 { font-size: 11pt; color: #000 !important; border-bottom: 1px solid #ccc; break-after: avoid; margin-top: 15px;}
+            .ofi-grid { gap: 4px !important; margin-top: 10px !important; }
+            .ofi-card { padding: 6px 10px !important; border: 1px solid #ccc !important; border-left: 3px solid #000 !important; flex-direction: row; align-items: baseline; gap: 4px; box-shadow: none !important; transform: none !important; margin-bottom: 2px; break-inside: avoid; }
+            .ofi-content-wrapper { flex-direction: row; align-items: baseline; justify-content: flex-start;}
+            .ofi-q { font-size: 9pt; min-width: auto; flex: none;}
+            .ofi-a { background: #eee !important; color: #000 !important; border: 1px solid #888; padding: 2px 6px !important; font-size: 9pt; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; min-width: auto; flex: none;}
+            .ofi-arrow { color: #000 !important; margin: 0 5px !important; font-size: 1.2em; transform: none !important; align-self: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-volver">← Volver al Panel Principal</a>
+    
+    <h1>🏢 Esquema de Oficinas</h1>
+
+    <h2>1. Oficinas D.G. Policía</h2>
+    <div class="ofi-grid">
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Central Nacional de Interpol</span><span class="ofi-arrow">→</span><span class="ofi-a">División Cooperación Internacional<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina SIRENE</span><span class="ofi-arrow">→</span><span class="ofi-a">División Cooperación Internacional<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Despacho</span><span class="ofi-arrow">→</span><span class="ofi-a">Titular D.G.P<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Comunicación</span><span class="ofi-arrow">→</span><span class="ofi-a">Titular D.G.P<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">BIBE</span><span class="ofi-arrow">→</span><span class="ofi-a">Falsificación moneda<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Estudios</span><span class="ofi-arrow">→</span><span class="ofi-a">UCFAM<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional de Deportes</span><span class="ofi-arrow">→</span><span class="ofi-a">Brigada Coordinación Operativa, UCCOT<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Central Asuntos Taurinos</span><span class="ofi-arrow">→</span><span class="ofi-a">Brigada Coordinación Operativa, UCCOT<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Denuncias y Atención al Ciudadano (ODAC)</span><span class="ofi-arrow">→</span><span class="ofi-a">Adscritas Unidades de Policía Judicial<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">UCRIF</span><span class="ofi-arrow">→</span><span class="ofi-a">TSH, Inmigración ilegal, tráfico de personas<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">UCF</span><span class="ofi-arrow">→</span><span class="ofi-a">Puestos fronterizos<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">CNIF</span><span class="ofi-arrow">→</span><span class="ofi-a">Normativa UE e internacional<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina del Policía</span><span class="ofi-arrow">→</span><span class="ofi-a">Secretaría General, División de Personal<!--[cite: 16]--></span>
+        </div></div>
+
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Traducción e Interpretación de Lenguas</span><span class="ofi-arrow">→</span><span class="ofi-a">Servicios de Asuntos Generales, Sec. General, Gab. Técnico<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Asistencia en Materia de Registros (OARM)</span><span class="ofi-arrow">→</span><span class="ofi-a">Servicios de Asuntos Generales, Sec. General, Gab. Técnico<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Central Nacional de PD</span><span class="ofi-arrow">→</span><span class="ofi-a">Área Jurídica, Gabinete Técnico<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional de DH (ONDH)</span><span class="ofi-arrow">→</span><span class="ofi-a">Área DH e Igualdad, Gabinete Técnico<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional para la Igualdad de Género (ONIG)</span><span class="ofi-arrow">→</span><span class="ofi-a">Área DH e Igualdad, Gabinete Técnico<!--[cite: 16]--></span>
+        </div></div>
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Marca</span><span class="ofi-arrow">→</span><span class="ofi-a">Área de Coordinación Institucional e Identidad Corporativa<!--[cite: 16]--></span>
+        </div></div>
+    </div>
+
+    <h2>2. Oficinas Ministerio Interior</h2>
+    <div class="ofi-grid">
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Coordinación y Ciberseguridad (OCC)</span><span class="ofi-arrow">→</span><span class="ofi-a">D.G. Coordinación y Estudios<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Comunicación</span><span class="ofi-arrow">→</span><span class="ofi-a">Titular del Ministerio<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional de Información sobre pasajeros (ONIP)</span><span class="ofi-arrow">→</span><span class="ofi-a">CITCO<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional de Lucha contra Delitos de Odio (ONLDO)</span><span class="ofi-arrow">→</span><span class="ofi-a">D.G. Coordinación y Estudios<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Nacional de Garantías de los Derechos Humanos (ONGADH)</span><span class="ofi-arrow">→</span><span class="ofi-a">IPySS, D.G. Coordinación y Estudios<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina Presupuestaria</span><span class="ofi-arrow">→</span><span class="ofi-a">Titular Subsecretaría Interior<!--[cite: 16]--></span>
+        </div></div>
+        
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Asilo y Refugio (OAR)</span><span class="ofi-arrow">→</span><span class="ofi-a">D.G. Protección Internacional<!--[cite: 16]--></span>
+        </div></div>
+    </div>
+
+    <h2>3. Otras</h2>
+    <div class="ofi-grid">
+        <div class="ofi-card"><div class="ofi-content-wrapper">
+            <span class="ofi-q">Oficina de Asistencia a las Víctimas del Delito</span><span class="ofi-arrow">→</span><span class="ofi-a">M.Justicia<!--[cite: 16]--></span>
+        </div></div>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <div class="nav-temas">
+        <a href="index.html" class="btn-nav">← Volver al Panel Principal</a>
+    </div>
+
+</div>
+
+</body>
+</html>
